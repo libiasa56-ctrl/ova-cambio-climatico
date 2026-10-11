@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clima, Poder y Futuro | Libro OVA - Ciencias Sociales 11°</title>
+  <meta name="description" content="Objeto Virtual de Aprendizaje (OVA) para el análisis crítico de las decisiones geopolíticas, socioeconómicas y la transición energética frente al cambio climático. INEDCI - UTB 2026.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Georgia&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- TOPBAR HEADER -->
+  <header class="topbar">
+    <a href="#" class="brand" onclick="goToPage(1); return false;">
+      <div class="brand-badge">🌍</div>
+      <div class="brand-text">
+        <span>Libro OVA</span>
+        <small>Ciencias Sociales 11° • INEDCI</small>
+      </div>
+    </a>
+
+    <div class="topbar-center">
+      <span class="page-indicator" id="page-num">Página 1 de 15</span>
+      <div class="progress-track" title="Progreso del recurso">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="score-badge" title="Tus puntos de aprendizaje acumulados">
+        <span>⭐</span>
+        <span id="score-display">0 pts</span>
+      </div>
+      <button class="btn-icon" onclick="goToPage(3)" title="Índice / Ruta de Aprendizaje">📋</button>
+      <button class="btn-icon" onclick="resetOva()" title="Reiniciar Recurso">🔄</button>
+    </div>
+  </header>
+
+  <!-- MAIN BOOK CONTENT -->
+  <main>
+    <div class="book-container">
+
+      <!-- ================= PÁGINA 1: PORTADA ================= -->
+      <section class="book-page active" id="page-1">
+        <div style="text-align: center; max-width: 820px; margin: 1rem auto 2rem;">
+          <span class="page-tag">Objeto Virtual de Aprendizaje • Grado 11°</span>
+          <h1 style="font-family: Georgia, serif; font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--navy); line-height: 1.15; margin: 0.8rem 0;">
+            Clima, Poder y Futuro
+          </h1>
+          <p style="font-size: 1.25rem; font-weight: 600; color: var(--teal); margin-bottom: 1.5rem;">
+            Decisiones Globales, Responsabilidades y Transición Energética
+          </p>
+          <p style="color: var(--ink-light); font-size: 1.05rem; line-height: 1.7; max-width: 700px; margin: 0 auto 2.5rem;">
+            Un libro interactivo y multimodal para analizar críticamente cómo las decisiones económicas, políticas y territoriales configuran la crisis climática, contrastar los discursos de los actores globales y construir propuestas ciudadanas para la supervivencia y el bienestar humano.
+          </p>
+
+          <div class="grid-3" style="text-align: left; margin-bottom: 2.5rem;">
+            <div class="card" style="background: var(--paper-tint); border-left: 4px solid var(--teal);">
+              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">🏫</div>
+              <strong style="color: var(--navy);">Institución</strong>
+              <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.2rem;">I.E. Ciudad de Ipiales (Nariño)<br>Área: Ciencias Sociales</p>
+            </div>
+            <div class="card" style="background: var(--paper-tint); border-left: 4px solid var(--forest);">
+              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">🎓</div>
+              <strong style="color: var(--navy);">Universidad</strong>
+              <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.2rem;">Universidad Tecnológica de Bolívar<br>Maestría en Educación TIC</p>
+            </div>
+            <div class="card" style="background: var(--paper-tint); border-left: 4px solid var(--amber);">
+              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">👥</div>
+              <strong style="color: var(--navy);">Autores Docentes</strong>
+              <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.2rem;">Libia Meza • Rafael Martínez • David Lucero</p>
+            </div>
+          </div>
+
+          <button class="btn-primary" onclick="nextPage()" style="font-size: 1.1rem; padding: 0.9rem 2.4rem;">
+            Abrir Libro y Comenzar 🚀
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 2: CONTEXTO Y FICHA PEDAGÓGICA ================= -->
+      <section class="book-page" id="page-2">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">Fundamentación Curricular</span>
+            <h2 class="page-title">Contexto Educativo y Objetivos de Aprendizaje</h2>
+            <p class="page-subtitle">Alineación con los Derechos Básicos de Aprendizaje (DBA) y Malla Curricular 2026</p>
+          </div>
+          <div class="narrator-box">
+            <span class="narrator-avatar">👩‍🏫</span>
+            <button class="btn-tts" onclick="toggleSpeech('text-p2')">🔊 Escuchar lectura</button>
+          </div>
+        </div>
+
+        <div id="text-p2">
+          <div class="highlight-box">
+            <strong style="color: var(--teal); font-size: 1.05rem;">Derecho Básico de Aprendizaje (DBA) — Tercer Periodo:</strong>
+            <p style="margin-top: 0.4rem; font-size: 0.95rem;">
+              <em>"Analizar críticamente la relación entre las decisiones económicas, políticas y sociales de los diferentes actores involucrados en el cambio climático y sus efectos sobre el bienestar y la supervivencia de la humanidad, mediante el uso de herramientas digitales que permitan investigar, interpretar información, contrastar perspectivas, argumentar y proponer alternativas de transición energética sostenible."</em>
+            </p>
+          </div>
+
+          <div class="grid-2" style="margin-top: 1.5rem;">
+            <div class="card">
+              <h3 class="card-title">🎯 Objetivos Específicos del OVA</h3>
+              <ul style="padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.7; color: var(--ink-light);">
+                <li><strong>Comprensión causal:</strong> Explicar las causas históricas y estructurales del calentamiento global.</li>
+                <li><strong>Análisis crítico:</strong> Contrastar intereses geopolíticos y corporativos frente a la crisis climática.</li>
+                <li><strong>Lectura de datos:</strong> Discernir entre datos científicos reales y estrategias de <em>greenwashing</em>.</li>
+                <li><strong>Pensamiento propositivo:</strong> Formular propuestas viables de transición justa en el contexto regional de Nariño y Colombia.</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">📊 Rúbrica Formativa de Desempeño</h3>
+              <div style="font-size: 0.88rem; line-height: 1.6;">
+                <p style="margin-bottom: 0.5rem;"><strong>1. Comprensión Conceptual:</strong> Identifica emisores y efectos sistémicos.</p>
+                <p style="margin-bottom: 0.5rem;"><strong>2. Investigación Digital:</strong> Valora rigor y sesgos de fuentes.</p>
+                <p style="margin-bottom: 0.5rem;"><strong>3. Capacidad Argumentativa:</strong> Sustenta posiciones en el Tribunal Ciudadano.</p>
+                <p><strong>4. Viabilidad de Propuestas:</strong> Propone soluciones equilibradas en ecología y equidad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 3: RUTA DEL EXPLORADOR (ÍNDICE) ================= -->
+      <section class="book-page" id="page-3">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">Navegación Interactiva</span>
+            <h2 class="page-title">Ruta del Explorador: Índice del Recurso</h2>
+            <p class="page-subtitle">Avanza paso a paso o salta directamente a la actividad que desees</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" onclick="goToPage(4)" style="cursor: pointer;">
+            <span style="font-size: 1.8rem;">🏭</span>
+            <h4 style="margin: 0.5rem 0; color: var(--navy);">Módulo 1: Los Actores</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">¿Quién está detrás del calentamiento global? Emisiones históricas vs actuales.</p>
+            <span style="color: var(--teal); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Ir a lectura →</span>
+          </div>
+
+          <div class="card" onclick="goToPage(5)" style="cursor: pointer; border-color: var(--amber);">
+            <span style="font-size: 1.8rem;">🧩</span>
+            <h4 style="margin: 0.5rem 0; color: var(--amber);">Actividad 1: Matriz de Actores</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Empareja cada actor global con sus responsabilidades e intereses reales.</p>
+            <span style="color: var(--amber); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Jugar actividad (15 pts) →</span>
+          </div>
+
+          <div class="card" onclick="goToPage(6)" style="cursor: pointer;">
+            <span style="font-size: 1.8rem;">🕵️‍♂️</span>
+            <h4 style="margin: 0.5rem 0; color: var(--navy);">Módulo 2: Detectives del Clima</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Análisis de discursos, falacias argumentativas y <em>greenwashing</em> corporativo.</p>
+            <span style="color: var(--teal); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Ir a lectura →</span>
+          </div>
+
+          <div class="card" onclick="goToPage(7)" style="cursor: pointer; border-color: var(--amber);">
+            <span style="font-size: 1.8rem;">🔍</span>
+            <h4 style="margin: 0.5rem 0; color: var(--amber);">Actividad 2: Fact-Checking</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Evalúa noticias y declaraciones para dictaminar veredictos de veracidad.</p>
+            <span style="color: var(--amber); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Jugar actividad (20 pts) →</span>
+          </div>
+
+          <div class="card" onclick="goToPage(8)" style="cursor: pointer;">
+            <span style="font-size: 1.8rem;">⚡</span>
+            <h4 style="margin: 0.5rem 0; color: var(--navy);">Módulo 3: Transición Posible</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Modelos energéticos globales y el reto de descarbonizar la economía.</p>
+            <span style="color: var(--teal); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Ir a lectura →</span>
+          </div>
+
+          <div class="card" onclick="goToPage(11)" style="cursor: pointer; border-color: var(--forest);">
+            <span style="font-size: 1.8rem;">🌐</span>
+            <h4 style="margin: 0.5rem 0; color: var(--forest);">Actividad 5: Simulador COP</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Toma decisiones en la Cumbre del Clima y balancea temperatura vs equidad.</p>
+            <span style="color: var(--forest); font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 0.75rem;">Entrar a cumbre (25 pts) →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 4: MÓDULO 1 ================= -->
+      <section class="book-page" id="page-4">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">Eje 1: Geopolítica de las Emisiones</span>
+            <h2 class="page-title">¿Quién está detrás del calentamiento global?</h2>
+            <p class="page-subtitle">Diferencias entre emisiones históricas acumuladas y emisiones anuales contemporáneas</p>
+          </div>
+          <div class="narrator-box">
+            <span class="narrator-avatar">🎙️</span>
+            <button class="btn-tts" onclick="toggleSpeech('text-p4')">🔊 Escuchar lectura</button>
+          </div>
+        </div>
+
+        <div id="text-p4">
+          <p style="font-size: 1.05rem; line-height: 1.8; color: var(--ink);">
+            Si todos los habitantes del planeta dependemos del equilibrio ambiental para sobrevivir, <strong>¿por qué algunos países y corporaciones tienen una responsabilidad histórica inmensamente mayor en la crisis climática?</strong>
+          </p>
+
+          <div class="highlight-box warn" style="margin: 1.5rem 0;">
+            <strong>La paradoja de la responsabilidad climática:</strong>
+            <p style="margin-top: 0.35rem; font-size: 0.95rem;">
+              Estados Unidos y la Unión Europea representan menos del 15% de la población mundial actual, pero son responsables de más del <strong>45% de todas las emisiones históricas acumuladas</strong> de CO₂ desde la Revolución Industrial. Por su parte, regiones enteras como África y América Latina han emitido menos del 8% histórico, pero sufren los impactos más devastadores.
+            </p>
+          </div>
+
+          <div class="grid-2" style="margin-top: 1.5rem;">
+            <div class="card">
+              <h3 class="card-title">🏭 Los 4 Grandes Emisores Actuales</h3>
+              <div style="font-size: 0.88rem; line-height: 1.8;">
+                <p>🇨🇳 <strong>China:</strong> ~30% del volumen anual. Su modelo industrial produce gran parte de los bienes que consume Occidente.</p>
+                <p>🇺🇸 <strong>Estados Unidos:</strong> Mayor emisor histórico acumulado y líder en emisiones per cápita (~14 t CO₂/persona al año).</p>
+                <p>🇪🇺 <strong>Unión Europea:</strong> Alto desarrollo industrial histórico; actualmente impulsa el Pacto Verde pero depende de materias primas del Sur.</p>
+                <p>🛢️ <strong>Países Petroleros (OPEP):</strong> Economías basadas en la renta extractiva con resistencia al cese de exploración fósil.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">⚖️ Las 100 Empresas del Carbono</h3>
+              <p style="font-size: 0.92rem; color: var(--ink-light); line-height: 1.7;">
+                Según el informe histórico del <em>Carbon Disclosure Project (CDP)</em>, tan solo <strong>100 empresas petroleras, gasíferas y carboníferas</strong> han sido la fuente de más del 70% de las emisiones industriales mundiales de gases de efecto invernadero desde 1988.
+              </p>
+              <div style="margin-top: 1rem; padding: 0.75rem; background: var(--paper-tint); border-radius: 8px; font-size: 0.85rem;">
+                💡 <em>Pregunta clave para el debate:</em> ¿Deben pagar las petroleras impuestos globales por los daños ambientales causados en el Sur Global?
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 5: ACTIVIDAD 1 ================= -->
+      <section class="book-page" id="page-5">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 1</span>
+            <h2 class="page-title">Matriz de Actores y Responsabilidades</h2>
+            <p class="page-subtitle">Haz clic en un actor (columna izquierda) y luego selecciona su rol/responsabilidad correspondiente (columna derecha).</p>
+          </div>
+        </div>
+
+        <div class="matching-game">
+          <div class="match-column">
+            <h4 style="color: var(--navy); margin-bottom: 0.5rem;">Actores Globales</h4>
+            <div class="match-item" data-type="actor" data-id="act-usa" onclick="selectActor(this)">
+              🇺🇸 Estados Unidos
+            </div>
+            <div class="match-item" data-type="actor" data-id="act-chn" onclick="selectActor(this)">
+              🇨🇳 China
+            </div>
+            <div class="match-item" data-type="actor" data-id="act-petro" onclick="selectActor(this)">
+              🛢️ Países Petroleros (OPEP)
+            </div>
+            <div class="match-item" data-type="actor" data-id="act-corps" onclick="selectActor(this)">
+              🏢 Transnacionales Fósiles
+            </div>
+            <div class="match-item" data-type="actor" data-id="act-south" onclick="selectActor(this)">
+              🌴 Comunidades del Sur Global
+            </div>
+          </div>
+
+          <div class="match-column">
+            <h4 style="color: var(--navy); margin-bottom: 0.5rem;">Responsabilidad / Discurso</h4>
+            <div class="match-item" data-type="resp" data-id="resp-chn" onclick="selectResp(this)">
+              Mayor emisor anual contemporáneo debido a su rol como fábrica manufacturera global.
+            </div>
+            <div class="match-item" data-type="resp" data-id="resp-corps" onclick="selectResp(this)">
+              Financiaron campañas de desinformación climática y concentran el 70% de emisiones industriales.
+            </div>
+            <div class="match-item" data-type="resp" data-id="resp-usa" onclick="selectResp(this)">
+              Mayor deudor climático histórico por sus emisiones acumuladas y alto consumo per cápita.
+            </div>
+            <div class="match-item" data-type="resp" data-id="resp-south" onclick="selectResp(this)">
+              Mínima contribución histórica, pero sufren los mayores impactos de sequías, deslaves e inundaciones.
+            </div>
+            <div class="match-item" data-type="resp" data-id="resp-petro" onclick="selectResp(this)">
+              Defienden la dependencia de la renta de hidrocarburos frenando metas vinculantes en las COP.
+            </div>
+          </div>
+        </div>
+
+        <div id="act1-feedback" class="highlight-box" style="display: none; background: var(--forest-soft); border-left-color: var(--forest); margin-top: 1.5rem;">
+          🎉 <strong>¡Excelente trabajo analítico!</strong> Has completado la matriz de actores. Reconocer la responsabilidad diferenciada es el pilar de la justicia climática. <em>(+75 pts ganados)</em>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 6: MÓDULO 2 ================= -->
+      <section class="book-page" id="page-6">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">Eje 2: Alfabetización Mediática</span>
+            <h2 class="page-title">Detectives del Clima: Discursos, Intereses y Datos</h2>
+            <p class="page-subtitle">Cómo identificar falacias, negacionismo y estrategias de maquillaje verde (Greenwashing)</p>
+          </div>
+          <div class="narrator-box">
+            <span class="narrator-avatar">🎙️</span>
+            <button class="btn-tts" onclick="toggleSpeech('text-p6')">🔊 Escuchar lectura</button>
+          </div>
+        </div>
+
+        <div id="text-p6">
+          <p style="font-size: 1.05rem; line-height: 1.8;">
+            El debate climático no es únicamente científico; es un campo de batalla de intereses económicos. Con frecuencia, corporaciones y gobiernos utilizan técnicas retóricas para retrasar las regulaciones o desviar la atención.
+          </p>
+
+          <div class="grid-3" style="margin-top: 1.5rem;">
+            <div class="card" style="border-top: 4px solid var(--coral);">
+              <h3 class="card-title">🌿 Greenwashing</h3>
+              <p style="font-size: 0.88rem; color: var(--ink-light); line-height: 1.6;">
+                Estrategia publicitaria donde una empresa gasta más dinero en anunciar sus iniciativas ecológicas simbólicas que en reducir realmente su huella contaminante.
+              </p>
+            </div>
+
+            <div class="card" style="border-top: 4px solid var(--amber);">
+              <h3 class="card-title">🎯 Desvío de Culpa Individual</h3>
+              <p style="font-size: 0.88rem; color: var(--ink-light); line-height: 1.6;">
+                La invención del concepto de "huella de carbono personal" (popularizado por una campaña de British Petroleum en 2004) para trasladar la responsabilidad estructural a las compras del ciudadano común.
+              </p>
+            </div>
+
+            <div class="card" style="border-top: 4px solid var(--teal);">
+              <h3 class="card-title">⏳ Retrasismo Climático</h3>
+              <p style="font-size: 0.88rem; color: var(--ink-light); line-height: 1.6;">
+                Ya no niegan el cambio climático, sino que afirman que "actuar ahora arruinará la economía" o que "debemos esperar a que la tecnología futura lo resuelva por arte de magia".
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 7: ACTIVIDAD 2 ================= -->
+      <section class="book-page" id="page-7">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 2</span>
+            <h2 class="page-title">Laboratorio de Fact-Checking Climático</h2>
+            <p class="page-subtitle">Analiza cada uno de los 3 casos reales y emite tu veredicto argumentado.</p>
+          </div>
+        </div>
+
+        <!-- CASO 1 -->
+        <div class="case-card" id="case-1" data-correct="greenwashing" data-explanation="Es un caso típico de greenwashing. Mientras gasta millones en promocionar que planta árboles, destina el 95% de sus inversiones reales de capital a la exploración de nuevos yacimientos petroleros.">
+          <h4>Expediente #01: Publicidad de Petrolera Global</h4>
+          <div class="case-quote">
+            "En PetrolCorp nos pintamos de verde: para el 2050 seremos carbono neutrales y hoy sembramos 100.000 árboles para neutralizar tus viajes en automóvil."
+          </div>
+          <div class="case-actions">
+            <button class="btn-choice" onclick="checkFact(1, 'greenwashing', this)">🌿 Maquillaje Verde (Greenwashing)</button>
+            <button class="btn-choice" onclick="checkFact(1, 'legitimo', this)">✅ Compromiso Ecológico Real</button>
+            <button class="btn-choice" onclick="checkFact(1, 'justicia', this)">⚖️ Justicia Ambiental</button>
+          </div>
+          <div class="case-feedback"></div>
+        </div>
+
+        <!-- CASO 2 -->
+        <div class="case-card" id="case-2" data-correct="evasion" data-explanation="Es una falacia de falsa equivalencia y evasión de deuda ecológica histórica. Omite intencionalmente que un ciudadano estadounidense emite 10 veces más que uno de la India, y que Occidente causó la saturación atmosférica previa.">
+          <h4>Expediente #02: Discurso de Delegado de País Industrializado</h4>
+          <div class="case-quote">
+            "No tiene sentido que nosotros reduzcamos nuestras industrias si la India y China están construyendo nuevas plantas de carbón hoy en día."
+          </div>
+          <div class="case-actions">
+            <button class="btn-choice" onclick="checkFact(2, 'evasion', this)">🚫 Evasión de Responsabilidad Histórica</button>
+            <button class="btn-choice" onclick="checkFact(2, 'legitimo', this)">✅ Argumento Científico Válido</button>
+            <button class="btn-choice" onclick="checkFact(2, 'greenwashing', this)">🌿 Greenwashing</button>
+          </div>
+          <div class="case-feedback"></div>
+        </div>
+
+        <!-- CASO 3 -->
+        <div class="case-card" id="case-3" data-correct="justicia" data-explanation="Es un ejemplo genuino de soberanía y transición energética justa comunitaria. Genera energía limpia, desmercantiliza el servicio y promueve autonomía sin despojar territorios.">
+          <h4>Expediente #03: Proyecto Comunitario en Nariño</h4>
+          <div class="case-quote">
+            "Asociación campesina instala microcentral solar autogestionada para refrigerar productos agrícolas sin depender de generadores diésel costosos."
+          </div>
+          <div class="case-actions">
+            <button class="btn-choice" onclick="checkFact(3, 'greenwashing', this)">🌿 Greenwashing</button>
+            <button class="btn-choice" onclick="checkFact(3, 'evasion', this)">🚫 Retrasismo Climático</button>
+            <button class="btn-choice" onclick="checkFact(3, 'justicia', this)">✊ Transición Energética Justa y Soberana</button>
+          </div>
+          <div class="case-feedback"></div>
+        </div>
+
+        <div id="act2-summary" class="highlight-box" style="display: none; background: var(--teal-soft); border-left-color: var(--teal); margin-top: 1rem;">
+          🎯 <strong>¡Laboratorio Superado con Éxito!</strong> Has demostrado criterio analítico para no dejarte engañar por la publicidad corporativa.
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 8: MÓDULO 3 ================= -->
+      <section class="book-page" id="page-8">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">Eje 3: Modelos de Desarrollo</span>
+            <h2 class="page-title">Dos Caminos para el Futuro: Transición Energética</h2>
+            <p class="page-subtitle">Comparativa entre la inercia fósil, las renovables corporativas y la transición justa</p>
+          </div>
+          <div class="narrator-box">
+            <span class="narrator-avatar">🎙️</span>
+            <button class="btn-tts" onclick="toggleSpeech('text-p8')">🔊 Escuchar lectura</button>
+          </div>
+        </div>
+
+        <div id="text-p8">
+          <p style="font-size: 1.05rem; line-height: 1.8;">
+            La transición energética no consiste simplemente en cambiar combustible fósil por paneles solares; implica una transformación profunda de quién posee la energía, cómo se distribuye y a quién beneficia.
+          </p>
+
+          <div class="grid-3" style="margin-top: 1.5rem;">
+            <div class="card">
+              <h3 class="card-title">🛢️ Modelo Fósil Tradicional</h3>
+              <ul style="padding-left: 1.15rem; font-size: 0.85rem; line-height: 1.7; color: var(--ink-light);">
+                <li>Alta densidad energética pero con contaminación crítica.</li>
+                <li>Monopolio estatal o corporativo de refinerías.</li>
+                <li>Vulnerabilidad a guerras y fluctuación de precios.</li>
+                <li>Emisiones continuas de gases de efecto invernadero.</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">⚡ Transición Corporativa</h3>
+              <ul style="padding-left: 1.15rem; font-size: 0.85rem; line-height: 1.7; color: var(--ink-light);">
+                <li>Megaparques eólicos y solares en manos privadas.</li>
+                <li>Conflictos territoriales con comunidades locales por tierras.</li>
+                <li>Uso intensivo de minerales raros y litio del Sur Global.</li>
+                <li>Mantiene la lógica de consumo ilimitado.</li>
+              </ul>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--forest); background: var(--forest-soft);">
+              <h3 class="card-title" style="color: var(--forest);">🌱 Transición Justa Comunitaria</h3>
+              <ul style="padding-left: 1.15rem; font-size: 0.85rem; line-height: 1.7; color: var(--ink);">
+                <li>Comunidades energéticas locales y techos solares.</li>
+                <li>Democratización del acceso y soberanía popular.</li>
+                <li>Reconversión laboral digna para los trabajadores mineros.</li>
+                <li>Cuidado del agua, la tierra y el bienestar humano.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 9: ACTIVIDAD 3 ================= -->
+      <section class="book-page" id="page-9">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 3</span>
+            <h2 class="page-title">Clasificador de Medidas Climáticas</h2>
+            <p class="page-subtitle">Distingue entre Mitigación (reducir causas), Adaptación (ajustarse al impacto) y Falsas Soluciones.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Item 1 -->
+          <div class="card">
+            <p><strong>1. Construir malecones y barreras de manglares en la costa para contener el aumento del nivel del mar.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(1, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(1, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(1, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="card">
+            <p><strong>2. Reemplazar flotas de buses de transporte público diésel por sistemas 100% eléctricos con energía solar.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(2, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(2, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(2, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="card">
+            <p><strong>3. Quemar carbón pero comprar "bonos de carbono" en otro país sin reducir el humo de la chimenea.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(3, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(3, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(3, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="card">
+            <p><strong>4. Implementar sistemas de captación de agua de lluvia en escuelas rurales de Nariño ante sequías prolongadas.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(4, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(4, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="adaptacion" onclick="classifyMeasure(4, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="card">
+            <p><strong>5. Cierre progresivo y planificado de plantas térmicas de carbón con jubilación anticipada de obreros.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(5, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(5, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="mitigacion" onclick="classifyMeasure(5, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="card">
+            <p><strong>6. Despejar selva nativa para sembrar palma africana de biocombustibles con alto uso de pesticidas.</strong></p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(6, 'mitigacion', this)">Mitigación</button>
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(6, 'adaptacion', this)">Adaptación</button>
+              <button class="btn-choice" data-correct="falsa" onclick="classifyMeasure(6, 'falsa', this)">Falsa Solución</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="act3-feedback" class="highlight-box" style="display: none; background: var(--forest-soft); border-left-color: var(--forest); margin-top: 1.5rem;">
+          🎉 <strong>¡Clasificación Impecable!</strong> Diferenciar entre mitigar causas y adaptarse a las consecuencias es vital para el diseño de políticas públicas. <em>(+60 pts)</em>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 10: ACTIVIDAD 4 ================= -->
+      <section class="book-page" id="page-10">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 4</span>
+            <h2 class="page-title">Sopa de Letras y Criptograma Geopolítico</h2>
+            <p class="page-subtitle">Haz clic sobre las letras en orden para seleccionar cada palabra de la lista.</p>
+          </div>
+        </div>
+
+        <div class="wordsearch-layout">
+          <div>
+            <div class="wordsearch-grid" id="ws-grid">
+              <!-- Row 1: DESCARBONIZAR -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">D</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">E</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">S</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">C</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">R</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">B</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">O</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">N</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">Z</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div>
+              <!-- Row 2: R + MITIGACION -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">R</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">M</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">T</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">G</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">C</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">O</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">N</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">P</div>
+              <!-- Row 3: FOSILES -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">X</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">F</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">O</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">S</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">L</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">E</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">S</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">T</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">Y</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">U</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <!-- Row 4: RENOVABLES -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">R</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">E</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">N</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">O</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">V</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">B</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">L</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">E</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">S</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">K</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">L</div>
+              <!-- Row 5: EQUIDAD -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">E</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">Q</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">U</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">I</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">D</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">D</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">M</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">N</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">B</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">V</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">C</div>
+              <!-- Fillers rows 6 to 8 -->
+              <div class="ws-cell" onclick="toggleWsCell(this)">A</div><div class="ws-cell" onclick="toggleWsCell(this)">B</div><div class="ws-cell" onclick="toggleWsCell(this)">C</div><div class="ws-cell" onclick="toggleWsCell(this)">D</div><div class="ws-cell" onclick="toggleWsCell(this)">E</div><div class="ws-cell" onclick="toggleWsCell(this)">F</div><div class="ws-cell" onclick="toggleWsCell(this)">G</div><div class="ws-cell" onclick="toggleWsCell(this)">H</div><div class="ws-cell" onclick="toggleWsCell(this)">I</div><div class="ws-cell" onclick="toggleWsCell(this)">J</div><div class="ws-cell" onclick="toggleWsCell(this)">K</div><div class="ws-cell" onclick="toggleWsCell(this)">L</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">M</div><div class="ws-cell" onclick="toggleWsCell(this)">N</div><div class="ws-cell" onclick="toggleWsCell(this)">O</div><div class="ws-cell" onclick="toggleWsCell(this)">P</div><div class="ws-cell" onclick="toggleWsCell(this)">Q</div><div class="ws-cell" onclick="toggleWsCell(this)">R</div><div class="ws-cell" onclick="toggleWsCell(this)">S</div><div class="ws-cell" onclick="toggleWsCell(this)">T</div><div class="ws-cell" onclick="toggleWsCell(this)">U</div><div class="ws-cell" onclick="toggleWsCell(this)">V</div><div class="ws-cell" onclick="toggleWsCell(this)">W</div><div class="ws-cell" onclick="toggleWsCell(this)">X</div>
+              <div class="ws-cell" onclick="toggleWsCell(this)">Y</div><div class="ws-cell" onclick="toggleWsCell(this)">Z</div><div class="ws-cell" onclick="toggleWsCell(this)">A</div><div class="ws-cell" onclick="toggleWsCell(this)">E</div><div class="ws-cell" onclick="toggleWsCell(this)">I</div><div class="ws-cell" onclick="toggleWsCell(this)">O</div><div class="ws-cell" onclick="toggleWsCell(this)">U</div><div class="ws-cell" onclick="toggleWsCell(this)">K</div><div class="ws-cell" onclick="toggleWsCell(this)">L</div><div class="ws-cell" onclick="toggleWsCell(this)">M</div><div class="ws-cell" onclick="toggleWsCell(this)">P</div><div class="ws-cell" onclick="toggleWsCell(this)">Q</div>
+            </div>
+            <button onclick="clearWsSelection()" style="margin-top: 0.75rem; background: var(--paper-tint); border: 1px solid var(--line); padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">
+              Limpiar selección de letras ↩
+            </button>
+          </div>
+
+          <div class="word-list">
+            <h4 style="color: var(--navy);">Palabras a Descubrir:</h4>
+            <div class="word-tag" id="word-DESCARBONIZAR"><span>1. DESCARBONIZAR</span> <small>Cero CO₂</small></div>
+            <div class="word-tag" id="word-MITIGACION"><span>2. MITIGACION</span> <small>Freno a causas</small></div>
+            <div class="word-tag" id="word-FOSILES"><span>3. FOSILES</span> <small>Carbón/Petróleo</small></div>
+            <div class="word-tag" id="word-RENOVABLES"><span>4. RENOVABLES</span> <small>Solar/Eólica</small></div>
+            <div class="word-tag" id="word-EQUIDAD"><span>5. EQUIDAD</span> <small>Justicia social</small></div>
+
+            <div id="ws-complete-msg" class="highlight-box" style="display: none; background: var(--forest-soft); border-left-color: var(--forest); margin-top: 1rem;">
+              🌟 <strong>¡Sopa de Letras Completada!</strong> Todos los conceptos clave han sido fijados en tu memoria. <em>(+125 pts)</em>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 11: ACTIVIDAD 5 ================= -->
+      <section class="book-page" id="page-11">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 5</span>
+            <h2 class="page-title">Simulador de la Cumbre Climática (COP)</h2>
+            <p class="page-subtitle">Asume el rol de delegado internacional. Tus decisiones afectarán el calentamiento global y la equidad social.</p>
+          </div>
+        </div>
+
+        <div class="sim-meters">
+          <div class="meter-temp">
+            <div class="meter-title">
+              <span>🌡️ Calentamiento Proyectado al 2100:</span>
+              <strong id="sim-temp-val" style="color: var(--coral);">2.8°C</strong>
+            </div>
+            <div class="meter-bar">
+              <div class="meter-fill" id="sim-temp-bar" style="width: 72%;"></div>
+            </div>
+            <small style="color: var(--ink-light); font-size: 0.72rem;">Meta del Acuerdo de París: &lt; 1.5°C</small>
+          </div>
+
+          <div class="meter-equity">
+            <div class="meter-title">
+              <span>⚖️ Índice de Equidad Social Global:</span>
+              <strong id="sim-equity-val" style="color: var(--forest);">40%</strong>
+            </div>
+            <div class="meter-bar">
+              <div class="meter-fill" id="sim-equity-bar" style="width: 40%;"></div>
+            </div>
+            <small style="color: var(--ink-light); font-size: 0.72rem;">Bienestar y justicia para el Sur Global</small>
+          </div>
+        </div>
+
+        <!-- ROUND 1 -->
+        <div class="sim-decision-card" id="sim-round-1">
+          <span class="page-tag">Ronda 1 de 3 • Fondo de Daños Climáticos</span>
+          <h3 style="margin: 0.5rem 0; color: var(--navy);">¿Cómo financiar las pérdidas en países vulnerables?</h3>
+          <p style="font-size: 0.95rem; color: var(--ink-light);">
+            Las islas del Pacífico y comunidades andinas sufren huracanes y deshielos que no provocaron. Se debate quién debe pagar el fondo de reparaciones.
+          </p>
+          <div class="sim-options">
+            <button class="btn-sim-opt" onclick="simDecide(1, -0.3, +20, 'Fondo vinculante aprobado')">
+              <strong>Opción A: Impuesto a las ganancias de petroleras globales.</strong><br>
+              <small>Se grava a las corporaciones y los países industrializados aportan obligatoriamente según su deuda histórica.</small>
+            </button>
+            <button class="btn-sim-opt" onclick="simDecide(1, +0.1, -10, 'Préstamos bancarios')">
+              <strong>Opción B: Créditos y préstamos bancarios condicionados.</strong><br>
+              <small>Endeudar más a los países afectados para que paguen su propia reconstrucción.</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- ROUND 2 -->
+        <div class="sim-decision-card" id="sim-round-2" style="display: none;">
+          <span class="page-tag">Ronda 2 de 3 • Eliminación de Combustibles Fósiles</span>
+          <h3 style="margin: 0.5rem 0; color: var(--navy);">¿Cuál debe ser el compromiso sobre el carbón y petróleo?</h3>
+          <p style="font-size: 0.95rem; color: var(--ink-light);">
+            Los países petroleros insisten en redactar "reducción paulatina sin fecha", mientras la ciencia exige el fin de subsidios fósiles.
+          </p>
+          <div class="sim-options">
+            <button class="btn-sim-opt" onclick="simDecide(2, -0.4, +15, 'Cese de subsidios y calendario vinculante')">
+              <strong>Opción A: Calendario vinculante de salida del carbón con reconversión laboral.</strong><br>
+              <small>Prohibición de nuevos contratos fósiles y subsidios redirigidos a comunidades solares y obreros mineros.</small>
+            </button>
+            <button class="btn-sim-opt" onclick="simDecide(2, +0.2, -5, 'Declaración voluntaria sin sanciones')">
+              <strong>Opción B: Metas voluntarias sin fecha límite fija.</strong><br>
+              <small>Permitir que el mercado decida el ritmo para no alterar ganancias a corto plazo.</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- ROUND 3 -->
+        <div class="sim-decision-card" id="sim-round-3" style="display: none;">
+          <span class="page-tag">Ronda 3 de 3 • Consulta Previa y Pueblos Indígenas</span>
+          <h3 style="margin: 0.5rem 0; color: var(--navy);">¿Cómo extraer los minerales necesarios para paneles y baterías?</h3>
+          <p style="font-size: 0.95rem; color: var(--ink-light);">
+            El litio, cobre y níquel para las energías renovables se encuentran en páramos, salares y territorios ancestrales.
+          </p>
+          <div class="sim-options">
+            <button class="btn-sim-opt" onclick="simDecide(3, -0.3, +20, 'Consentimiento previo libre e informado')">
+              <strong>Opción A: Consulta previa vinculante y respeto irrestricto a los páramos.</strong><br>
+              <small>Priorizar el reciclaje de minerales y limitar el extractivismo sobre fuentes de agua potable.</small>
+            </button>
+            <button class="btn-sim-opt" onclick="simDecide(3, 0.0, -20, 'Explotación minera acelerada sin consulta')">
+              <strong>Opción B: Declarar minería verde de utilidad pública sobre cualquier territorio.</strong><br>
+              <small>Desalojar resistencias locales en nombre de la tecnología limpia.</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- FINAL VERDICT -->
+        <div class="sim-decision-card" id="sim-final" style="display: none; background: var(--paper-tint);">
+          <h3 style="color: var(--navy); margin-bottom: 0.5rem;">📜 Declaración Final de la Cumbre</h3>
+          <div id="sim-verdict" style="font-size: 1rem; line-height: 1.7; margin: 1rem 0;"></div>
+          <button class="btn-primary" onclick="goToPage(12)">Continuar al Tribunal Ciudadano →</button>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 12: ACTIVIDAD 6 ================= -->
+      <section class="book-page" id="page-12">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 6</span>
+            <h2 class="page-title">El Tribunal Ciudadano del Clima</h2>
+            <p class="page-subtitle">Construye tu alegato argumentativo con tesis, evidencia empírica y propuesta territorial.</p>
+          </div>
+        </div>
+
+        <div class="argument-builder">
+          <div class="grid-2">
+            <div class="field-group">
+              <label for="arg-actor">1. ¿En nombre de quién hablas?</label>
+              <select id="arg-actor" onchange="updateArgumentSpeech()">
+                <option value="los jóvenes estudiantes de la I.E. Ciudad de Ipiales">Jóvenes estudiantes de Ipiales y Nariño</option>
+                <option value="las comunidades campesinas e indígenas guardianas del agua">Comunidades campesinas e indígenas</option>
+                <option value="los trabajadores del sector minero-energético en transición">Trabajadores en reconversión laboral</option>
+                <option value="la ciudadanía del Sur Global">Ciudadanía del Sur Global</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="arg-tesis">2. Tu Tesis Central:</label>
+              <select id="arg-tesis" onchange="updateArgumentSpeech()">
+                <option value="la crisis climática es producto de un modelo económico que prioriza el lucro sobre la supervivencia">La crisis es producto de la mercantilización de la naturaleza</option>
+                <option value="la transición energética debe ser comunitaria, justa y no un nuevo negocio colonial">La transición debe ser soberana y no extractivista</option>
+                <option value="los países enriquecidos deben pagar su deuda ecológica histórica">Existe una deuda ecológica histórica ineludible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="arg-evidencia">3. Evidencia Científica / Geopolítica que sustenta tu postura:</label>
+            <select id="arg-evidencia" onchange="updateArgumentSpeech()">
+              <option value="100 empresas petroleras han causado más del 70% de las emisiones industriales desde 1988">100 corporaciones concentran el 70% de emisiones industriales</option>
+              <option value="Occidente emitió el 45% del CO₂ histórico y hoy externaliza sus impactos hacia los Andes y el trópico">Occidente acumula el 45% de emisiones históricas</option>
+              <option value="el calentamiento global amenaza directamente los páramos y el ciclo hídrico de nuestro departamento de Nariño">Los páramos y cuencas de Nariño están en riesgo hídrico</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="arg-propuesta">4. Propuesta Concreta de Acción Territorial:</label>
+            <textarea id="arg-propuesta" rows="2" oninput="updateArgumentSpeech()">promover comunidades solares en colegios públicos y proteger los páramos de la megaminería.</textarea>
+          </div>
+
+          <div class="argument-preview">
+            <strong style="color: var(--teal); display: block; margin-bottom: 0.5rem;">📜 Alegato Argumentativo Compilado:</strong>
+            <div id="arg-compiled-speech"></div>
+          </div>
+
+          <button class="btn-primary" onclick="copySpeech()" style="margin-top: 1.25rem;">
+            📋 Copiar Alegato al Portapapeles (+30 pts)
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 13: ACTIVIDAD 7 ================= -->
+      <section class="book-page" id="page-13">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-activity">Actividad Práctica 7</span>
+            <h2 class="page-title">Juego de Memoria: Conceptos Clave</h2>
+            <p class="page-subtitle">Voltea 2 cartas por turno y encuentra las 4 parejas de concepto y significado.</p>
+          </div>
+        </div>
+
+        <div class="memory-grid">
+          <!-- PAIR 1 -->
+          <div class="memory-card" data-pair="1" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">🌱</div>
+              <div class="memory-back">Justicia Climática</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="2" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">🌿</div>
+              <div class="memory-back">Greenwashing</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="3" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">☀️</div>
+              <div class="memory-back">Descarbonización</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="4" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">⚖️</div>
+              <div class="memory-back">Deuda Ecológica</div>
+            </div>
+          </div>
+
+          <!-- PAIR 2 (Matches) -->
+          <div class="memory-card" data-pair="1" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">🌱</div>
+              <div class="memory-back">Principio ético: quien más contaminó debe asumir el mayor costo.</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="2" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">🌿</div>
+              <div class="memory-back">Publicidad engañosa para fingir compromiso ambiental.</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="3" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">☀️</div>
+              <div class="memory-back">Eliminación total del uso de carbón, petróleo y gas fósil.</div>
+            </div>
+          </div>
+          <div class="memory-card" data-pair="4" onclick="flipMemoryCard(this)">
+            <div class="memory-card-inner">
+              <div class="memory-front">⚖️</div>
+              <div class="memory-back">Obligación histórica de los países ricos con el Sur Global.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="memory-success-msg" class="highlight-box" style="display: none; background: var(--forest-soft); border-left-color: var(--forest); margin-top: 1.5rem; text-align: center;">
+          🎉 <strong>¡Memoria Imbatible!</strong> Has emparejado los 4 pilares conceptuales del pensamiento socioambiental crítico. <em>(+80 pts)</em>
+        </div>
+      </section>
+
+      <!-- ================= PÁGINA 14: ACTIVIDAD 8 ================= -->
+      <section class="book-page" id="page-14">
+        <div class="page-header">
+          <div>
+            <span class="page-tag tag-eval">Evaluación Formativa</span>
+            <h2 class="page-title">Evaluación Integral tipo Saber 11</h2>
+            <p class="page-subtitle">Preguntas de selección múltiple con retroalimentación conceptual explicativa</p>
+          </div>
+        </div>
+
+        <!-- PREGUNTA 1 -->
+        <div class="card quiz-question" style="margin-bottom: 1.5rem;">
+          <h4>1. Desde una perspectiva de justicia climática, ¿por qué se afirma que las responsabilidades entre países deben ser "diferenciadas"?</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.85rem;">
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q1')">A) Porque los países pobres no tienen tecnología para generar energía solar.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, true, 'exp-q1')">B) Porque los países industrializados causaron la mayor parte de las emisiones acumuladas históricas.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q1')">C) Porque el cambio climático solo afecta a las regiones tropicales del mundo.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q1')">D) Porque las Naciones Unidas distribuyen cuotas de petróleo al azar.</button>
+          </div>
+          <div class="case-feedback" id="exp-q1">
+            <strong>Explicación:</strong> La opción B es correcta. El principio de "Responsabilidades Comunes pero Diferenciadas" (establecido en la Convención de Río 1992) reconoce la huella histórica del Norte Global y la menor capacidad financiera del Sur.
+          </div>
+        </div>
+
+        <!-- PREGUNTA 2 -->
+        <div class="card quiz-question" style="margin-bottom: 1.5rem;">
+          <h4>2. Una empresa automotriz anuncia que sus vehículos son "cero emisiones" porque entrega un bono para sembrar un árbol por cada auto vendido. ¿Qué fenómeno ilustra esto?</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.85rem;">
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q2')">A) Adaptación climática estructural profunda.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, true, 'exp-q2')">B) Greenwashing o maquillaje verde publicitario.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q2')">C) Soberanía energética comunitaria.</button>
+            <button class="btn-choice" onclick="submitQuizOption(this, false, 'exp-q2')">D) Descarbonización de la matriz de transporte.</button>
+          </div>
+          <div class="case-feedback" id="exp-q2">
+            <strong>Explicación:</strong> La opción B es correcta. El auto sigue emitiendo gases en su uso y en su fabricación; compensar con árboles no elimina la combustión interna.
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="goToPage(15)" style="margin-top: 0.5rem;">
+          Finalizar y Generar mi Pasaporte de Aprendizaje 🎓
+        </button>
+      </section>
+
+      <!-- ================= PÁGINA 15: CERTIFICADO ================= -->
+      <section class="book-page" id="page-15">
+        <div class="certificate-wrapper">
+          <div class="certificate-header">
+            <div class="cert-logo">🎓</div>
+            <div class="cert-inst">
+              Institución Educativa Ciudad de Ipiales • Universidad Tecnológica de Bolívar
+            </div>
+            <h1 class="cert-title">Certificado de Logro Pedagógico</h1>
+            <p style="font-size: 0.9rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase;">
+              Objeto Virtual de Aprendizaje • Ciencias Sociales 11°
+            </p>
+          </div>
+
+          <p style="font-size: 1.05rem; color: var(--ink-light); margin-bottom: 0.5rem;">
+            Se certifica formalmente que el/la estudiante:
+          </p>
+
+          <input type="text" class="cert-name-input" id="student-name-input" placeholder="Escribe tu nombre y apellidos aquí" oninput="syncCertName(this)">
+          
+          <h2 id="cert-student-name" style="font-family: Georgia, serif; color: var(--navy); font-size: 2rem; margin: 0.5rem 0 1rem; display: none;">
+            Nombre del Estudiante
+          </h2>
+
+          <div class="cert-body">
+            Ha culminado satisfactoriamente todas las etapas de investigación, análisis crítico, deliberación y construcción argumentativa en el OVA <strong>"Clima, Poder y Futuro: Decisiones Globales y Transición Energética"</strong>, demostrando solvencia analítica en el Derecho Básico de Aprendizaje (DBA) de grado 11° y alcanzando un puntaje destacado de <strong id="cert-score-display" style="color: var(--teal);">150 puntos de aprendizaje</strong>.
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--ink-light);">
+            Expedido en Ipiales (Nariño), a fecha de <strong id="cert-date">10 de octubre de 2026</strong>.
+          </p>
+
+          <div class="cert-signatures">
+            <div class="cert-sign-line">
+              _____________________________________<br>
+              <strong>Libia Meza Bertel</strong>
+              <small>Docente Investigadora • UTB</small>
+            </div>
+            <div class="cert-sign-line">
+              _____________________________________<br>
+              <strong>Rafael Martínez Rodríguez</strong>
+              <small>Docente Investigador • UTB</small>
+            </div>
+            <div class="cert-sign-line">
+              _____________________________________<br>
+              <strong>David Lucero Figueroa</strong>
+              <small>Docente Ciencias Sociales • INEDCI</small>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0; display: flex; justify-content: center; gap: 1rem;">
+          <button class="btn-primary btn-print" onclick="printCertificate()">
+            🖨️ Imprimir / Guardar Diploma en PDF
+          </button>
+          <button class="btn-nav btn-nav-outline" onclick="goToPage(1)">
+            ↩ Volver al Inicio
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- BOOK FOOTER NAVIGATION -->
+    <footer class="book-footer">
+      <button class="btn-nav btn-nav-outline" id="btn-prev" onclick="prevPage()" disabled>
+        ← Página Anterior
+      </button>
+      <span style="font-size: 0.85rem; color: var(--ink-light); font-weight: 600;">
+        Usa las flechas del teclado (← / →) para hojear el libro
+      </span>
+      <button class="btn-nav" id="btn-next" onclick="nextPage()">
+        Página Siguiente →
+      </button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
