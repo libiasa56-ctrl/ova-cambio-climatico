@@ -1,61 +1,171 @@
 @import "tailwindcss";
 
-/* Custom theme variables for UTB / INEDCI LMS */
-:root {
+/* ==========================================================================
+   Starlight Theme Customization - High-Contrast Accessible Colors
+   Ensures text is never black on dark backgrounds in any mode
+   ========================================================================== */
+
+/* Dark Theme by default on :root and when data-theme="dark" */
+:root,
+:root[data-theme='dark'],
+[data-theme='dark'] {
   --sl-color-accent-low: #082f49;
+  --sl-color-accent: #38bdf8;
+  --sl-color-accent-high: #7dd3fc;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f1f5f9;
+  --sl-color-gray-2: #e2e8f0;
+  --sl-color-gray-3: #cbd5e1;
+  --sl-color-gray-4: #94a3b8;
+  --sl-color-gray-5: #475569;
+  --sl-color-gray-6: #1e293b;
+  --sl-color-gray-7: #0f172a;
+  --sl-color-black: #020617;
+  --sl-color-text: #e2e8f0;
+  --sl-color-text-accent: #38bdf8;
+  --sl-color-bg: #020617;
+}
+
+/* Light Theme Variables */
+:root[data-theme='light'],
+[data-theme='light'] {
+  --sl-color-accent-low: #e0f2fe;
   --sl-color-accent: #0284c7;
-  --sl-color-accent-high: #38bdf8;
+  --sl-color-accent-high: #0369a1;
   --sl-color-white: #0f172a;
   --sl-color-gray-1: #1e293b;
   --sl-color-gray-2: #334155;
   --sl-color-gray-3: #475569;
   --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #94a3b8;
-  --sl-color-gray-6: #cbd5e1;
+  --sl-color-gray-5: #cbd5e1;
+  --sl-color-gray-6: #e2e8f0;
   --sl-color-gray-7: #f8fafc;
   --sl-color-black: #ffffff;
+  --sl-color-text: #1e293b;
+  --sl-color-text-accent: #0284c7;
+  --sl-color-bg: #f8fafc;
 }
 
-:root[data-theme='dark'] {
-  --sl-color-accent-low: #082f49;
-  --sl-color-accent: #38bdf8;
-  --sl-color-accent-high: #7dd3fc;
-  --sl-color-white: #f8fafc;
-  --sl-color-gray-1: #e2e8f0;
-  --sl-color-gray-2: #cbd5e1;
-  --sl-color-gray-3: #94a3b8;
-  --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #334155;
-  --sl-color-gray-6: #1e293b;
-  --sl-color-gray-7: #0b1120;
-  --sl-color-black: #020617;
-}
-
-/* Vibrant modern background and typography */
+/* Vibrant modern typography & Base */
 body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   background-attachment: fixed;
+  color: var(--sl-color-text);
 }
 
-/* Hero Section Enhancements */
+/* ==========================================================================
+   Markdown Educational Content Contrast Fixes
+   ========================================================================== */
+.sl-markdown-content {
+  color: var(--sl-color-text) !important;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+  color: var(--sl-color-white) !important;
+  font-weight: 700 !important;
+}
+
+.sl-markdown-content p:not(:where(.not-content *)),
+.sl-markdown-content li:not(:where(.not-content *)) {
+  color: var(--sl-color-text) !important;
+  line-height: 1.75 !important;
+}
+
+/* Strong bold text pops with maximum brightness */
+.sl-markdown-content strong:not(:where(.not-content *)),
+.sl-markdown-content b:not(:where(.not-content *)) {
+  color: var(--sl-color-white) !important;
+  font-weight: 800 !important;
+}
+
+/* Markdown Tables */
+.sl-markdown-content table:not(:where(.not-content *)) {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  background: rgba(15, 23, 42, 0.7) !important;
+  margin: 1.5rem 0 !important;
+}
+
+.sl-markdown-content th:not(:where(.not-content *)) {
+  background-color: rgba(30, 41, 59, 0.95) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 0.85rem 1rem !important;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+.sl-markdown-content td:not(:where(.not-content *)) {
+  color: #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5) !important;
+}
+
+.sl-markdown-content tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Blockquotes with Badge Style */
+blockquote,
+.sl-markdown-content blockquote:not(:where(.not-content *)) {
+  border-left: 4px solid #38bdf8 !important;
+  background: rgba(14, 165, 233, 0.12) !important;
+  padding: 1rem 1.25rem !important;
+  border-radius: 0 1rem 1rem 0 !important;
+  font-style: italic !important;
+  color: #f1f5f9 !important;
+}
+
+.sl-markdown-content blockquote p {
+  color: #f1f5f9 !important;
+}
+
+/* Links */
+.sl-markdown-content a:not(:where(.not-content *)) {
+  color: #38bdf8 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+.sl-markdown-content a:hover:not(:where(.not-content *)) {
+  color: #7dd3fc !important;
+}
+
+/* ==========================================================================
+   Hero & Interactive Cards
+   ========================================================================== */
 .hero {
   position: relative;
   border-radius: 2rem;
   padding: 3rem 2rem !important;
   background: radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.22) 0%, rgba(15, 23, 42, 0) 70%),
-              linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.95) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  box-shadow: 0 20px 50px -10px rgba(2, 132, 199, 0.18);
+              linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 20px 50px -10px rgba(2, 132, 199, 0.18) !important;
   margin-bottom: 2.5rem !important;
+  color: #f8fafc !important;
 }
 
-/* Modern Interactive Cards */
+.hero h1,
+.hero [data-page-title] {
+  color: #ffffff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6) !important;
+}
+
+.hero .tagline {
+  color: #cbd5e1 !important;
+}
+
 .card {
   border-radius: 1.25rem !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border: 1px solid rgba(51, 65, 85, 0.7) !important;
-  background: linear-gradient(160deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+  background: linear-gradient(160deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25) !important;
+  color: #f8fafc !important;
 }
 
 .card:hover {
@@ -64,14 +174,14 @@ body {
   box-shadow: 0 12px 30px -4px rgba(2, 132, 199, 0.25) !important;
 }
 
-/* Callouts and Blockquotes with Badge Style */
-blockquote {
-  border-left: 4px solid #38bdf8 !important;
-  background: rgba(14, 165, 233, 0.08) !important;
-  padding: 1rem 1.25rem !important;
-  border-radius: 0 1rem 1rem 0 !important;
-  font-style: italic !important;
-  color: #e2e8f0 !important;
+.card .title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.card .body,
+.card .body p {
+  color: #cbd5e1 !important;
 }
 
 /* Custom interactive button pulses */
@@ -87,11 +197,13 @@ blockquote {
 .sl-link-button.primary:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 24px rgba(2, 132, 199, 0.55) !important;
+  color: #ffffff !important;
 }
 
 .sl-link-button.secondary {
   border-radius: 0.85rem !important;
   border: 1.5px solid rgba(148, 163, 184, 0.3) !important;
+  color: #f8fafc !important;
   backdrop-filter: blur(8px) !important;
   transition: all 0.2s ease !important;
 }
@@ -100,4 +212,16 @@ blockquote {
   transform: translateY(-2px) !important;
   border-color: #38bdf8 !important;
   color: #38bdf8 !important;
+}
+
+/* Sidebar active item contrast */
+[aria-current="page"] {
+  color: #38bdf8 !important;
+  font-weight: 800 !important;
+}
+
+/* Global Dark Theme override: Never allow black text on dark backgrounds */
+:root:not([data-theme='light']) .text-slate-950,
+[data-theme='dark'] .text-slate-950 {
+  color: #f8fafc !important;
 }

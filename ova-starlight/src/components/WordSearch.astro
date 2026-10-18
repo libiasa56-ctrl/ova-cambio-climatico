@@ -141,10 +141,10 @@
 
             if (selectedCells.includes(pos)) {
               selectedCells = selectedCells.filter(p => p !== pos);
-              btn.classList.remove('bg-amber-500', 'text-slate-950', 'border-amber-300');
+              btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-400');
             } else {
               selectedCells.push(pos);
-              btn.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-300');
+              btn.classList.add('bg-amber-600', 'text-white', 'border-amber-400');
             }
 
             checkSelection();
