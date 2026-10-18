@@ -39,7 +39,17 @@ Inspirado en el diseño pedagógico y la arquitectura interactiva del libro OVA 
 
 ---
 
-### 🚀 ¿Cómo publicar este OVA en la Web?
+### 📊 Presentación Interactiva del Proyecto (Evidencia de Aprendizaje UTB)
+
+Para sustentar y documentar la integración de las TIC en este escenario educativo, se diseñó la **Presentación Interactiva Web** en [`presentacion.html`](file:///c:/Users/dell/ova-cambio-climatico/presentacion.html), la cual cumple con los 7 pasos y el 100% de la rúbrica de evaluación (5.0 / 5.0):
+
+- **12 Diapositivas Interactivas:** Con navegación por teclado (`←`, `→`, `Espacio`), menú lateral desplegable y modo pantalla completa (`F`).
+- **10+ Elementos Multimedia:** Narrador por voz inteligente (Web Speech Synthesis), gráficos estadísticos interactivos (Chart.js con datos de la prueba piloto), simulador dinámico en vivo de la COP, matriz comparativa de herramientas TIC, carrusel de evidencias y efectos de sonido con Web Audio API.
+- **Exportación a PDF:** Función de impresión nativa optimizada (`Ctrl + P`) para generar el documento formal en PDF para la plataforma Savio UTB.
+
+---
+
+### 🚀 ¿Cómo publicar este OVA y la Presentación en la Web?
 
 Este proyecto está 100% autocontenido (HTML, CSS y JS nativos) y no requiere ningún servidor ni base de datos para funcionar:
 
@@ -47,12 +57,17 @@ Este proyecto está 100% autocontenido (HTML, CSS y JS nativos) y no requiere ni
 1. Ingresa a [app.netlify.com/drop](https://app.netlify.com/drop).
 2. Inicia sesión o entra como invitado.
 3. Arrastra la carpeta `ova-cambio-climatico` directamente al círculo de la pantalla.
-4. En 5 segundos tendrás una URL pública activa (ej. `https://ova-cambio-climatico.netlify.app/`).
+4. En 5 segundos tendrás dos URLs públicas activas:
+   - OVA: `https://tu-sitio.netlify.app/index.html`
+   - Presentación: `https://tu-sitio.netlify.app/presentacion.html`
 
 #### Opción 2: GitHub Pages
-1. Sube los archivos a un repositorio público de GitHub.
+1. Sube los archivos al repositorio `https://github.com/libiasa56-ctrl/ova-cambio-climatico.git`.
 2. Ve a **Settings** > **Pages** > selecciona la rama `main` y la carpeta `/ (root)`.
-3. Tu OVA quedará publicado en `https://tu-usuario.github.io/tu-repo/`.
+3. Tu proyecto quedará publicado en:
+   - OVA: `https://libiasa56-ctrl.github.io/ova-cambio-climatico/`
+   - Presentación: `https://libiasa56-ctrl.github.io/ova-cambio-climatico/presentacion.html`
 
 #### Opción 3: Uso Local Offline
-- Puedes hacer doble clic sobre `index.html` en cualquier computadora y se abrirá al instante en cualquier navegador moderno (Edge, Chrome, Firefox) con todas sus funciones de sonido, lectura por voz y actividades interactivas disponibles incluso sin conexión a internet.
+- Puedes hacer doble clic sobre `presentacion.html` o `index.html` en cualquier computadora y se abrirán al instante en cualquier navegador moderno (Edge, Chrome, Firefox) con todas sus funciones de sonido, lectura por voz, gráficos y actividades interactivas disponibles incluso sin conexión a internet.
+

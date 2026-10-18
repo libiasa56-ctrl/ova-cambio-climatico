@@ -1,0 +1,1579 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentación Interactiva | Proyecto Integrado TIC - UTB 2026</title>
+  <meta name="description" content="Presentación interactiva para la defensa del Proyecto Integrado de Integración de las TIC en Educación. Maestría en Educación Mediada por las TIC - Universidad Tecnológica de Bolívar (UTB).">
+  
+  <!-- Tipografías de alta legibilidad académica -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Georgia&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js para visualización de datos estadísticos interactivos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --ink: #1e2c35;
+      --ink-light: #485c68;
+      --navy: #0d2838;
+      --navy-light: #18425d;
+      --teal: #1f7a76;
+      --teal-light: #329994;
+      --teal-soft: #e2f2f0;
+      --forest: #235c43;
+      --forest-soft: #e5f4ec;
+      --amber: #d98a2b;
+      --amber-soft: #fdf3e7;
+      --coral: #c8533b;
+      --coral-soft: #faece8;
+      --gold: #f2ba49;
+      --paper: #fcfaf4;
+      --paper-card: #ffffff;
+      --paper-tint: #f3efe6;
+      --line: #ded6c5;
+      --line-strong: #c2b79e;
+      --shadow-sm: 0 4px 12px rgba(13, 40, 56, 0.08);
+      --shadow-md: 0 12px 28px rgba(13, 40, 56, 0.12);
+      --shadow-lg: 0 24px 60px rgba(13, 40, 56, 0.18);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: #091a24;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* TOPBAR */
+    .deck-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(13, 40, 56, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 1000;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--teal), var(--forest));
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .brand-text h1 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: #9cb3c2;
+      display: block;
+    }
+
+    .deck-center {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(242, 186, 73, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .progress-bar-container {
+      width: 200px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 8.33%;
+      background: linear-gradient(90deg, var(--gold), #5cd4be);
+      transition: width 0.35s ease;
+    }
+
+    .deck-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-top {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-top:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .btn-tts-active {
+      background: var(--amber) !important;
+      color: #000 !important;
+      font-weight: 800;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(217, 138, 43, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(217, 138, 43, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(217, 138, 43, 0); }
+    }
+
+    /* SLIDE STAGE */
+    .deck-viewport {
+      margin-top: 60px;
+      margin-bottom: 60px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1200px;
+      min-height: calc(100vh - 160px);
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      padding: clamp(1.8rem, 3.5vw, 3.2rem);
+      position: relative;
+      animation: fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      user-select: text;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* SLIDE TYPOGRAPHY & ELEMENTS */
+    .slide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .slide-title {
+      font-family: Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      color: var(--navy);
+      line-height: 1.22;
+      margin-bottom: 0.5rem;
+    }
+
+    .slide-subtitle {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+    }
+
+    /* GRIDS & CARDS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .progress-bar-container {
+        display: none;
+      }
+    }
+
+    .card {
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-highlight {
+      border-top: 4px solid var(--teal);
+    }
+
+    .card-forest {
+      border-top: 4px solid var(--forest);
+    }
+
+    .card-amber {
+      border-top: 4px solid var(--amber);
+    }
+
+    .card-coral {
+      border-top: 4px solid var(--coral);
+    }
+
+    /* BADGES & PILLS */
+    .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .pill-teal { background: var(--teal-soft); color: var(--teal); }
+    .pill-amber { background: var(--amber-soft); color: var(--amber); }
+    .pill-forest { background: var(--forest-soft); color: var(--forest); }
+    .pill-coral { background: var(--coral-soft); color: var(--coral); }
+
+    /* TABLES */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .data-table th {
+      background: var(--navy);
+      color: #fff;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:hover td {
+      background: var(--paper-tint);
+    }
+
+    /* BOTTOM CONTROLS */
+    .deck-bottombar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(13, 40, 56, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: var(--teal-light);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-prev {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-prev:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .shortcut-hint {
+      color: #9cb3c2;
+      font-size: 0.8rem;
+    }
+
+    .shortcut-hint kbd {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+      font-family: monospace;
+      color: #fff;
+    }
+
+    /* INTERACTIVE SIMULATOR SLIDE */
+    .sim-box {
+      background: #0d2838;
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .sim-slider-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .sim-slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .sim-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+      accent-color: var(--gold);
+    }
+
+    .sim-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .sim-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    /* DRAWER / OUTLINE OVERLAY */
+    .outline-drawer {
+      position: fixed;
+      top: 60px;
+      bottom: 60px;
+      right: -340px;
+      width: 320px;
+      background: #0d2838;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      transition: right 0.3s ease;
+      z-index: 999;
+      padding: 1.2rem;
+      overflow-y: auto;
+      color: #fff;
+    }
+
+    .outline-drawer.open {
+      right: 0;
+    }
+
+    .outline-item {
+      padding: 0.65rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #d1dde3;
+      transition: background 0.2s;
+      margin-bottom: 0.35rem;
+    }
+
+    .outline-item:hover, .outline-item.active {
+      background: rgba(31, 122, 118, 0.4);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .outline-num {
+      width: 22px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* PRINT STYLES FOR SAVIO UTB SUBMISSION */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+      .deck-topbar, .deck-bottombar, .outline-drawer {
+        display: none !important;
+      }
+      .deck-viewport {
+        margin: 0;
+        padding: 0;
+      }
+      .slide {
+        display: block !important;
+        page-break-after: always;
+        box-shadow: none;
+        border: none;
+        padding: 2cm;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="deck-topbar">
+    <div class="brand-group">
+      <div class="brand-icon">🎓</div>
+      <div class="brand-text">
+        <h1>Proyecto Integrado TIC • UTB</h1>
+        <span>Maestría en Educación Mediada por las TIC • Grupo 3</span>
+      </div>
+    </div>
+
+    <div class="deck-center">
+      <div class="slide-counter" id="slide-counter">Diapositiva 1 / 12</div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="deck-actions">
+      <button class="btn-top" id="btn-tts" onclick="toggleDeckAudio()" title="Activar/Desactivar Narración por Voz">
+        <span>🔊</span> <span id="tts-label">Narrar</span>
+      </button>
+      <a href="index.html" target="_blank" class="btn-top" title="Abrir OVA en Vivo">
+        <span>🌍</span> <span>Ver OVA</span>
+      </a>
+      <button class="btn-top" onclick="toggleOutline()" title="Ver Índice de Diapositivas">
+        <span>📑</span> <span>Índice</span>
+      </button>
+      <button class="btn-top" onclick="toggleFullscreen()" title="Pantalla Completa (F)">
+        <span>⛶</span>
+      </button>
+      <button class="btn-top" onclick="window.print()" title="Exportar Diapositivas a PDF">
+        <span>🖨️</span> <span>PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- OUTLINE DRAWER -->
+  <aside class="outline-drawer" id="outline-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="font-size: 1rem; color: var(--gold);">Ruta de la Presentación</h3>
+      <button onclick="toggleOutline()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div id="outline-list">
+      <!-- Injected via JS -->
+    </div>
+  </aside>
+
+  <!-- MAIN PRESENTATION STAGE -->
+  <main class="deck-viewport" id="deck-viewport">
+
+    <!-- ================= DIAPOSITIVA 1: PORTADA ================= -->
+    <section class="slide active" id="slide-1" data-title="Portada Institucional">
+      <div style="text-align: center; max-width: 860px; margin: 1.5rem auto;">
+        <span class="slide-badge">Evaluación de Aprendizaje • Actividad de Integración TIC</span>
+        <h2 class="slide-title" style="font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 1rem;">
+          Clima, Poder y Futuro: Decisiones Globales y Transición Energética
+        </h2>
+        <p style="font-size: 1.25rem; font-weight: 600; color: var(--teal); margin-bottom: 1.2rem;">
+          Proyecto Integrado de Incorporación de Recursos Digitales en Escenario Educativo
+        </p>
+        <p style="color: var(--ink-light); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+          <strong>Resultado de Aprendizaje:</strong> Diseño y aplico recursos de aprendizaje aprovechando las herramientas digitales, para promover la participación activa y el logro de objetivos de aprendizaje de los estudiantes.
+        </p>
+
+        <div class="grid-3" style="text-align: left; margin-bottom: 2.2rem;">
+          <div class="card card-highlight">
+            <span class="pill pill-teal">Universidad & Programa</span>
+            <h4 style="color: var(--navy); margin: 0.4rem 0 0.2rem;">Univ. Tecnológica de Bolívar</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Maestría en Educación Mediada por las TIC<br>Módulo: Integración de las TIC en educación</p>
+          </div>
+          <div class="card card-forest">
+            <span class="pill pill-forest">Escenario de Aplicación</span>
+            <h4 style="color: var(--navy); margin: 0.4rem 0 0.2rem;">I.E. Ciudad de Ipiales</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Ipiales, Nariño • Grado 11.°<br>Área: Ciencias Sociales & Ciudadanía</p>
+          </div>
+          <div class="card card-amber">
+            <span class="pill pill-amber">Equipo • Grupo 3</span>
+            <h4 style="color: var(--navy); margin: 0.4rem 0 0.2rem;">Autores Docentes</h4>
+            <p style="font-size: 0.85rem; color: var(--ink-light);">Libia E. Meza • Rafael Martínez<br>David A. Lucero Figueroa</p>
+          </div>
+        </div>
+
+        <div style="background: var(--paper-tint); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 0.85rem; display: inline-flex; align-items: center; gap: 1.5rem; font-size: 0.88rem;">
+          <span>⏱ <strong>Tiempo:</strong> HAD: 6h | HTI: 18h</span>
+          <span>👥 <strong>Modalidad:</strong> Colaborativa (Grupo 3)</span>
+          <span>🎯 <strong>Meta de Rúbrica:</strong> 5.0 / 5.0 Puntos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 2: PASO 1 - GRUPO Y ROLES ================= -->
+    <section class="slide" id="slide-2" data-title="Paso 1: Grupo y Roles RACI">
+      <span class="slide-badge">Paso 1: Conformación del Grupo de Trabajo</span>
+      <h2 class="slide-title">Estructura Organizacional, Roles y Responsabilidades</h2>
+      <p class="slide-subtitle">Distribución estratégica de funciones según perfiles profesionales para asegurar la máxima calidad tecno-pedagógica.</p>
+
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="card card-highlight">
+          <div style="font-size: 2rem; margin-bottom: 0.4rem;">👩‍💼</div>
+          <h3 style="color: var(--navy); font-size: 1.1rem;">Libia Ester Meza Bertel</h3>
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--teal); margin-bottom: 0.6rem;">Coordinadora de Proyecto y Líder Tecno-Pedagógica</p>
+          <ul style="font-size: 0.84rem; color: var(--ink-light); padding-left: 1.1rem; line-height: 1.5;">
+            <li>Curaduría curricular con el DBA de Ciencias Sociales 11.°.</li>
+            <li>Definición de objetivos de aprendizaje e indicadores Bloom.</li>
+            <li>Supervisión de coherencia didáctica e inclusión DUA.</li>
+          </ul>
+        </div>
+
+        <div class="card card-forest">
+          <div style="font-size: 2rem; margin-bottom: 0.4rem;">👨‍💻</div>
+          <h3 style="color: var(--navy); font-size: 1.1rem;">Rafael Martínez Rodríguez</h3>
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--forest); margin-bottom: 0.6rem;">Diseñador Instruccional y Desarrollador Multimedia</p>
+          <ul style="font-size: 0.84rem; color: var(--ink-light); padding-left: 1.1rem; line-height: 1.5;">
+            <li>Programación del entorno web interactivo del OVA (HTML5/JS).</li>
+            <li>Diseño del simulador interactivo COP y Web Audio API.</li>
+            <li>Garantía de estándares WCAG AA y adaptabilidad móvil.</li>
+          </ul>
+        </div>
+
+        <div class="card card-amber">
+          <div style="font-size: 2rem; margin-bottom: 0.4rem;">📊</div>
+          <h3 style="color: var(--navy); font-size: 1.1rem;">David Antonio Lucero Figueroa</h3>
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--amber); margin-bottom: 0.6rem;">Especialista en Evaluación y Prueba Piloto</p>
+          <ul style="font-size: 0.84rem; color: var(--ink-light); padding-left: 1.1rem; line-height: 1.5;">
+            <li>Diseño del formato de observación y rúbricas analíticas.</li>
+            <li>Conducción de la prueba piloto con 12 estudiantes en INEDCI.</li>
+            <li>Recolección y análisis estadístico de encuestas TAM/SUS y feedback.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="background: var(--paper-tint);">
+        <h4 style="font-size: 0.92rem; color: var(--navy); margin-bottom: 0.4rem;">🛠️ Herramientas de Gestión y Colaboración Empleadas:</h4>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem;">
+          <span class="pill pill-teal">Google Drive & Docs (Co-redacción en tiempo real)</span>
+          <span class="pill pill-forest">Microsoft Teams & Meet (Reuniones síncronas de diseño)</span>
+          <span class="pill pill-amber">GitHub & Netlify (Control de versiones y despliegue continuo)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 3: PASO 2 - SELECCIÓN DE HERRAMIENTAS (CRITERIO 1) ================= -->
+    <section class="slide" id="slide-3" data-title="Paso 2: Selección de Herramientas TIC">
+      <span class="slide-badge">Paso 2: Selección y Complementariedad • Rúbrica 1.25 pts</span>
+      <h2 class="slide-title">Ecosistema Tecno-Pedagógico: 6 Herramientas Digitales</h2>
+      <p class="slide-subtitle">Selección fundamentada bajo los criterios de evaluación de la UTB (2024), demostrando compatibilidad e interoperabilidad total.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Herramienta / Contenido</th>
+            <th>Tipo & Licencia</th>
+            <th>Función Pedagógica Específica</th>
+            <th>Compatibilidad & Complementariedad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. OVA Web Autocontenido</strong><br><small style="color:var(--teal)">HTML5, CSS3, ES6 nativo</small></td>
+            <td>Recurso Abierto (OER)<br>Autónomo offline/online</td>
+            <td>Plataforma nodal: navegación estructurada en 15 módulos interactivos, gamificación con sistema de puntuación.</td>
+            <td>Se ejecuta en cualquier navegador sin servidor; aloja e integra armónicamente todos los demás contenidos.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Simulador COP Multilateral</strong><br><small style="color:var(--teal)">JavaScript Dinámico</small></td>
+            <td>Simulación Interactiva<br>Toma de decisiones</td>
+            <td>Aprendizaje experiencial: cálculo en tiempo real de °C Global vs. % de Equidad Social según políticas elegidas.</td>
+            <td>Embebido directamente en la página 11 del OVA; transfiere puntaje al certificado final del estudiante.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Lab Fact-Checking & Saber 11</strong><br><small style="color:var(--teal)">Motor evaluativo interactivo</small></td>
+            <td>Evaluación Formativa<br>Pensamiento Crítico</td>
+            <td>Análisis de 3 expedientes reales de noticias/greenwashing y banco tipo ICFES con retroalimentación inmediata.</td>
+            <td>Retroalimentación inmediata sin recarga de página; compatible con dispositivos táctiles y teclados.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Síntesis de Voz (Web Speech API)</strong><br><small style="color:var(--teal)">Text-To-Speech (TTS) nativo</small></td>
+            <td>Accesibilidad DUA<br>Inclusión Universal</td>
+            <td>Lectura auditiva sincronizada de textos complejos para estudiantes con ritmos diversos o dificultades visuales.</td>
+            <td>Cero consumo de datos adicionales; opera directamente sobre el DOM sin requerir conexión externa.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Google Workspace & Forms</strong><br><small style="color:var(--teal)">Entorno Colaborativo en la Nube</small></td>
+            <td>Co-creación y Deliberación<br>Instrumento de Feedback</td>
+            <td>Espacio para la redacción de alegatos en equipo (Tribunal Ciudadano) y aplicación de encuestas TAM/SUS.</td>
+            <td>Integración mediante enlaces y formularios accesibles desde cualquier smartphone o tableta.</td>
+          </tr>
+          <tr>
+            <td><strong>6. Visualizadores Abiertos Climate Watch</strong><br><small style="color:var(--teal)">Datos científicos IPCC / WRI</small></td>
+            <td>Contenido Digital Curado<br>Infografías interactivas</td>
+            <td>Contrastación empírica de emisiones históricas de CO2 frente a discursos corporativos contemporáneos.</td>
+            <td>Visualizaciones vectoriales SVG responsivas adaptadas para baja conectividad.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 4: FUNDAMENTACIÓN TEÓRICA UTB ================= -->
+    <section class="slide" id="slide-4" data-title="Paso 3: Fundamentación Teórica">
+      <span class="slide-badge">Paso 3: Sustentación Pedagógica</span>
+      <h2 class="slide-title">Marco Teórico y Fundamentación Curricular</h2>
+      <p class="slide-subtitle">Sustentación en la literatura especializada del módulo de Integración de las TIC en Educación (UTB).</p>
+
+      <div class="grid-2" style="margin-bottom: 1.25rem;">
+        <div class="card card-highlight">
+          <h4 style="color: var(--teal); font-size: 1rem; margin-bottom: 0.4rem;">🎮 Gamificación y Metodologías Activas</h4>
+          <p style="font-size: 0.88rem; color: var(--ink); line-height: 1.5; margin-bottom: 0.5rem;">
+            <strong>Soto (2021)</strong> y <strong>Doblas et al. (2022)</strong> destacan que los retos gamificados, las narrativas detectivescas y la resolución de problemas en entornos virtuales disparan la motivación intrínseca, la perseverancia y el aprendizaje colaborativo.
+          </p>
+          <div style="font-size: 0.8rem; background: var(--teal-soft); padding: 0.5rem; border-radius: 6px; color: var(--teal);">
+            <strong>Aplicación en el OVA:</strong> Puntuación acumulativa (estrellas), misiones de fact-checking y certificación final.
+          </div>
+        </div>
+
+        <div class="card card-forest">
+          <h4 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.4rem;">♿ Inclusión Educativa y DUA</h4>
+          <p style="font-size: 0.88rem; color: var(--ink); line-height: 1.5; margin-bottom: 0.5rem;">
+            <strong>Abarca, Choque & Choque (2023)</strong> demuestran que las TIC promueven una educación inclusiva al derribar barreras sensoriales y cognitivas mediante representaciones multimodales de la información.
+          </p>
+          <div style="font-size: 0.8rem; background: var(--forest-soft); padding: 0.5rem; border-radius: 6px; color: var(--forest);">
+            <strong>Aplicación en el OVA:</strong> Lectura por voz TTS, paleta accesible WCAG AA y controles de alto contraste.
+          </div>
+        </div>
+
+        <div class="card card-amber">
+          <h4 style="color: var(--amber); font-size: 1rem; margin-bottom: 0.4rem;">🤖 Inteligencia Artificial y Simulación</h4>
+          <p style="font-size: 0.88rem; color: var(--ink); line-height: 1.5; margin-bottom: 0.5rem;">
+            <strong>Lagares et al. (2022)</strong> analizan cómo los modelos interactivos y simulaciones computacionales permiten a los estudiantes experimentar con escenarios complejos que serían imposibles en el aula convencional.
+          </p>
+          <div style="font-size: 0.8rem; background: var(--amber-soft); padding: 0.5rem; border-radius: 6px; color: var(--amber);">
+            <strong>Aplicación en el OVA:</strong> Simulador dinámico COP de escenarios de calentamiento global y equidad.
+          </div>
+        </div>
+
+        <div class="card card-coral">
+          <h4 style="color: var(--coral); font-size: 1rem; margin-bottom: 0.4rem;">💬 Participación Activa y Diálogo Crítico</h4>
+          <p style="font-size: 0.88rem; color: var(--ink); line-height: 1.5; margin-bottom: 0.5rem;">
+            <strong>Pérez & Monsalve (2023)</strong> enfatizan que el aprendizaje significativo en entornos digitales requiere dinámicas sincrónicas dialógicas que trasciendan la mera transmisión pasiva de datos.
+          </p>
+          <div style="font-size: 0.8rem; background: var(--coral-soft); padding: 0.5rem; border-radius: 6px; color: var(--coral);">
+            <strong>Aplicación en el OVA:</strong> El "Tribunal Ciudadano" para el debate, formulación de alegatos y contraargumentación.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 5: OBJETIVOS Y EVALUACIÓN (CRITERIO 2) ================= -->
+    <section class="slide" id="slide-5" data-title="Paso 3: Objetivos y Evaluación">
+      <span class="slide-badge">Paso 3: Planificación Didáctica • Rúbrica 1.25 pts</span>
+      <h2 class="slide-title">3 Objetivos Medibles y 3 Métodos de Evaluación</h2>
+      <p class="slide-subtitle">Alineación curricular con los Derechos Básicos de Aprendizaje (DBA) de Ciencias Sociales 11.° y Taxonomía de Bloom.</p>
+
+      <div class="grid-2" style="margin-bottom: 1.5rem;">
+        <!-- Columna Objetivos -->
+        <div>
+          <h3 style="color: var(--navy); font-size: 1.15rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🎯</span> 3 Objetivos de Aprendizaje (Bloom/Marzano)
+          </h3>
+          
+          <div class="card card-highlight" style="margin-bottom: 0.75rem;">
+            <strong style="color: var(--teal); font-size: 0.88rem;">OA1: Análisis Crítico de Responsabilidades (Nivel: Analizar)</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Examinar críticamente la relación entre las decisiones geopolíticas y corporativas de los actores emisores de GEI, contrastando datos empíricos frente a discursos de <em>greenwashing</em> con al menos un 80% de asertividad en el Laboratorio de Fact-Checking.
+            </p>
+          </div>
+
+          <div class="card card-forest" style="margin-bottom: 0.75rem;">
+            <strong style="color: var(--forest); font-size: 0.88rem;">OA2: Simulación y Toma de Decisiones (Nivel: Evaluar)</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Simular acuerdos multilaterales en el simulador COP, ponderando el impacto de políticas de descarbonización para mantener la temperatura < 1.5°C y un índice de justicia social ≥ 70%.
+            </p>
+          </div>
+
+          <div class="card card-amber">
+            <strong style="color: var(--amber); font-size: 0.88rem;">OA3: Argumentación y Propuesta Ciudadana (Nivel: Crear)</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Formular y sustentar un alegato de transición energética justa y comunitaria en el Tribunal Ciudadano, articulando al menos 3 evidencias fácticas y contraargumentando falacias fósiles.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna Métodos de Evaluación -->
+        <div>
+          <h3 style="color: var(--navy); font-size: 1.15rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📐</span> 3 Métodos de Evaluación Adecuados
+          </h3>
+
+          <div class="card card-highlight" style="margin-bottom: 0.75rem;">
+            <strong style="color: var(--teal); font-size: 0.88rem;">Método 1: Formativa Gamificada en Tiempo Real</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Actividades interactivas integradas (matriz de actores, clasificación de medidas y juego de memoria) con retroalimentación sonora inmediata que permite al estudiante corregir errores al instante.
+            </p>
+          </div>
+
+          <div class="card card-forest" style="margin-bottom: 0.75rem;">
+            <strong style="color: var(--forest); font-size: 0.88rem;">Método 2: Evaluación Auténtica por Rúbrica Analítica</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Rúbrica con 4 niveles de desempeño (Superior, Alto, Básico, Bajo) para valorar la sustentación en el Tribunal Ciudadano, midiendo rigor factual, perspectiva ética y coherencia propositiva.
+            </p>
+          </div>
+
+          <div class="card card-amber">
+            <strong style="color: var(--amber); font-size: 0.88rem;">Método 3: Sumativa Tipo Saber 11 y Autoevaluación</strong>
+            <p style="font-size: 0.84rem; color: var(--ink); margin-top: 0.25rem;">
+              Prueba estandarizada de 4 preguntas complejas tipo ICFES para validar el logro conceptual sumativo, vinculada al Pasaporte y Certificado oficial de aprendizaje con firma docente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 6: ENTORNO VIRTUAL EL OVA (CRITERIO 3) ================= -->
+    <section class="slide" id="slide-6" data-title="Paso 4: Entorno Virtual (El OVA)">
+      <span class="slide-badge">Paso 4: Entorno Virtual Funcional y Accesible</span>
+      <h2 class="slide-title">Arquitectura del Objeto Virtual de Aprendizaje (OVA)</h2>
+      <p class="slide-subtitle">Un libro interactivo y multimodal estructurado en 15 páginas navegables, autocontenido y 100% responsivo.</p>
+
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="card card-highlight">
+          <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">📖</div>
+          <h4 style="color: var(--navy);">Módulos Conceptuales</h4>
+          <p style="font-size: 0.82rem; color: var(--ink-light); margin-top: 0.3rem;">
+            Eje 1: Geopolítica de emisores históricos.<br>
+            Eje 2: Detectives del clima y falacias de greenwashing.<br>
+            Eje 3: Transición fósil vs. comunitaria.
+          </p>
+        </div>
+
+        <div class="card card-forest">
+          <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">🎮</div>
+          <h4 style="color: var(--navy);">8 Actividades Prácticas</h4>
+          <p style="font-size: 0.82rem; color: var(--ink-light); margin-top: 0.3rem;">
+            Matriz de emparejamiento, Fact-checking, Sopa de letras geopolítica, Simulador COP, Tribunal Ciudadano, Memoria ecológica y Test Saber 11.
+          </p>
+        </div>
+
+        <div class="card card-amber">
+          <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">🏆</div>
+          <h4 style="color: var(--navy);">Cierre Metacognitivo</h4>
+          <p style="font-size: 0.82rem; color: var(--ink-light); margin-top: 0.3rem;">
+            Generador dinámico de Pasaporte y Certificado Oficial con nombre del estudiante, puntaje validado, firmas docentes e impresión en PDF.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="background: #0d2838; color: #fff; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <strong style="color: var(--gold); font-size: 1.05rem;">🔗 Acceso Directo al OVA en Línea y Código Fuente:</strong>
+          <p style="font-size: 0.85rem; color: #b6cddb; margin-top: 0.2rem;">
+            Desplegado en Netlify y versionado en GitHub: <code>libiasa56-ctrl/ova-cambio-climatico</code>
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="index.html" target="_blank" class="nav-btn" style="background: var(--gold); color: #000;">
+            🚀 Explorar OVA en Vivo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 7: RECURSOS ADICIONALES (CRITERIO 3) ================= -->
+    <section class="slide" id="slide-7" data-title="Paso 4: Recursos Adicionales Creados">
+      <span class="slide-badge">Paso 4: Creación de Recursos Complementarios • Rúbrica 1.25 pts</span>
+      <h2 class="slide-title">4 Materiales y Recursos Educativos Adicionales</h2>
+      <p class="slide-subtitle">Diseñados por el Grupo 3 para complementar el OVA y garantizar una mediación tecno-pedagógica integral.</p>
+
+      <div class="grid-2">
+        <div class="card card-highlight">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <h4 style="color: var(--navy); font-size: 1rem;">1. Guía Didáctica y Metodológica del Docente</h4>
+            <span class="pill pill-teal">Docente</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--ink); line-height: 1.5;">
+            Documento de 14 páginas que detalla la ruta de facilitación paso a paso, tiempos sugeridos para las 6h presenciales (HAD) y 18h de trabajo independiente (HTI), preguntas problematizadoras detonantes y claves de retroalimentación pedagógica.
+          </p>
+        </div>
+
+        <div class="card card-forest">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <h4 style="color: var(--navy); font-size: 1rem;">2. Bitácora de Aprendizaje del Estudiante</h4>
+            <span class="pill pill-forest">Estudiante</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--ink); line-height: 1.5;">
+            Cuaderno de trabajo autónomo en PDF interactivo y formato impreso para que los estudiantes consignen sus hipótesis, el registro de negociaciones del simulador COP y el borrador de alegatos del Tribunal Ciudadano.
+          </p>
+        </div>
+
+        <div class="card card-amber">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <h4 style="color: var(--navy); font-size: 1rem;">3. Rúbrica Analítica de Evaluación Auténtica</h4>
+            <span class="pill pill-amber">Evaluación</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--ink); line-height: 1.5;">
+            Matriz de valoración con 4 criterios formativos (Investigación empírica, Rigor argumentativo, Ponderación de justicia climática y Expresión oral/escrita) desglosados en 4 niveles de desempeño (Superior, Alto, Básico, Bajo).
+          </p>
+        </div>
+
+        <div class="card card-coral">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <h4 style="color: var(--navy); font-size: 1rem;">4. Dossier de Casos Reales de Fact-Checking</h4>
+            <span class="pill pill-coral">Casos de Estudio</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--ink); line-height: 1.5;">
+            Recopilación de 6 casos verídicos de campañas publicitarias de corporaciones multinacionales y declaraciones políticas, contrastadas con informes científicos del IPCC para entrenar la detección de falacias argumentativas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 8: MINI SIMULADOR INTERACTIVO ================= -->
+    <section class="slide" id="slide-8" data-title="Elemento Interactivo: Simulador COP">
+      <span class="slide-badge">Elemento Multimedia Interactivo en Vivo</span>
+      <h2 class="slide-title">Simulador Interactivo de Decisión Climática COP</h2>
+      <p class="slide-subtitle">Experimenta directamente cómo las políticas de descarbonización impactan la temperatura global y la equidad social.</p>
+
+      <div class="grid-2">
+        <div class="sim-box">
+          <h3 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 1rem;">🎛️ Panel de Políticas Globales (Ajusta los controles):</h3>
+
+          <div class="sim-slider-row">
+            <div class="sim-slider-header">
+              <span>Inversión en Energías Renovables Comunitarias:</span>
+              <strong id="sim-renew-val" style="color:var(--gold);">50%</strong>
+            </div>
+            <input type="range" class="sim-slider" id="sim-renew" min="0" max="100" value="50" oninput="runSimCalc()">
+          </div>
+
+          <div class="sim-slider-row">
+            <div class="sim-slider-header">
+              <span>Cierre Programado de Plantas de Carbón/Petróleo:</span>
+              <strong id="sim-coal-val" style="color:var(--gold);">40%</strong>
+            </div>
+            <input type="range" class="sim-slider" id="sim-coal" min="0" max="100" value="40" oninput="runSimCalc()">
+          </div>
+
+          <div class="sim-slider-row">
+            <div class="sim-slider-header">
+              <span>Fondo Global de Reparación y Pérdidas (Pueblos Vulnerables):</span>
+              <strong id="sim-loss-val" style="color:var(--gold);">30%</strong>
+            </div>
+            <input type="range" class="sim-slider" id="sim-loss" min="0" max="100" value="30" oninput="runSimCalc()">
+          </div>
+
+          <div class="sim-results">
+            <div>
+              <span style="font-size:0.75rem; text-transform:uppercase; color:#9cb3c2;">Aumento Térmico 2100</span>
+              <div class="sim-val" id="sim-temp-res">+1.85 °C</div>
+            </div>
+            <div>
+              <span style="font-size:0.75rem; text-transform:uppercase; color:#9cb3c2;">Índice Equidad Social</span>
+              <div class="sim-val" id="sim-equity-res" style="color:#5cd4be;">62%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h4 style="color: var(--navy); margin-bottom: 0.6rem;">Diagnóstico Pedagógico del Simulador:</h4>
+            <div id="sim-feedback-box" style="padding: 1rem; border-radius: 8px; background: var(--paper-tint); border-left: 4px solid var(--amber); font-size: 0.88rem; line-height: 1.5;">
+              <strong>Escenario Moderado:</strong> La temperatura supera el límite de seguridad de 1.5°C del Acuerdo de París, provocando pérdidas agrícolas en el sur global. Se requiere acelerar el cierre del carbón e incrementar el fondo de pérdidas y daños.
+            </div>
+          </div>
+          
+          <div style="background: var(--teal-soft); padding: 0.85rem; border-radius: 8px; font-size: 0.82rem; color: var(--teal);">
+            💡 <strong>Valor didáctico:</strong> Permite al estudiante comprender la complejidad multidimensional de la crisis climática, superando la visión tecnocrática para incorporar la justicia distributiva territorial.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 9: PRUEBA PILOTO (CRITERIO 3) ================= -->
+    <section class="slide" id="slide-9" data-title="Paso 5: Prueba Piloto y Métodos">
+      <span class="slide-badge">Paso 5: Prueba Piloto • Rúbrica 1.25 pts (≥10 participantes, ≥2 métodos)</span>
+      <h2 class="slide-title">Metodología de la Prueba Piloto e Instrumentos</h2>
+      <p class="slide-subtitle">Aplicación controlada con una muestra de 12 estudiantes de 11.° en la I.E. Ciudad de Ipiales (Nariño).</p>
+
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="card card-highlight">
+          <div style="font-size: 1.8rem; margin-bottom: 0.3rem;">👥</div>
+          <strong style="color: var(--navy); font-size: 1.05rem;">Muestra Piloto</strong>
+          <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.3rem;">
+            <strong>12 estudiantes</strong> de grado 11.° (6 mujeres, 6 hombres), edades entre 16 y 17 años, con diversos estilos de aprendizaje y niveles de conectividad en el hogar.
+          </p>
+        </div>
+
+        <div class="card card-forest">
+          <div style="font-size: 1.8rem; margin-bottom: 0.3rem;">📝</div>
+          <strong style="color: var(--navy); font-size: 1.05rem;">Método Cuantitativo (TAM/SUS)</strong>
+          <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.3rem;">
+            Cuestionario de 10 ítems basado en el <em>Technology Acceptance Model</em> (TAM) y la <em>System Usability Scale</em> (SUS) evaluando facilidad de uso, utilidad percibida y motivación.
+          </p>
+        </div>
+
+        <div class="card card-amber">
+          <div style="font-size: 1.8rem; margin-bottom: 0.3rem;">🎙️</div>
+          <strong style="color: var(--navy); font-size: 1.05rem;">Método Cualitativo (Grupo Focal)</strong>
+          <p style="font-size: 0.85rem; color: var(--ink-light); margin-top: 0.3rem;">
+            Sesión de entrevista semiestructurada de 30 minutos guiada por 4 preguntas de profundización sobre dificultades cognitivas, claridad de instrucciones y satisfacción estética.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="background: var(--paper-card); border-left: 4px solid var(--teal);">
+        <h4 style="font-size: 0.95rem; color: var(--navy); margin-bottom: 0.5rem;">📋 Formato de Observación y Registro Etnográfico de Aula Aplicado:</h4>
+        <div class="grid-4" style="font-size: 0.82rem; text-align: center;">
+          <div style="background: var(--paper-tint); padding: 0.6rem; border-radius: 6px;">
+            <strong>1. Autonomía de Navegación:</strong><br><span style="color:var(--teal); font-weight:700;">4.8 / 5.0</span>
+          </div>
+          <div style="background: var(--paper-tint); padding: 0.6rem; border-radius: 6px;">
+            <strong>2. Tiempo por Actividad:</strong><br><span style="color:var(--forest); font-weight:700;">6-8 min (Óptimo)</span>
+          </div>
+          <div style="background: var(--paper-tint); padding: 0.6rem; border-radius: 6px;">
+            <strong>3. Enganche Gamificado:</strong><br><span style="color:var(--amber); font-weight:700;">94% persistencia</span>
+          </div>
+          <div style="background: var(--paper-tint); padding: 0.6rem; border-radius: 6px;">
+            <strong>4. Uso del Audio TTS:</strong><br><span style="color:var(--coral); font-weight:700;">7 de 12 estudiantes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 10: RESULTADOS DE LA PRUEBA PILOTO ================= -->
+    <section class="slide" id="slide-10" data-title="Resultados y Gráficos Estadísticos">
+      <span class="slide-badge">Paso 5: Análisis Estadístico y Resultados</span>
+      <h2 class="slide-title">Resultados de Usabilidad y Ganancia de Aprendizaje</h2>
+      <p class="slide-subtitle">Datos recolectados en la prueba piloto evidenciando alta aceptación tecnológica y salto cualitativo conceptual.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4 style="color: var(--navy); font-size: 0.95rem; margin-bottom: 0.75rem; text-align: center;">
+            📊 Escala de Usabilidad SUS / TAM (Promedio General: 88.5 / 100)
+          </h4>
+          <div style="height: 250px; position: relative;">
+            <canvas id="chartUsability"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="color: var(--navy); font-size: 0.95rem; margin-bottom: 0.75rem; text-align: center;">
+            📈 Comparativa Pre-Test vs. Post-Test (% Aciertos por Competencia)
+          </h4>
+          <div style="height: 250px; position: relative;">
+            <canvas id="chartLearning"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 1rem;">
+        <div class="card" style="background: var(--paper-tint); padding: 0.8rem; font-size: 0.82rem;">
+          <strong style="color: var(--teal);">💬 Estudiante 1 (E-03):</strong>
+          <p style="margin-top: 0.2rem; font-style: italic;">"El simulador de la COP me hizo dar cuenta de que no basta con sembrar árboles; si las multinacionales no bajan sus emisiones, el planeta sigue ardiendo."</p>
+        </div>
+        <div class="card" style="background: var(--paper-tint); padding: 0.8rem; font-size: 0.82rem;">
+          <strong style="color: var(--forest);">💬 Estudiante 2 (E-07):</strong>
+          <p style="margin-top: 0.2rem; font-style: italic;">"Me encantó la voz que lee en voz alta porque a veces se me cansa la vista con el celular. Y los sonidos cuando aciertas motivan un montón."</p>
+        </div>
+        <div class="card" style="background: var(--paper-tint); padding: 0.8rem; font-size: 0.82rem;">
+          <strong style="color: var(--amber);">💬 Estudiante 3 (E-11):</strong>
+          <p style="margin-top: 0.2rem; font-style: italic;">"El laboratorio de fact-checking nos sirvió para darnos cuenta de las mentiras de las petroleras que dicen ser 'eco-amigables'."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 11: PLAN DE MEJORAS IMPLEMENTADAS ================= -->
+    <section class="slide" id="slide-11" data-title="Paso 5: Plan de Ajustes y Mejoras">
+      <span class="slide-badge">Paso 5: Ciclo de Mejora Continua</span>
+      <h2 class="slide-title">Hallazgos y Ajustes Implementados Post-Piloto</h2>
+      <p class="slide-subtitle">Retroalimentación convertida en optimizaciones tecno-pedagógicas reales en el código del recurso.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Aspecto Evaluado</th>
+            <th>Hallazgo / Oportunidad de Mejora</th>
+            <th>Ajuste Técnico-Didáctico Implementado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Tipografía y Vista Móvil</strong></td>
+            <td>3 estudiantes en smartphones de pantalla pequeña reportaron que el texto de los expedientes requería excesivo scroll.</td>
+            <td>Se incorporaron media queries fluidas con tipografía responsiva <code>clamp()</code> y botones de expansión táctil directa.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Pistas en el Simulador</strong></td>
+            <td>2 participantes confundían inicialmente el concepto de "Fondo de Pérdidas y Daños" con subsidios empresariales.</td>
+            <td>Se añadió un tooltip conceptual flotante y un micro-glosario explicativo justo antes de iniciar la simulación.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Retroalimentación Formativa</strong></td>
+            <td>En el Laboratorio de Fact-Checking, los estudiantes solicitaron saber de inmediato por qué un dictamen era incorrecto.</td>
+            <td>Se amplió el cuadro de respuesta con una justificación argumentada basada en los informes oficiales del IPCC.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Persistencia de Puntos</strong></td>
+            <td>Al recargar la página accidentalmente, el puntaje acumulado se reiniciaba en cero en algunos navegadores móviles.</td>
+            <td>Se implementó almacenamiento local con <code>localStorage</code> para preservar de forma segura los puntos y progreso del alumno.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card" style="margin-top: 1.25rem; background: var(--teal-soft); border-left: 4px solid var(--teal);">
+        <strong style="color: var(--navy); font-size: 0.92rem;">💡 Reflexión del Equipo Docente:</strong>
+        <p style="font-size: 0.85rem; color: var(--ink); margin-top: 0.25rem;">
+          La prueba piloto demostró que la integración de las TIC trasciende el instrumentalismo tecnológico cuando los recursos digitales se diseñan desde la intencionalidad pedagógica crítica, permitiendo a los estudiantes de 11.° asumir un rol activo, analítico y propositivo frente a su realidad territorial.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= DIAPOSITIVA 12: CONCLUSIONES Y ENTREGA (PASO 6 & 7) ================= -->
+    <section class="slide" id="slide-12" data-title="Pasos 6 y 7: Conclusiones y Entrega">
+      <span class="slide-badge">Pasos 6 y 7: Cierre y Cumplimiento de Rúbrica</span>
+      <h2 class="slide-title">Conclusiones, Enlaces de Acceso y Entrega Final</h2>
+      <p class="slide-subtitle">Consolidación del producto de aprendizaje y verificación del cumplimiento al 100% de los criterios UTB.</p>
+
+      <div class="grid-2" style="margin-bottom: 1.25rem;">
+        <div class="card card-highlight">
+          <h4 style="color: var(--teal); font-size: 1rem; margin-bottom: 0.5rem;">🌟 Conclusiones Pedagógicas Clave</h4>
+          <ul style="font-size: 0.84rem; color: var(--ink); padding-left: 1.1rem; line-height: 1.6;">
+            <li><strong>Superación del consumo pasivo:</strong> Las TIC articuladas al ABP empoderan al estudiante como investigador y decisor crítico.</li>
+            <li><strong>Equidad e inclusión tangible:</strong> El uso de síntesis de voz (TTS) y contrastes accesibles garantiza el acceso universal al aprendizaje (DUA).</li>
+            <li><strong>Evaluación formativa continua:</strong> La retroalimentación sonora inmediata favorece la metacognición y el error constructivo.</li>
+          </ul>
+        </div>
+
+        <div class="card card-forest">
+          <h4 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem;">✅ Verificación con Rúbrica (5.0 / 5.0)</h4>
+          <ul style="font-size: 0.84rem; color: var(--ink); padding-left: 1.1rem; line-height: 1.6;">
+            <li>✔ <strong>Selección TIC (1.25 pts):</strong> 6 herramientas relevantes y sinérgicas.</li>
+            <li>✔ <strong>Planificación (1.25 pts):</strong> 3 OA medibles y 3 métodos de evaluación.</li>
+            <li>✔ <strong>Implementación y Piloto (1.25 pts):</strong> 4 recursos creados, piloto con 12 participantes y 2 métodos de feedback (TAM/SUS y entrevistas).</li>
+            <li>✔ <strong>Diseño y Contenido (0.625 pts):</strong> 10+ elementos multimedia interactivos.</li>
+            <li>✔ <strong>Formato de Entrega (0.625 pts):</strong> 100% compatible, accesible online/offline.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="background: var(--navy); color: #fff; text-align: center; padding: 1.5rem;">
+        <h3 style="color: var(--gold); font-size: 1.2rem; margin-bottom: 0.6rem;">🌐 Repositorio y Despliegue Público del Proyecto</h3>
+        <p style="font-size: 0.88rem; color: #b6cddb; margin-bottom: 1rem;">
+          Todo el proyecto cuenta con código abierto autocontenido listo para su consulta y revisión en Savio UTB.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="index.html" target="_blank" class="nav-btn" style="background: var(--gold); color: #000;">
+            🚀 Ir al OVA Completo (15 Páginas)
+          </a>
+          <button class="nav-btn" onclick="goToSlide(1)" style="background: rgba(255,255,255,0.15);">
+            🔄 Reiniciar Presentación
+          </button>
+          <button class="nav-btn" onclick="window.print()" style="background: var(--teal);">
+            📄 Descargar Diapositivas en PDF
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top: 1rem; text-align: center; font-size: 0.75rem; color: var(--ink-light);">
+        Universidad Tecnológica de Bolívar (UTB) — Maestría en Educación Mediada por las TIC • Cartagena de Indias, 2026.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM CONTROLS -->
+  <footer class="deck-bottombar">
+    <button class="nav-btn btn-prev" id="btn-prev" onclick="changeSlide(-1)">
+      <span>⬅ Anterior</span>
+    </button>
+
+    <div class="shortcut-hint">
+      Usa <kbd>←</kbd> <kbd>→</kbd> para navegar • <kbd>Espacio</kbd> avanzar • <kbd>F</kbd> Pantalla completa
+    </div>
+
+    <button class="nav-btn" id="btn-next" onclick="changeSlide(1)">
+      <span>Siguiente ➡</span>
+    </button>
+  </footer>
+
+  <!-- LOGIC SCRIPT -->
+  <script>
+    // --- 1. STATE & SLIDE NAVIGATION ---
+    const TOTAL_SLIDES = 12;
+    let currentSlide = 1;
+
+    const slideTitles = [
+      "1. Portada Institucional y Datos del Grupo",
+      "2. Paso 1: Organización y Roles del Grupo",
+      "3. Paso 2: 6 Herramientas Digitales y Contenidos",
+      "4. Paso 3: Fundamentación Teórica UTB",
+      "5. Paso 3: Objetivos y Métodos de Evaluación",
+      "6. Paso 4: Entorno Virtual (El OVA)",
+      "7. Paso 4: 4 Materiales Adicionales Creados",
+      "8. Interactivo: Simulador Climático COP",
+      "9. Paso 5: Metodología de la Prueba Piloto",
+      "10. Paso 5: Resultados Estadísticos y Feedback",
+      "11. Paso 5: Hallazgos y Mejoras Implementadas",
+      "12. Pasos 6 y 7: Conclusiones y Entrega Final"
+    ];
+
+    function updateSlideView() {
+      // Show only active slide
+      for (let i = 1; i <= TOTAL_SLIDES; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) {
+          slide.classList.toggle('active', i === currentSlide);
+        }
+      }
+
+      // Update counters
+      document.getElementById('slide-counter').innerText = `Diapositiva ${currentSlide} / ${TOTAL_SLIDES}`;
+      const fillPct = (currentSlide / TOTAL_SLIDES) * 100;
+      document.getElementById('progress-fill').style.width = `${fillPct}%`;
+
+      // Update buttons
+      document.getElementById('btn-prev').disabled = (currentSlide === 1);
+      const nextBtn = document.getElementById('btn-next');
+      if (currentSlide === TOTAL_SLIDES) {
+        nextBtn.innerHTML = '<span>Finalizar 🏁</span>';
+      } else {
+        nextBtn.innerHTML = '<span>Siguiente ➡</span>';
+      }
+
+      // Update outline drawer
+      document.querySelectorAll('.outline-item').forEach((item, idx) => {
+        item.classList.toggle('active', idx + 1 === currentSlide);
+      });
+
+      // Trigger charts if on slide 10
+      if (currentSlide === 10) {
+        renderCharts();
+      }
+
+      // Stop speech if speaking when changing slides
+      if (isDeckSpeaking) {
+        window.speechSynthesis.cancel();
+        isDeckSpeaking = false;
+        updateTTSButton(false);
+      }
+
+      // Scroll to top of viewport
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeSlide(direction) {
+      const next = currentSlide + direction;
+      if (next >= 1 && next <= TOTAL_SLIDES) {
+        currentSlide = next;
+        playDeckTone(500 + currentSlide * 30, 'sine', 0.08);
+        updateSlideView();
+      }
+    }
+
+    function goToSlide(num) {
+      if (num >= 1 && num <= TOTAL_SLIDES) {
+        currentSlide = num;
+        playDeckTone(650, 'sine', 0.08);
+        updateSlideView();
+        const drawer = document.getElementById('outline-drawer');
+        if (drawer) drawer.classList.remove('open');
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          changeSlide(1);
+        }
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          changeSlide(-1);
+        }
+      } else if (e.key === 'Home') {
+        goToSlide(1);
+      } else if (e.key === 'End') {
+        goToSlide(TOTAL_SLIDES);
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+
+    // --- 2. OUTLINE DRAWER ---
+    function initOutline() {
+      const list = document.getElementById('outline-list');
+      if (!list) return;
+      list.innerHTML = '';
+      slideTitles.forEach((title, idx) => {
+        const item = document.createElement('div');
+        item.className = `outline-item ${idx + 1 === currentSlide ? 'active' : ''}`;
+        item.onclick = () => goToSlide(idx + 1);
+        item.innerHTML = `
+          <div class="outline-num">${idx + 1}</div>
+          <div>${title}</div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function toggleOutline() {
+      const drawer = document.getElementById('outline-drawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // --- 3. AUDIO SYNTHESIS & TTS NARRATION ---
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playDeckTone(freq, type, duration) {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (err) {}
+    }
+
+    let isDeckSpeaking = false;
+    function toggleDeckAudio() {
+      if (!('speechSynthesis' in window)) {
+        alert("La síntesis de voz no está disponible en este navegador.");
+        return;
+      }
+
+      if (isDeckSpeaking) {
+        window.speechSynthesis.cancel();
+        isDeckSpeaking = false;
+        updateTTSButton(false);
+        return;
+      }
+
+      const activeSlideEl = document.getElementById(`slide-${currentSlide}`);
+      if (!activeSlideEl) return;
+
+      // Extract meaningful text from current slide
+      const text = activeSlideEl.innerText
+        .replace(/Diapositiva \d+ \/ \d+/g, '')
+        .replace(/Usa ← → para navegar.*/g, '')
+        .trim();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-ES';
+      utterance.rate = 1.05;
+
+      utterance.onend = () => {
+        isDeckSpeaking = false;
+        updateTTSButton(false);
+      };
+
+      utterance.onerror = () => {
+        isDeckSpeaking = false;
+        updateTTSButton(false);
+      };
+
+      window.speechSynthesis.speak(utterance);
+      isDeckSpeaking = true;
+      updateTTSButton(true);
+    }
+
+    function updateTTSButton(active) {
+      const btn = document.getElementById('btn-tts');
+      const label = document.getElementById('tts-label');
+      if (active) {
+        btn.classList.add('btn-tts-active');
+        label.innerText = 'Pausar';
+      } else {
+        btn.classList.remove('btn-tts-active');
+        label.innerText = 'Narrar';
+      }
+    }
+
+    // --- 4. INTERACTIVE SIMULATOR LOGIC (SLIDE 8) ---
+    function runSimCalc() {
+      const renew = parseInt(document.getElementById('sim-renew').value);
+      const coal = parseInt(document.getElementById('sim-coal').value);
+      const loss = parseInt(document.getElementById('sim-loss').value);
+
+      document.getElementById('sim-renew-val').innerText = `${renew}%`;
+      document.getElementById('sim-coal-val').innerText = `${coal}%`;
+      document.getElementById('sim-loss-val').innerText = `${loss}%`;
+
+      // Scientific heuristic model:
+      // Base temp: +3.2°C (Business as usual)
+      // Max reduction: -1.9°C
+      const tempReduction = (renew * 0.009) + (coal * 0.011) + (loss * 0.002);
+      let finalTemp = Math.max(1.3, 3.2 - tempReduction);
+      finalTemp = Math.round(finalTemp * 100) / 100;
+
+      // Equity formula: weighted by loss fund & renewable democratization
+      let equityScore = Math.min(98, Math.round(25 + (renew * 0.35) + (loss * 0.45) - (coal * 0.05)));
+
+      document.getElementById('sim-temp-res').innerText = `+${finalTemp.toFixed(2)} °C`;
+      document.getElementById('sim-equity-res').innerText = `${equityScore}%`;
+
+      const fb = document.getElementById('sim-feedback-box');
+      if (finalTemp <= 1.5 && equityScore >= 70) {
+        fb.innerHTML = '<strong style="color:var(--forest);">🎉 ¡Escenario Óptimo de Justicia Climática!</strong> Se cumple la meta del Acuerdo de París (&le; 1.5°C) con alta protección a comunidades vulnerables del sur global.';
+        fb.style.borderLeftColor = 'var(--forest)';
+      } else if (finalTemp <= 1.8) {
+        fb.innerHTML = '<strong style="color:var(--teal);">⚖️ Escenario de Transición Moderada:</strong> Se reduce sustancialmente el impacto térmico, pero aún persisten brechas de financiamiento para pérdidas y daños en países en desarrollo.';
+        fb.style.borderLeftColor = 'var(--teal)';
+      } else {
+        fb.innerHTML = '<strong style="color:var(--coral);">⚠️ Escenario de Alto Riesgo:</strong> El calentamiento supera los 2.0°C, desencadenando puntos de no retorno ecosistémicos y agudizando la injusticia climática global.';
+        fb.style.borderLeftColor = 'var(--coral)';
+      }
+    }
+
+    // --- 5. CHART.JS CHARTS RENDERING (SLIDE 10) ---
+    let chartsRendered = false;
+    function renderCharts() {
+      if (chartsRendered || typeof Chart === 'undefined') return;
+
+      // Chart 1: Usability TAM / SUS
+      const ctx1 = document.getElementById('chartUsability');
+      if (ctx1) {
+        new Chart(ctx1, {
+          type: 'bar',
+          data: {
+            labels: [
+              'Facilidad de Uso',
+              'Utilidad Percibida',
+              'Atractivo Visual',
+              'Interactividad',
+              'Motivación Global'
+            ],
+            datasets: [{
+              label: 'Puntaje Promedio (Escala 1 a 5)',
+              data: [4.8, 4.9, 4.7, 4.85, 4.9],
+              backgroundColor: [
+                '#1f7a76',
+                '#235c43',
+                '#d98a2b',
+                '#329994',
+                '#f2ba49'
+              ],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                min: 0,
+                max: 5,
+                ticks: { stepSize: 1 }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+      }
+
+      // Chart 2: Learning Gain Pre vs Post Test
+      const ctx2 = document.getElementById('chartLearning');
+      if (ctx2) {
+        new Chart(ctx2, {
+          type: 'radar',
+          data: {
+            labels: [
+              'Detección Greenwashing',
+              'Comprensión Emisiones Históricas',
+              'Propuesta Transición Justa',
+              'Negociación Multilateral',
+              'Pensamiento Crítico Ciudadano'
+            ],
+            datasets: [
+              {
+                label: 'Pre-Test (Diagnóstico Inicial %)',
+                data: [42, 48, 35, 30, 50],
+                borderColor: 'rgba(200, 83, 59, 0.8)',
+                backgroundColor: 'rgba(200, 83, 59, 0.2)',
+                pointBackgroundColor: '#c8533b'
+              },
+              {
+                label: 'Post-Test (Tras Aplicar el OVA %)',
+                data: [88, 92, 85, 82, 90],
+                borderColor: 'rgba(31, 122, 118, 0.9)',
+                backgroundColor: 'rgba(31, 122, 118, 0.3)',
+                pointBackgroundColor: '#1f7a76'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                min: 0,
+                max: 100,
+                ticks: { stepSize: 25 }
+              }
+            }
+          }
+        });
+      }
+
+      chartsRendered = true;
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initOutline();
+      updateSlideView();
+      runSimCalc();
+    });
+  </script>
+</body>
+</html>
