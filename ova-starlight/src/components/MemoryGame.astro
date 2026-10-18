@@ -2,23 +2,23 @@
 // MemoryGame.astro: Juego Interactivo de Memoria 3D de Economía Ecológica
 ---
 
-<div class="not-content my-8 p-6 rounded-3xl border border-emerald-500/40 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 shadow-2xl memory-game">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm memory-game">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-black rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-widest">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
           Gamificación en el Aula
         </span>
-        <span class="text-xs text-slate-400">Conceptos de Economía Ecológica</span>
+        <span class="text-xs text-[#a1a1aa]">Conceptos de Economía Ecológica</span>
       </div>
-      <h3 class="text-xl font-black text-white m-0">Desafío Mental: Emparejamiento 3D de Conceptos Clave</h3>
-      <p class="text-xs text-slate-300 mt-1 mb-0">Encuentra las 4 parejas conceptuales volteando las cartas interactivas</p>
+      <h3 class="text-xl font-bold text-white m-0">Desafío Mental: Emparejamiento 3D de Conceptos Clave</h3>
+      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Encuentra las 4 parejas conceptuales volteando las cartas interactivas</p>
     </div>
     <div class="flex items-center gap-3">
-      <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
+      <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-[#161618] text-indigo-400 border border-[#2e2e32]">
         Intentos: <span id="mem-moves" class="font-mono text-white">0</span>
       </div>
-      <button type="button" id="btn-reset-memory" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all cursor-pointer">
+      <button type="button" id="btn-reset-memory" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-[#161618] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
         🔄 Reiniciar
       </button>
     </div>
@@ -30,13 +30,13 @@
   </div>
 
   <!-- Notificación de Victoria -->
-  <div id="memory-win-box" class="hidden p-5 rounded-2xl bg-gradient-to-r from-emerald-950 to-slate-900 border border-emerald-500/60 text-center animate-fade-in">
+  <div id="memory-win-box" class="hidden p-5 rounded-xl bg-[#161618] border border-emerald-500/50 text-center animate-fade-in">
     <span class="text-4xl block mb-2">🎉</span>
-    <h4 class="text-base font-extrabold text-emerald-300 m-0">¡EXCELENTE MEMORIA CONCEPTUAL!</h4>
-    <p class="text-xs text-slate-300 mt-1 mb-3">
+    <h4 class="text-base font-bold text-emerald-300 m-0">¡EXCELENTE MEMORIA CONCEPTUAL!</h4>
+    <p class="text-xs text-[#ebebf5] mt-1 mb-3">
       Has emparejado todos los conceptos fundamentales de economía ecológica y justicia territorial.
     </p>
-    <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-xs font-bold">
+    <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-200 text-xs font-bold">
       ⭐ +25 Puntos acreditados a tu Pasaporte
     </div>
   </div>
@@ -114,17 +114,17 @@
         cardWrapper.className = 'perspective-1000 h-28 cursor-pointer select-none';
 
         cardWrapper.innerHTML = `
-          <div class="card-inner relative w-full h-full transform-style-3d transition-transform duration-500 rounded-2xl shadow-lg border border-slate-700 bg-slate-800" data-pair="${item.pair}">
+          <div class="card-inner relative w-full h-full transform-style-3d transition-transform duration-500 rounded-xl shadow-sm border border-[#2e2e32] bg-[#161618]" data-pair="${item.pair}">
             <!-- Frente (Oculto al inicio) -->
-            <div class="card-front absolute w-full h-full backface-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700 flex flex-col items-center justify-center p-2 text-center">
+            <div class="card-front absolute w-full h-full backface-hidden rounded-xl bg-[#161618] border border-[#2e2e32] flex flex-col items-center justify-center p-2 text-center">
               <span class="text-2xl mb-1">🌍</span>
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">¿Par?</span>
+              <span class="text-[10px] font-bold text-[#a1a1aa] uppercase tracking-wider">¿Par?</span>
             </div>
             <!-- Reverso (Concepto) -->
-            <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br from-slate-900 to-sky-950 border-2 border-sky-400/80 flex flex-col items-center justify-center p-2 text-center">
+            <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-xl bg-[#202127] border-2 border-[#646cff] flex flex-col items-center justify-center p-2 text-center">
               <span class="text-xl mb-0.5">${item.icon}</span>
               <strong class="text-[11px] font-bold text-white leading-tight line-clamp-2">${item.title}</strong>
-              <span class="text-[9px] text-sky-300 font-semibold mt-0.5">${item.desc}</span>
+              <span class="text-[9px] text-indigo-300 font-semibold mt-0.5">${item.desc}</span>
             </div>
           </div>
         `;

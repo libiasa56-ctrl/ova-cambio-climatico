@@ -2,19 +2,19 @@
 // CertificateModal.astro: Pasaporte Climático Oficial y Generador de Certificado en PDF
 ---
 
-<div class="not-content my-8 p-6 rounded-2xl border border-amber-500/40 bg-slate-900 shadow-2xl certificate-generator">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm certificate-generator">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
           Certificación de Aprendizaje Validada
         </span>
-        <span class="text-xs text-slate-400">Mestría TIC UTB & INEDCI 2026</span>
+        <span class="text-xs text-[#a1a1aa]">Maestría TIC UTB & INEDCI 2026</span>
       </div>
       <h3 class="text-xl font-bold text-white m-0">Pasaporte Climático Oficial y Diploma de Competencias</h3>
-      <p class="text-xs text-slate-300 mt-1 mb-0">Genera tu credencial oficial con los puntos de aprendizaje acumulados y guárdala en PDF</p>
+      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Genera tu credencial oficial con los puntos de aprendizaje acumulados y guárdala en PDF</p>
     </div>
-    <button type="button" id="btn-refresh-score" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer">
+    <button type="button" id="btn-refresh-score" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-[#161618] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
       🔄 Actualizar Puntaje
     </button>
   </div>
@@ -22,20 +22,20 @@
   <!-- Formulario de emisión -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
     <div>
-      <label for="cert-name" class="block text-xs font-bold text-slate-300 uppercase mb-1">Nombre Completo del Estudiante:</label>
-      <input type="text" id="cert-name" placeholder="Escribe tu nombre y apellidos" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500" />
+      <label for="cert-name" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Nombre Completo del Estudiante:</label>
+      <input type="text" id="cert-name" placeholder="Escribe tu nombre y apellidos" class="w-full px-3 py-2 text-xs rounded-xl bg-[#161618] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]" />
     </div>
     <div>
-      <label for="cert-grade" class="block text-xs font-bold text-slate-300 uppercase mb-1">Grado y Grupo:</label>
-      <input type="text" id="cert-grade" value="Grado Undécimo (11-2) — INEDCI" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500" />
+      <label for="cert-grade" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Grado y Grupo:</label>
+      <input type="text" id="cert-grade" value="Grado Undécimo (11-2) — INEDCI" class="w-full px-3 py-2 text-xs rounded-xl bg-[#161618] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]" />
     </div>
   </div>
 
   <div class="flex gap-2 mb-6">
-    <button type="button" id="btn-generate-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-amber-600 hover:bg-amber-500 text-white flex items-center gap-1.5 transition-all cursor-pointer">
+    <button type="button" id="btn-generate-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-[#646cff] hover:bg-[#747bff] text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm">
       🎓 Generar Diploma Oficial
     </button>
-    <button type="button" id="btn-print-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center gap-1.5 transition-all cursor-pointer">
+    <button type="button" id="btn-print-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-[#161618] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] flex items-center gap-1.5 transition-all cursor-pointer">
       🖨️ Imprimir / Guardar en PDF
     </button>
   </div>

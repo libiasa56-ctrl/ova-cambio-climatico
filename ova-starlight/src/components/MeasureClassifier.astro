@@ -2,37 +2,37 @@
 // MeasureClassifier.astro: Clasificador Interactivo de Medidas Climáticas
 ---
 
-<div class="not-content my-8 p-6 rounded-2xl border border-emerald-500/30 bg-slate-900/80 shadow-2xl measure-classifier">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm measure-classifier">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
           Laboratorio de Clasificación Conceptual
         </span>
-        <span class="text-xs text-slate-400">Economía Ecológica y Políticas Públicas</span>
+        <span class="text-xs text-[#a1a1aa]">Economía Ecológica y Políticas Públicas</span>
       </div>
       <h3 class="text-xl font-bold text-white m-0">Clasificador: Mitigación, Adaptación o Falsas Soluciones</h3>
-      <p class="text-xs text-slate-300 mt-1 mb-0">Haz clic en la categoría correcta para cada medida y comprueba tu criterio formativo</p>
+      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Haz clic en la categoría correcta para cada medida y comprueba tu criterio formativo</p>
     </div>
-    <div id="classifier-score-badge" class="text-xs text-emerald-400 font-bold bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-500/30">
-      Aciertos: <span id="correct-count">0</span> / 4
+    <div id="classifier-score-badge" class="text-xs text-indigo-400 font-bold bg-[#161618] px-3 py-1.5 rounded-xl border border-[#2e2e32]">
+      Aciertos: <span id="correct-count" class="font-mono text-white">0</span> / 4
     </div>
   </div>
 
   <div class="space-y-4" id="cards-container">
     <!-- Item 1 -->
-    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="mitigacion">
-      <p class="text-sm text-slate-200 font-medium mb-3">
-        1. <strong>Cierre programado de termoeléctricas de carbón</strong> y sustitución por parques solares y eólicos comunitarios.
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] classifier-item" data-correct="mitigacion">
+      <p class="text-sm text-[#ebebf5] font-medium mb-3">
+        1. <strong class="text-white">Cierre programado de termoeléctricas de carbón</strong> y sustitución por parques solares y eólicos comunitarios.
       </p>
       <div class="flex flex-wrap gap-2">
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="mitigacion">
           🌱 Mitigación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="adaptacion">
           🛡️ Adaptación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="falsa">
           ⚠️ Falsa Solución
         </button>
       </div>
@@ -40,18 +40,18 @@
     </div>
 
     <!-- Item 2 -->
-    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="adaptacion">
-      <p class="text-sm text-slate-200 font-medium mb-3">
-        2. <strong>Construcción de reservorios comunitarios de agua de lluvia</strong> y protección de humedales en páramos para resistir sequías prolongadas.
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] classifier-item" data-correct="adaptacion">
+      <p class="text-sm text-[#ebebf5] font-medium mb-3">
+        2. <strong class="text-white">Construcción de reservorios comunitarios de agua de lluvia</strong> y protección de humedales en páramos para resistir sequías prolongadas.
       </p>
       <div class="flex flex-wrap gap-2">
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="mitigacion">
           🌱 Mitigación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="adaptacion">
           🛡️ Adaptación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="falsa">
           ⚠️ Falsa Solución
         </button>
       </div>
@@ -59,18 +59,18 @@
     </div>
 
     <!-- Item 3 -->
-    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="falsa">
-      <p class="text-sm text-slate-200 font-medium mb-3">
-        3. <strong>Comprar créditos de carbono en el mercado voluntario</strong> para continuar expandiendo la exploración petrolera mar adentro sin reducir emisiones reales.
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] classifier-item" data-correct="falsa">
+      <p class="text-sm text-[#ebebf5] font-medium mb-3">
+        3. <strong class="text-white">Comprar créditos de carbono en el mercado voluntario</strong> para continuar expandiendo la exploración petrolera mar adentro sin reducir emisiones reales.
       </p>
       <div class="flex flex-wrap gap-2">
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="mitigacion">
           🌱 Mitigación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="adaptacion">
           🛡️ Adaptación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="falsa">
           ⚠️ Falsa Solución
         </button>
       </div>
@@ -78,18 +78,18 @@
     </div>
 
     <!-- Item 4 -->
-    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="mitigacion">
-      <p class="text-sm text-slate-200 font-medium mb-3">
-        4. <strong>Electrificación total del transporte público urbano</strong> alimentado exclusivamente con generación hidroeléctrica y geotérmica nacional.
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] classifier-item" data-correct="mitigacion">
+      <p class="text-sm text-[#ebebf5] font-medium mb-3">
+        4. <strong class="text-white">Electrificación total del transporte público urbano</strong> alimentado exclusivamente con generación hidroeléctrica y geotérmica nacional.
       </p>
       <div class="flex flex-wrap gap-2">
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="mitigacion">
           🌱 Mitigación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="adaptacion">
           🛡️ Adaptación
         </button>
-        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-[#2e2e32] bg-[#202127] hover:border-[#646cff] hover:bg-[#252529] text-[#ebebf5] transition-all cursor-pointer" data-category="falsa">
           ⚠️ Falsa Solución
         </button>
       </div>

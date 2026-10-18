@@ -2,19 +2,19 @@
 // CopSimulator.astro: Simulador Multilateral de Negociación COP (Estrategia 4)
 ---
 
-<div class="not-content my-8 p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl cop-simulator">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm cop-simulator">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
           Simulación Computacional Heurística
         </span>
-        <span class="text-xs text-slate-400">Modelo Basado en IPCC AR6</span>
+        <span class="text-xs text-[#a1a1aa]">Modelo Basado en IPCC AR6</span>
       </div>
       <h3 class="text-xl font-bold text-white m-0">Simulador Multilateral de la Cumbre Climática (COP)</h3>
-      <p class="text-xs text-slate-300 mt-1 mb-0">Ajusta los compromisos geopolíticos y observa el impacto en la temperatura y la justicia social</p>
+      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Ajusta los compromisos geopolíticos y observa el impacto en la temperatura y la justicia social</p>
     </div>
-    <button type="button" id="btn-reset-cop" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer">
+    <button type="button" id="btn-reset-cop" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-[#161618] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
       🔄 Restablecer Parámetros
     </button>
   </div>
@@ -22,38 +22,38 @@
   <!-- Indicadores en tiempo real -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
     <!-- Termómetro Global -->
-    <div class="p-4 rounded-xl bg-slate-800/90 border border-slate-700 flex items-center justify-between">
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] flex items-center justify-between">
       <div>
-        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Calentamiento Proyectado (2100)</span>
+        <span class="text-xs font-bold text-[#a1a1aa] uppercase tracking-wider block">Calentamiento Proyectado (2100)</span>
         <span id="display-temp" class="text-3xl font-black text-rose-400 transition-colors">+2.6 °C</span>
-        <span class="block text-[11px] text-slate-400 mt-0.5">Meta París: &le; 1.5 °C</span>
+        <span class="block text-[11px] text-[#a1a1aa] mt-0.5">Meta París: &le; 1.5 °C</span>
       </div>
       <div class="text-3xl" id="icon-temp">🌡️</div>
     </div>
 
     <!-- Índice de Equidad Social -->
-    <div class="p-4 rounded-xl bg-slate-800/90 border border-slate-700 flex items-center justify-between">
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32] flex items-center justify-between">
       <div>
-        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Índice de Equidad Social (Sur Global)</span>
+        <span class="text-xs font-bold text-[#a1a1aa] uppercase tracking-wider block">Índice de Equidad Social (Sur Global)</span>
         <span id="display-equity" class="text-3xl font-black text-amber-400 transition-colors">45%</span>
-        <span class="block text-[11px] text-slate-400 mt-0.5">Meta Mínima: &ge; 70%</span>
+        <span class="block text-[11px] text-[#a1a1aa] mt-0.5">Meta Mínima: &ge; 70%</span>
       </div>
       <div class="text-3xl" id="icon-equity">⚖️</div>
     </div>
   </div>
 
   <!-- Controles / Deslizadores de Política -->
-  <div class="space-y-5 mb-6">
+  <div class="space-y-4 mb-6">
     <!-- Slider 1 -->
-    <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/60">
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32]">
       <div class="flex justify-between items-center mb-2">
-        <label for="slider-coal" class="text-sm font-semibold text-slate-200">
+        <label for="slider-coal" class="text-sm font-semibold text-white">
           1. Eliminación gradual de Carbón y Combustibles Fósiles
         </label>
         <span id="val-coal" class="text-sm font-bold text-emerald-400">30%</span>
       </div>
-      <input type="range" id="slider-coal" min="0" max="100" value="30" class="w-full accent-emerald-500 cursor-pointer h-2 bg-slate-700 rounded-lg" />
-      <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+      <input type="range" id="slider-coal" min="0" max="100" value="30" class="w-full accent-[#646cff] cursor-pointer h-2 bg-[#202127] rounded-lg" />
+      <div class="flex justify-between text-[10px] text-[#a1a1aa] mt-1">
         <span>0% (Negocio habitual)</span>
         <span>50% (Pacto de Glasgow)</span>
         <span>100% (Descarbonización total)</span>
@@ -61,15 +61,15 @@
     </div>
 
     <!-- Slider 2 -->
-    <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/60">
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32]">
       <div class="flex justify-between items-center mb-2">
-        <label for="slider-renewables" class="text-sm font-semibold text-slate-200">
+        <label for="slider-renewables" class="text-sm font-semibold text-white">
           2. Inversión Global en Energías Renovables y Redes
         </label>
-        <span id="val-renewables" class="text-sm font-bold text-sky-400">40%</span>
+        <span id="val-renewables" class="text-sm font-bold text-indigo-400">40%</span>
       </div>
-      <input type="range" id="slider-renewables" min="0" max="100" value="40" class="w-full accent-sky-500 cursor-pointer h-2 bg-slate-700 rounded-lg" />
-      <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+      <input type="range" id="slider-renewables" min="0" max="100" value="40" class="w-full accent-[#646cff] cursor-pointer h-2 bg-[#202127] rounded-lg" />
+      <div class="flex justify-between text-[10px] text-[#a1a1aa] mt-1">
         <span>0% (Sin subsidios limpios)</span>
         <span>50% (Triplicar renovables 2030)</span>
         <span>100% (100% matriz solar/eólica)</span>
@@ -77,15 +77,15 @@
     </div>
 
     <!-- Slider 3 -->
-    <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/60">
+    <div class="p-4 rounded-xl bg-[#161618] border border-[#2e2e32]">
       <div class="flex justify-between items-center mb-2">
-        <label for="slider-fund" class="text-sm font-semibold text-slate-200">
+        <label for="slider-fund" class="text-sm font-semibold text-white">
           3. Fondo de Pérdidas y Daños (Transferencia Norte a Sur Global)
         </label>
         <span id="val-fund" class="text-sm font-bold text-purple-400">$100 MM USD/año</span>
       </div>
-      <input type="range" id="slider-fund" min="0" max="500" step="25" value="100" class="w-full accent-purple-500 cursor-pointer h-2 bg-slate-700 rounded-lg" />
-      <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+      <input type="range" id="slider-fund" min="0" max="500" step="25" value="100" class="w-full accent-[#646cff] cursor-pointer h-2 bg-[#202127] rounded-lg" />
+      <div class="flex justify-between text-[10px] text-[#a1a1aa] mt-1">
         <span>$0 (Inacción financiera)</span>
         <span>$100 MM (Meta Copenhague)</span>
         <span>$500 MM (Demanda real de países vulnerables)</span>
@@ -98,14 +98,14 @@
     <div class="font-bold flex items-center gap-2 mb-1" id="verdict-title">
       <span>⚠️</span> ALERTA DE CRISIS CLIMÁTICA Y SOCIAL
     </div>
-    <p id="verdict-desc" class="text-xs text-slate-300 m-0">
+    <p id="verdict-desc" class="text-xs text-[#ebebf5] m-0">
       Con estos parámetros, el planeta superará los +2.6 °C, provocando el deshielo de glaciares andinos y sequías severas. Además, la falta de financiamiento al Sur Global genera desigualdad crítica.
     </p>
   </div>
 
   <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-    <span class="text-xs text-slate-400">Objetivo del Estudiante: Mantener la temperatura &le; 1.5 °C y la Equidad &ge; 70%.</span>
-    <button type="button" id="btn-save-cop" class="px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 transition-all cursor-pointer">
+    <span class="text-xs text-[#a1a1aa]">Objetivo del Estudiante: Mantener la temperatura &le; 1.5 °C y la Equidad &ge; 70%.</span>
+    <button type="button" id="btn-save-cop" class="px-4 py-2 text-xs font-bold rounded-xl bg-[#646cff] hover:bg-[#747bff] text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm">
       <span>⭐</span> Guardar Desempeño en Pasaporte (+30 pts)
     </button>
   </div>

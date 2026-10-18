@@ -2,19 +2,19 @@
 // ActorMatrix.astro: Matriz Visual Interactiva de Actores Geopolíticos y Corporativos
 ---
 
-<div class="not-content my-8 p-6 rounded-3xl border border-sky-500/40 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 shadow-2xl actor-matrix">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm actor-matrix">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-black rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 uppercase tracking-widest">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-widest">
           Explorador de Actores
         </span>
         <span class="text-xs text-slate-400">¿Quién tiene el poder?</span>
       </div>
-      <h3 class="text-xl font-black text-white m-0">Matriz de Actores Globales: Intereses vs. Responsabilidad</h3>
+      <h3 class="text-xl font-bold text-white m-0">Matriz de Actores Globales: Intereses vs. Responsabilidad</h3>
       <p class="text-xs text-slate-300 mt-1 mb-0">Haz clic en cada actor para contrastar su discurso oficial con sus emisiones empíricas</p>
     </div>
-    <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800 text-sky-400 border border-slate-700">
+    <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-[#161618] text-indigo-400 border border-[#2e2e32]">
       5 Actores Clave Mapeados
     </div>
   </div>
@@ -22,35 +22,35 @@
   <!-- Cuadrícula de Actores -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     <!-- Actor 1: EE.UU. & Bloque Occidental -->
-    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-sky-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="usa">
+    <div class="actor-card p-4 rounded-xl border border-[#2e2e32] bg-[#161618] hover:border-[#646cff] hover:bg-[#202127] transition-all cursor-pointer shadow-sm" data-actor="usa">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-2xl shadow-inner">
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-2xl">
           🏭
         </div>
         <div>
           <h4 class="text-sm font-bold text-white m-0">Estados Unidos</h4>
-          <span class="text-[11px] text-blue-400 font-semibold">Mayor Emisor Histórico Acumulado</span>
+          <span class="text-[11px] text-indigo-400 font-semibold">Mayor Emisor Histórico Acumulado</span>
         </div>
       </div>
-      <div class="space-y-1.5 text-xs text-slate-300">
+      <div class="space-y-1.5 text-xs text-[#ebebf5]">
         <div class="flex justify-between">
-          <span class="text-slate-400">Emisiones Históricas:</span>
+          <span class="text-[#a1a1aa]">Emisiones Históricas:</span>
           <strong class="text-rose-400 font-mono">24.5% Global</strong>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Emisión Per Cápita:</span>
+          <span class="text-[#a1a1aa]">Emisión Per Cápita:</span>
           <strong class="text-amber-300 font-mono">14.9 t CO2/año</strong>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-sky-300 font-semibold flex items-center justify-between">
+      <div class="mt-3 pt-2.5 border-t border-[#2e2e32] text-[11px] text-indigo-400 font-semibold flex items-center justify-between">
         <span>Ver Interés Oculto</span> <span>➔</span>
       </div>
     </div>
 
     <!-- Actor 2: China & Emergentes -->
-    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-amber-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="china">
+    <div class="actor-card p-4 rounded-xl border border-[#2e2e32] bg-[#161618] hover:border-[#646cff] hover:bg-[#202127] transition-all cursor-pointer shadow-sm" data-actor="china">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-2xl shadow-inner">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-2xl">
           🏗️
         </div>
         <div>
@@ -58,25 +58,25 @@
           <span class="text-[11px] text-amber-400 font-semibold">Fábrica Manufacturera Mundial</span>
         </div>
       </div>
-      <div class="space-y-1.5 text-xs text-slate-300">
+      <div class="space-y-1.5 text-xs text-[#ebebf5]">
         <div class="flex justify-between">
-          <span class="text-slate-400">Emisiones Anuales:</span>
+          <span class="text-[#a1a1aa]">Emisiones Anuales:</span>
           <strong class="text-rose-400 font-mono">~30% Actual</strong>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Emisión Per Cápita:</span>
+          <span class="text-[#a1a1aa]">Emisión Per Cápita:</span>
           <strong class="text-emerald-300 font-mono">8.0 t CO2/año</strong>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-amber-300 font-semibold flex items-center justify-between">
+      <div class="mt-3 pt-2.5 border-t border-[#2e2e32] text-[11px] text-amber-300 font-semibold flex items-center justify-between">
         <span>Ver Interés Oculto</span> <span>➔</span>
       </div>
     </div>
 
     <!-- Actor 3: Países Andinos / Colombia / Nariño -->
-    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-emerald-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="narino">
+    <div class="actor-card p-4 rounded-xl border border-[#2e2e32] bg-[#161618] hover:border-[#646cff] hover:bg-[#202127] transition-all cursor-pointer shadow-sm" data-actor="narino">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-2xl shadow-inner">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-2xl">
           🏔️
         </div>
         <div>
@@ -84,25 +84,25 @@
           <span class="text-[11px] text-emerald-400 font-semibold">Custodios de Páramos y Agua</span>
         </div>
       </div>
-      <div class="space-y-1.5 text-xs text-slate-300">
+      <div class="space-y-1.5 text-xs text-[#ebebf5]">
         <div class="flex justify-between">
-          <span class="text-slate-400">Emisiones Globales:</span>
+          <span class="text-[#a1a1aa]">Emisiones Globales:</span>
           <strong class="text-emerald-400 font-mono">&lt; 0.6% Anual</strong>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Vulnerabilidad:</span>
+          <span class="text-[#a1a1aa]">Vulnerabilidad:</span>
           <strong class="text-rose-400 font-mono">Crítica (Glaciares)</strong>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-emerald-300 font-semibold flex items-center justify-between">
+      <div class="mt-3 pt-2.5 border-t border-[#2e2e32] text-[11px] text-emerald-300 font-semibold flex items-center justify-between">
         <span>Ver Reclamo Territorial</span> <span>➔</span>
       </div>
     </div>
 
     <!-- Actor 4: Multinacionales Petroleras -->
-    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-purple-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="oil">
+    <div class="actor-card p-4 rounded-xl border border-[#2e2e32] bg-[#161618] hover:border-[#646cff] hover:bg-[#202127] transition-all cursor-pointer shadow-sm" data-actor="oil">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-2xl shadow-inner">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-2xl">
           🛢️
         </div>
         <div>
@@ -110,25 +110,25 @@
           <span class="text-[11px] text-purple-400 font-semibold">Las 'Carbon Majors'</span>
         </div>
       </div>
-      <div class="space-y-1.5 text-xs text-slate-300">
+      <div class="space-y-1.5 text-xs text-[#ebebf5]">
         <div class="flex justify-between">
-          <span class="text-slate-400">Responsabilidad:</span>
+          <span class="text-[#a1a1aa]">Responsabilidad:</span>
           <strong class="text-rose-400 font-mono">71% de Emisiones</strong>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Estrategia:</span>
+          <span class="text-[#a1a1aa]">Estrategia:</span>
           <strong class="text-amber-300 font-mono">Greenwashing</strong>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-purple-300 font-semibold flex items-center justify-between">
+      <div class="mt-3 pt-2.5 border-t border-[#2e2e32] text-[11px] text-purple-300 font-semibold flex items-center justify-between">
         <span>Ver Interés Oculto</span> <span>➔</span>
       </div>
     </div>
 
     <!-- Actor 5: Comunidades Indígenas y Juventud -->
-    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-teal-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="community">
+    <div class="actor-card p-4 rounded-xl border border-[#2e2e32] bg-[#161618] hover:border-[#646cff] hover:bg-[#202127] transition-all cursor-pointer shadow-sm" data-actor="community">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-2xl shadow-inner">
+        <div class="w-12 h-12 rounded-xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-2xl">
           🌿
         </div>
         <div>
@@ -136,29 +136,29 @@
           <span class="text-[11px] text-teal-400 font-semibold">Defensa Intergeneracional</span>
         </div>
       </div>
-      <div class="space-y-1.5 text-xs text-slate-300">
+      <div class="space-y-1.5 text-xs text-[#ebebf5]">
         <div class="flex justify-between">
-          <span class="text-slate-400">Territorios Protegidos:</span>
+          <span class="text-[#a1a1aa]">Territorios Protegidos:</span>
           <strong class="text-emerald-400 font-mono">80% Biodiversidad</strong>
         </div>
         <div class="flex justify-between">
-          <span class="text-slate-400">Exigencia:</span>
-          <strong class="text-sky-300 font-mono">Justicia Climática</strong>
+          <span class="text-[#a1a1aa]">Exigencia:</span>
+          <strong class="text-indigo-400 font-mono">Justicia Climática</strong>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-teal-300 font-semibold flex items-center justify-between">
+      <div class="mt-3 pt-2.5 border-t border-[#2e2e32] text-[11px] text-teal-300 font-semibold flex items-center justify-between">
         <span>Ver Propuesta</span> <span>➔</span>
       </div>
     </div>
   </div>
 
   <!-- Panel Desplegable de Detalles del Actor Seleccionado -->
-  <div id="actor-detail-box" class="p-5 rounded-2xl bg-slate-950 border border-slate-700 text-slate-200">
+  <div id="actor-detail-box" class="p-5 rounded-xl bg-[#161618] border border-[#2e2e32] text-[#ebebf5]">
     <div class="flex items-center justify-between mb-3">
-      <h4 id="actor-detail-title" class="text-base font-bold text-sky-400 m-0">Selecciona un actor arriba para ver su expediente</h4>
-      <span id="actor-detail-tag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 uppercase">Expediente</span>
+      <h4 id="actor-detail-title" class="text-base font-bold text-[#646cff] m-0">Selecciona un actor arriba para ver su expediente</h4>
+      <span id="actor-detail-tag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#202127] text-indigo-300 border border-[#2e2e32] uppercase">Expediente</span>
     </div>
-    <p id="actor-detail-text" class="text-xs leading-relaxed text-slate-300 m-0">
+    <p id="actor-detail-text" class="text-xs leading-relaxed text-[#ebebf5] m-0">
       Cada actor desempeña un rol desigual en la economía del carbono. Al hacer clic en las tarjetas podrás contrastar sus discursos de relaciones públicas frente a sus datos reales de extracción e impacto territorial.
     </p>
   </div>
@@ -202,8 +202,8 @@
     cards.forEach((card) => {
       card.addEventListener('click', () => {
         const actor = card.getAttribute('data-actor') || '';
-        cards.forEach(c => (c as HTMLElement).classList.remove('ring-2', 'ring-sky-400', 'bg-slate-750'));
-        card.classList.add('ring-2', 'ring-sky-400');
+        cards.forEach(c => (c as HTMLElement).classList.remove('ring-2', 'ring-[#646cff]', 'border-[#646cff]'));
+        card.classList.add('ring-2', 'ring-[#646cff]', 'border-[#646cff]');
 
         if (details[actor]) {
           if (titleEl) titleEl.textContent = details[actor].title;
