@@ -1,0 +1,109 @@
+---
+// SpeechNarrator.astro: Lectura accesible por voz utilizando Web Speech API (DUA / Accesibilidad)
+interface Props {
+  targetId?: string;
+  title?: string;
+}
+
+const { targetId = 'main-content', title = 'esta lección' } = Astro.props;
+---
+
+<div class="speech-narrator-box not-content my-4 p-3 rounded-xl border border-sky-600/30 bg-sky-950/20 flex flex-wrap items-center justify-between gap-3">
+  <div class="flex items-center gap-2">
+    <span class="text-xl">👩‍🏫</span>
+    <div>
+      <p class="text-xs font-bold text-sky-400 m-0 uppercase tracking-wider">Lectura Asistida DUA (Web Speech)</p>
+      <p class="text-xs text-slate-300 m-0">Escucha la narración pedagógica de {title}</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <button type="button" class="btn-tts-play px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white flex items-center gap-1.5 transition-colors cursor-pointer">
+      <span class="tts-icon">▶</span> <span class="tts-label">Escuchar</span>
+    </button>
+    <button type="button" class="btn-tts-stop px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-700 hover:bg-slate-600 text-slate-200 flex items-center gap-1 transition-colors cursor-pointer" style="display:none;">
+      ⏹ Detener
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.speech-narrator-box').forEach((box) => {
+    const playBtn = box.querySelector('.btn-tts-play');
+    const stopBtn = box.querySelector('.btn-tts-stop');
+    const icon = box.querySelector('.tts-icon');
+    const label = box.querySelector('.tts-label');
+
+    if (!('speechSynthesis' in window)) {
+      if (box instanceof HTMLElement) box.style.display = 'none';
+      return;
+    }
+
+    let isSpeaking = false;
+
+    function getTextToRead() {
+      // Find main document content, excluding interactive elements and code
+      const article = document.querySelector('.sl-markdown-content') || document.querySelector('article') || document.body;
+      const clone = article.cloneNode(true) as HTMLElement;
+      clone.querySelectorAll('.not-content, script, style, .speech-narrator-box').forEach(el => el.remove());
+      return clone.innerText.slice(0, 5000);
+    }
+
+    playBtn?.addEventListener('click', () => {
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        if (label) label.textContent = 'Reanudar';
+        if (icon) icon.textContent = '▶';
+        return;
+      }
+
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        if (label) label.textContent = 'Pausar';
+        if (icon) icon.textContent = '⏸';
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const text = getTextToRead();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-CO';
+      utterance.rate = 1.0;
+
+      // Select natural Spanish voice if available
+      const voices = window.speechSynthesis.getVoices();
+      const spanishVoice = voices.find(v => v.lang.startsWith('es'));
+      if (spanishVoice) utterance.voice = spanishVoice;
+
+      utterance.onstart = () => {
+        isSpeaking = true;
+        if (label) label.textContent = 'Pausar';
+        if (icon) icon.textContent = '⏸';
+        if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'inline-flex';
+      };
+
+      utterance.onend = () => {
+        isSpeaking = false;
+        if (label) label.textContent = 'Escuchar';
+        if (icon) icon.textContent = '▶';
+        if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
+      };
+
+      utterance.onerror = () => {
+        isSpeaking = false;
+        if (label) label.textContent = 'Escuchar';
+        if (icon) icon.textContent = '▶';
+        if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
+      };
+
+      window.speechSynthesis.speak(utterance);
+    });
+
+    stopBtn?.addEventListener('click', () => {
+      window.speechSynthesis.cancel();
+      isSpeaking = false;
+      if (label) label.textContent = 'Escuchar';
+      if (icon) icon.textContent = '▶';
+      if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
+    });
+  });
+</script>

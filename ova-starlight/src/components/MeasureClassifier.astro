@@ -1,0 +1,142 @@
+---
+// MeasureClassifier.astro: Clasificador Interactivo de Medidas Climáticas
+---
+
+<div class="not-content my-8 p-6 rounded-2xl border border-emerald-500/30 bg-slate-900/80 shadow-2xl measure-classifier">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Laboratorio de Clasificación Conceptual
+        </span>
+        <span class="text-xs text-slate-400">Economía Ecológica y Políticas Públicas</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0">Clasificador: Mitigación, Adaptación o Falsas Soluciones</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Haz clic en la categoría correcta para cada medida y comprueba tu criterio formativo</p>
+    </div>
+    <div id="classifier-score-badge" class="text-xs text-emerald-400 font-bold bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-500/30">
+      Aciertos: <span id="correct-count">0</span> / 4
+    </div>
+  </div>
+
+  <div class="space-y-4" id="cards-container">
+    <!-- Item 1 -->
+    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="mitigacion">
+      <p class="text-sm text-slate-200 font-medium mb-3">
+        1. <strong>Cierre programado de termoeléctricas de carbón</strong> y sustitución por parques solares y eólicos comunitarios.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+          🌱 Mitigación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+          🛡️ Adaptación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+          ⚠️ Falsa Solución
+        </button>
+      </div>
+      <div class="item-feedback hidden text-xs mt-2.5 p-2.5 rounded-lg"></div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="adaptacion">
+      <p class="text-sm text-slate-200 font-medium mb-3">
+        2. <strong>Construcción de reservorios comunitarios de agua de lluvia</strong> y protección de humedales en páramos para resistir sequías prolongadas.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+          🌱 Mitigación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+          🛡️ Adaptación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+          ⚠️ Falsa Solución
+        </button>
+      </div>
+      <div class="item-feedback hidden text-xs mt-2.5 p-2.5 rounded-lg"></div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="falsa">
+      <p class="text-sm text-slate-200 font-medium mb-3">
+        3. <strong>Comprar créditos de carbono en el mercado voluntario</strong> para continuar expandiendo la exploración petrolera mar adentro sin reducir emisiones reales.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+          🌱 Mitigación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+          🛡️ Adaptación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+          ⚠️ Falsa Solución
+        </button>
+      </div>
+      <div class="item-feedback hidden text-xs mt-2.5 p-2.5 rounded-lg"></div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 classifier-item" data-correct="mitigacion">
+      <p class="text-sm text-slate-200 font-medium mb-3">
+        4. <strong>Electrificación total del transporte público urbano</strong> alimentado exclusivamente con generación hidroeléctrica y geotérmica nacional.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="mitigacion">
+          🌱 Mitigación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="adaptacion">
+          🛡️ Adaptación
+        </button>
+        <button type="button" class="btn-classify text-xs font-semibold py-1.5 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-category="falsa">
+          ⚠️ Falsa Solución
+        </button>
+      </div>
+      <div class="item-feedback hidden text-xs mt-2.5 p-2.5 rounded-lg"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupMeasureClassifier() {
+    let score = 0;
+    const countEl = document.getElementById('correct-count');
+    const items = document.querySelectorAll('.classifier-item');
+
+    items.forEach((item) => {
+      const correct = item.getAttribute('data-correct');
+      const feedback = item.querySelector('.item-feedback') as HTMLElement | null;
+      const btns = item.querySelectorAll('.btn-classify');
+
+      btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const chosen = btn.getAttribute('data-category');
+          btns.forEach(b => (b as HTMLElement).classList.remove('ring-2', 'ring-emerald-400', 'ring-rose-400', 'bg-emerald-800', 'bg-rose-900'));
+
+          if (chosen === correct) {
+            btn.classList.add('ring-2', 'ring-emerald-400', 'bg-emerald-800');
+            if (feedback) {
+              feedback.className = 'item-feedback p-2.5 rounded-lg text-xs bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 block';
+              feedback.innerHTML = '<strong>¡Correcto!</strong> Clasificación precisa según los estándares del Panel Intergubernamental de Expertos (IPCC).';
+            }
+            score = Math.min(4, score + 1);
+            if (countEl) countEl.textContent = score.toString();
+
+            const currentScore = parseInt(localStorage.getItem('ova_clima_score') || '0', 10);
+            localStorage.setItem('ova_clima_score', (currentScore + 10).toString());
+          } else {
+            btn.classList.add('ring-2', 'ring-rose-400', 'bg-rose-900');
+            if (feedback) {
+              feedback.className = 'item-feedback p-2.5 rounded-lg text-xs bg-rose-950/60 border border-rose-500/40 text-rose-200 block';
+              feedback.innerHTML = '<strong>Revisa el concepto:</strong> La mitigación reduce fuentes de GEI; la adaptación gestiona riesgos; las falsas soluciones postergan el cambio real.';
+            }
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupMeasureClassifier);
+  setupMeasureClassifier();
+</script>

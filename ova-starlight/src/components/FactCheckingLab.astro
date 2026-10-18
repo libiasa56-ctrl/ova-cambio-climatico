@@ -1,0 +1,163 @@
+---
+// FactCheckingLab.astro: Laboratorio de Fact-Checking y Detección de Greenwashing (Estrategia 2)
+---
+
+<div class="not-content my-8 p-6 rounded-2xl border border-teal-500/30 bg-slate-900/80 shadow-2xl fact-checking-lab">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">
+          Laboratorio de Evidencias Digitales
+        </span>
+        <span class="text-xs text-slate-400">Metodología de Curaduría Crítica</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0">Detectives del Clima: Fact-Checking y Contraste de Fuentes</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Analiza los expedientes reales, detecta intereses corporativos y dictamina su confiabilidad</p>
+    </div>
+    <div class="text-xs text-teal-400 font-bold bg-teal-950/60 px-3 py-1.5 rounded-lg border border-teal-500/30">
+      🎯 Meta: 3 / 3 Expedientes Resueltos
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <!-- Expediente 1 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 case-card" data-case="1" data-correct="greenwashing">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30">
+          Expediente #01: Publicidad Corporativa
+        </span>
+        <span class="text-xs text-slate-400">Origen: Campaña en Redes Sociales</span>
+      </div>
+      <blockquote class="text-sm italic text-slate-200 border-l-4 border-amber-500 pl-3 py-1 mb-3 bg-slate-900/40 rounded-r">
+        "En Petrolera Global neutralizamos el 100% de tu huella de carbono plantando 1 árbol por cada tanque de gasolina que recargues. ¡Conduce hacia un futuro verde y libre de emisiones!"
+      </blockquote>
+      <div class="text-xs text-slate-300 mb-3">
+        <strong>Pregunta de Análisis:</strong> ¿Qué dictamen emites tras contrastar con la tasa de captura de CO2 real de árboles jóvenes frente a las emisiones directas del tubo de escape?
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="true">
+          ✅ Verídico y Científico
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="greenwashing">
+          🍃 Greenwashing (Engañoso)
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="fake">
+          ❌ Desinformación Absoluta
+        </button>
+      </div>
+      <div class="feedback hidden p-3 rounded-lg text-xs leading-relaxed transition-all"></div>
+    </div>
+
+    <!-- Expediente 2 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 case-card" data-case="2" data-correct="true">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Expediente #02: Datos Científicos del IPCC
+        </span>
+        <span class="text-xs text-slate-400">Origen: Sexto Informe de Evaluación (AR6)</span>
+      </div>
+      <blockquote class="text-sm italic text-slate-200 border-l-4 border-emerald-500 pl-3 py-1 mb-3 bg-slate-900/40 rounded-r">
+        "El 10% de los hogares con ingresos más altos del planeta es responsable de casi el 45% de las emisiones mundiales de gases de efecto invernadero, mientras que el 50% más vulnerable solo contribuye con el 12%."
+      </blockquote>
+      <div class="text-xs text-slate-300 mb-3">
+        <strong>Pregunta de Análisis:</strong> ¿Es un dato rigurosamente respaldado por la ciencia climática o un argumento sesgado ideológicamente?
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="true">
+          ✅ Verídico y Científico
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="greenwashing">
+          🍃 Greenwashing (Engañoso)
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="fake">
+          ❌ Desinformación Absoluta
+        </button>
+      </div>
+      <div class="feedback hidden p-3 rounded-lg text-xs leading-relaxed transition-all"></div>
+    </div>
+
+    <!-- Expediente 3 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 case-card" data-case="3" data-correct="fake">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30">
+          Expediente #03: Noticia Viral en Foros
+        </span>
+        <span class="text-xs text-slate-400">Origen: Blog sin firma institucional</span>
+      </div>
+      <blockquote class="text-sm italic text-slate-200 border-l-4 border-rose-500 pl-3 py-1 mb-3 bg-slate-900/40 rounded-r">
+        "Científicos afirman que los volcanes emiten 100 veces más CO2 al año que toda la actividad industrial humana combinada, por lo que las políticas de transición energética son un fraude financiero."
+      </blockquote>
+      <div class="text-xs text-slate-300 mb-3">
+        <strong>Pregunta de Análisis:</strong> ¿Qué dictamen corresponde tras cotejar con las mediciones geológicas del USGS y la NASA?
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="true">
+          ✅ Verídico y Científico
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="greenwashing">
+          🍃 Greenwashing (Engañoso)
+        </button>
+        <button type="button" class="btn-check text-xs font-semibold py-2 px-3 rounded-lg border border-slate-600 bg-slate-700/60 hover:bg-slate-700 text-slate-200 transition-all cursor-pointer" data-val="fake">
+          ❌ Desinformación Absoluta
+        </button>
+      </div>
+      <div class="feedback hidden p-3 rounded-lg text-xs leading-relaxed transition-all"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupFactCheckingLab() {
+    const explanations: Record<string, { ok: string; err: string }> = {
+      '1': {
+        ok: '¡Dictamen Correcto! Es un caso clásico de GREENWASHING: La promesa de compensar con árboles distrae del problema central (seguir quemando hidrocarburos fósiles). Un árbol recién plantado tarda entre 15 y 30 años en capturar cantidades significativas de carbono.',
+        err: 'Dictamen incorrecto. Sembrar un árbol no compensa instantáneamente los cientos de litros de gasolina consumidos. La empresa utiliza publicidad ecológica para limpiar su imagen sin cambiar su modelo de negocio fósil.'
+      },
+      '2': {
+        ok: '¡Dictamen Correcto! Es VERÍDICO Y CIENTÍFICO: Este hallazgo forma parte del Informe del Grupo III del IPCC (Mitigación del Cambio Climático, 2022). Evidencia la marcada asimetría de responsabilidades socioeconómicas globales.',
+        err: 'Dictamen incorrecto. Esta afirmación cuenta con respaldo empírico de las Naciones Unidas y del Laboratorio Mundial sobre Desigualdad de París.'
+      },
+      '3': {
+        ok: '¡Dictamen Correcto! Es DESINFORMACIÓN / FALACIA: El Servicio Geológico de EE.UU. (USGS) certifica que todos los volcanes terrestres y submarinos emiten menos de 0.3 gigatoneladas de CO2 al año, mientras que la quema de combustibles fósiles supera las 36 gigatoneladas (más de 100 veces más).',
+        err: 'Dictamen incorrecto. La evidencia empírica demuestra que las emisiones humanas de gases de efecto invernadero superan por amplio margen cualquier emanación volcánica periódica.'
+      }
+    };
+
+    document.querySelectorAll('.case-card').forEach((card) => {
+      const caseId = card.getAttribute('data-case') || '';
+      const correctVal = card.getAttribute('data-correct') || '';
+      const feedback = card.querySelector('.feedback') as HTMLElement | null;
+      const buttons = card.querySelectorAll('.btn-check');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const selected = btn.getAttribute('data-val');
+          buttons.forEach(b => (b as HTMLElement).classList.remove('ring-2', 'ring-emerald-400', 'ring-rose-400', 'bg-emerald-800', 'bg-rose-900'));
+
+          if (feedback) feedback.classList.remove('hidden');
+
+          if (selected === correctVal) {
+            btn.classList.add('ring-2', 'ring-emerald-400', 'bg-emerald-800');
+            if (feedback) {
+              feedback.className = 'feedback p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 mt-2 block';
+              feedback.innerHTML = `<strong>¡DICTAMEN ACERTADO!</strong><br>${explanations[caseId].ok}`;
+            }
+
+            // Guardar puntaje local
+            const currentScore = parseInt(localStorage.getItem('ova_clima_score') || '0', 10);
+            localStorage.setItem('ova_clima_score', (currentScore + 20).toString());
+          } else {
+            btn.classList.add('ring-2', 'ring-rose-400', 'bg-rose-900');
+            if (feedback) {
+              feedback.className = 'feedback p-3 rounded-lg text-xs leading-relaxed bg-rose-950/60 border border-rose-500/40 text-rose-200 mt-2 block';
+              feedback.innerHTML = `<strong>REVISA LA EVIDENCIA:</strong><br>${explanations[caseId].err}`;
+            }
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupFactCheckingLab);
+  setupFactCheckingLab();
+</script>

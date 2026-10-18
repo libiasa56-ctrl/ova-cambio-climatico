@@ -1,0 +1,169 @@
+---
+// CitizenTribunal.astro: Generador y Constructor Guiado de Alegatos Ciudadanos (Estrategia 6)
+---
+
+<div class="not-content my-8 p-6 rounded-2xl border border-purple-500/30 bg-slate-900/90 shadow-2xl citizen-tribunal">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          Evaluación Auténtica y Deliberación
+        </span>
+        <span class="text-xs text-slate-400">Ciencias Sociales y Competencias Ciudadanas 11°</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0">Constructor de Alegatos: Tribunal Ciudadano del Clima</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Estructura un alegato argumentado con base en evidencias fácticas para sustentar ante el Tribunal</p>
+    </div>
+    <div class="text-xs text-purple-400 font-bold bg-purple-950/60 px-3 py-1.5 rounded-lg border border-purple-500/30">
+      ⚖️ Sala de Deliberación INEDCI
+    </div>
+  </div>
+
+  <form id="tribunal-form" class="space-y-4 mb-6">
+    <!-- Rol y Estudiante -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="student-name" class="block text-xs font-bold text-slate-300 uppercase mb-1">Nombre del Estudiante / Equipo:</label>
+        <input type="text" id="student-name" placeholder="Ej. Equipo 3 - Grado 11-2" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" required />
+      </div>
+      <div>
+        <label for="actor-role" class="block text-xs font-bold text-slate-300 uppercase mb-1">Delegación o Actor Representado:</label>
+        <select id="actor-role" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
+          <option value="Comunidades Afectadas de Nariño">Comunidades y Jóvenes de Nariño (Defensa del Territorio)</option>
+          <option value="Sur Global y Países Vulnerables">Delegación del Sur Global (Justicia Climática)</option>
+          <option value="Comunidad Científica Independiente">Científicos del Clima (Evidencia IPCC)</option>
+          <option value="Corporaciones Energéticas en Transición">Sector Productivo en Reconversión Justa</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tesis -->
+    <div>
+      <label for="thesis-input" class="block text-xs font-bold text-slate-300 uppercase mb-1">Tesis Principal (Postura Central):</label>
+      <input type="text" id="thesis-input" placeholder="Ej. La transición energética debe ser justa, descentralizada y financiada por quienes acumularon la mayor deuda ecológica histórica..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" required />
+    </div>
+
+    <!-- 3 Argumentos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div>
+        <label for="arg-1" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 1 (Causal/Histórico):</label>
+        <textarea id="arg-1" rows="3" placeholder="Evidencia de emisiones acumuladas y responsabilidades históricas diferenciadas..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
+      </div>
+      <div>
+        <label for="arg-2" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 2 (Crítica al Greenwashing):</label>
+        <textarea id="arg-2" rows="3" placeholder="Por qué las falsas soluciones y compensaciones voluntarias no detienen la crisis..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
+      </div>
+      <div>
+        <label for="arg-3" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 3 (Viabilidad Territorial):</label>
+        <textarea id="arg-3" rows="3" placeholder="Propuesta concreta de energía limpia protegiendo el empleo local en Ipiales/Nariño..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
+      </div>
+    </div>
+
+    <!-- Contraargumento -->
+    <div>
+      <label for="counter-input" class="block text-xs font-bold text-slate-300 uppercase mb-1">Contraargumento Refutado:</label>
+      <input type="text" id="counter-input" placeholder="Aunque algunos actores sostienen que la transición generará desempleo masivo, la evidencia muestra que las renovables generan 3 veces más empleos locales..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" />
+    </div>
+
+    <div class="flex gap-2">
+      <button type="button" id="btn-generate-plea" class="px-4 py-2 text-xs font-bold rounded-xl bg-purple-600 hover:bg-purple-500 text-white flex items-center gap-1.5 transition-all cursor-pointer">
+        📜 Generar Documento del Alegato
+      </button>
+      <button type="button" id="btn-fill-sample" class="px-3 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all cursor-pointer">
+        ⚡ Cargar Ejemplo Modelo
+      </button>
+    </div>
+  </form>
+
+  <!-- Vista previa generada -->
+  <div id="plea-output-box" class="hidden p-5 rounded-xl bg-slate-950 border border-purple-500/40 text-slate-200">
+    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+      <strong class="text-purple-400 text-sm">MEMORIAL DE ALEGATO FORMAL ANTE EL TRIBUNAL CLIMÁTICO</strong>
+      <button type="button" id="btn-copy-plea" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white flex items-center gap-1 transition-all cursor-pointer">
+        📋 Copiar Alegato
+      </button>
+    </div>
+    <div id="plea-text" class="text-xs leading-relaxed space-y-2 whitespace-pre-line font-serif text-slate-300"></div>
+  </div>
+</div>
+
+<script>
+  function setupCitizenTribunal() {
+    const btnGen = document.getElementById('btn-generate-plea');
+    const btnSample = document.getElementById('btn-fill-sample');
+    const btnCopy = document.getElementById('btn-copy-plea');
+    const outBox = document.getElementById('plea-output-box');
+    const outText = document.getElementById('plea-text');
+
+    const sName = document.getElementById('student-name') as HTMLInputElement | null;
+    const sRole = document.getElementById('actor-role') as HTMLSelectElement | null;
+    const sThesis = document.getElementById('thesis-input') as HTMLInputElement | null;
+    const sArg1 = document.getElementById('arg-1') as HTMLTextAreaElement | null;
+    const sArg2 = document.getElementById('arg-2') as HTMLTextAreaElement | null;
+    const sArg3 = document.getElementById('arg-3') as HTMLTextAreaElement | null;
+    const sCounter = document.getElementById('counter-input') as HTMLInputElement | null;
+
+    btnSample?.addEventListener('click', () => {
+      if (sName) sName.value = 'David Lucero & Equipo 3 - 11-2';
+      if (sRole) sRole.value = 'Comunidades Afectadas de Nariño';
+      if (sThesis) sThesis.value = 'La supervivencia de los ecosistemas andinos de Nariño exige una transición energética urgente, financiada obligatoriamente por los mayores emisores históricos globales.';
+      if (sArg1) sArg1.value = 'El 10% más rico del planeta generó cerca del 50% de las emisiones acumuladas desde la Revolución Industrial, mientras nuestras comunidades soportan la pérdida de fuentes hídricas sin haber causado la crisis.';
+      if (sArg2) sArg2.value = 'Las corporaciones petroleras pretenden sustituir compromisos vinculantes de reducción con bonos de carbono y promesas de reforestación que constituyen un fraude discursivo (greenwashing).';
+      if (sArg3) sArg3.value = 'Es técnica y socialmente viable implementar micro-redes solares comunitarias en el altiplano de Túquerres e Ipiales, garantizando soberanía energética y empleo digno para la juventud rural.';
+      if (sCounter) sCounter.value = 'Frente al argumento de que la transición desestabiliza las finanzas públicas, demostramos que los costos de reparar inundaciones y sequías superan en 6 veces la inversión en reconversión limpia.';
+    });
+
+    btnGen?.addEventListener('click', () => {
+      const name = sName?.value.trim() || 'Estudiante Grado 11';
+      const role = sRole?.value.trim() || 'Comunidades Ciudadanas';
+      const thesis = sThesis?.value.trim() || 'La justicia climática es un derecho fundamental irrenunciable.';
+      const a1 = sArg1?.value.trim() || 'Las responsabilidades históricas no son homogéneas.';
+      const a2 = sArg2?.value.trim() || 'El greenwashing no sustituye la descarbonización real.';
+      const a3 = sArg3?.value.trim() || 'La transición energética comunitaria es viable y protege el territorio.';
+      const counter = sCounter?.value.trim() || 'La inacción climática es financieramente más ruinosa que la inversión en renovables.';
+
+      const doc = `MEMORIAL DE SUSTENTACIÓN — TRIBUNAL CIUDADANO DEL CLIMA
+INSTITUCIÓN EDUCATIVA CIUDAD DE IPIALES (INEDCI) • CIENCIAS SOCIALES 11°
+
+COMPARECIENTES: ${name}
+DELEGACIÓN: ${role}
+
+I. TESIS FUNDAMENTAL:
+"${thesis}"
+
+II. HECHOS Y ARGUMENTOS FÁCTICOS:
+1. Dimensión Causal e Histórica:
+${a1}
+
+2. Refutación de Falacias y Greenwashing:
+${a2}
+
+3. Viabilidad Socioeconómica y Justicia Territorial:
+${a3}
+
+III. CONTRAARGUMENTO Y REFUTACIÓN DIALÉCTICA:
+"${counter}"
+
+IV. PETITORIO ANTE EL TRIBUNAL:
+Exigimos la adopción inmediata de un calendario vinculante de descarbonización, la activación del Fondo de Pérdidas y Daños para el Sur Global y el respeto a la autonomía comunitaria sobre el agua y la energía.`;
+
+      if (outText) outText.textContent = doc;
+      if (outBox) outBox.classList.remove('hidden');
+
+      // Guardar puntaje en localStorage
+      const currentScore = parseInt(localStorage.getItem('ova_clima_score') || '0', 10);
+      localStorage.setItem('ova_clima_score', (currentScore + 40).toString());
+      localStorage.setItem('ova_tribunal_completed', 'true');
+    });
+
+    btnCopy?.addEventListener('click', () => {
+      if (!outText) return;
+      navigator.clipboard.writeText(outText.textContent || '').then(() => {
+        alert('¡Alegato copiado al portapapeles! Puedes pegarlo en tu documento o enviarlo a tu docente.');
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupCitizenTribunal);
+  setupCitizenTribunal();
+</script>

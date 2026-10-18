@@ -1,0 +1,11 @@
+{
+  "name": "ova-cambio-climatico",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Objeto Virtual de Aprendizaje (OVA) - Ciencias Sociales 11° - INEDCI & UTB",
+  "scripts": {
+    "dev": "npm run dev --prefix ova-starlight",
+    "build": "npm install --prefix ova-starlight && npm run build --prefix ova-starlight",
+    "preview": "npm run preview --prefix ova-starlight"
+  }
+}

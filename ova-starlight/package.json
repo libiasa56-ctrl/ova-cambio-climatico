@@ -1,0 +1,19 @@
+{
+  "name": "ova-starlight",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42.6",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "7.3.8",
+    "ova-cambio-climatico": "file:..",
+    "tailwindcss": "^4.3.3"
+  }
+}

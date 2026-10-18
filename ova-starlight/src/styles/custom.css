@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Custom theme variables for UTB / INEDCI LMS */
+:root {
+  --sl-color-accent-low: #0f2c3d;
+  --sl-color-accent: #0284c7;
+  --sl-color-accent-high: #7dd3fc;
+  --sl-color-white: #0f172a;
+  --sl-color-gray-1: #1e293b;
+  --sl-color-gray-2: #334155;
+  --sl-color-gray-3: #475569;
+  --sl-color-gray-4: #64748b;
+  --sl-color-gray-5: #94a3b8;
+  --sl-color-gray-6: #cbd5e1;
+  --sl-color-gray-7: #f1f5f9;
+  --sl-color-black: #ffffff;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #082f49;
+  --sl-color-accent: #38bdf8;
+  --sl-color-accent-high: #bae6fd;
+  --sl-color-white: #f8fafc;
+  --sl-color-gray-1: #e2e8f0;
+  --sl-color-gray-2: #cbd5e1;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-4: #64748b;
+  --sl-color-gray-5: #334155;
+  --sl-color-gray-6: #1e293b;
+  --sl-color-gray-7: #0f172a;
+  --sl-color-black: #020617;
+}
+
+/* Educational Card Component */
+.edu-card {
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-gray-6);
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.edu-card:hover {
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.badge-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  background-color: var(--sl-color-accent);
+  color: white;
+}

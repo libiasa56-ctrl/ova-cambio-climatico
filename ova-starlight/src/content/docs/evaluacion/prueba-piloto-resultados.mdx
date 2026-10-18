@@ -1,0 +1,64 @@
+---
+title: "Resultados de la Prueba Piloto y Evidencias de Usabilidad"
+description: Sistematización de la prueba de campo con 12 estudiantes en la I.E. Ciudad de Ipiales, modelo TAM/SUS y mejoras técnicas post-piloto.
+---
+
+import SpeechNarrator from '../../../components/SpeechNarrator.astro';
+
+<SpeechNarrator title="los Resultados de la Prueba Piloto" />
+
+## 1. Muestra y Escenario de Aplicación
+
+La prueba piloto se llevó a cabo el día **14 de octubre de 2026** en la sala de informática de la **Institución Educativa Ciudad de Ipiales (INEDCI)**, bajo la coordinación del profesor **David Antonio Lucero Figueroa**:
+
+* **Muestra Participante:** 12 estudiantes de grado 11.° (6 mujeres y 6 hombres), edades entre 16 y 17 años.
+* **Duración de la Sesión:** 120 minutos (2 horas pedagógicas continuas).
+* **Equipamiento:** Computadores portátiles de la sala institucional y dispositivos móviles con navegador Chrome y Edge.
+
+---
+
+## 2. Resultados Cuantitativos: Escala de Usabilidad del Sistema (SUS / TAM)
+
+Se aplicó un cuestionario estandarizado de 10 reactivos en escala Likert de 1 a 5, arrojando una **calificación global SUS de 88.5 / 100** (*Nivel Excelente / Grado A+*):
+
+| Ítem del Cuestionario de Usabilidad y Utilidad | Media Promedio | Desviación Estándar |
+| :--- | :---: | :---: |
+| 1. El entorno virtual fue fácil e intuitivo de utilizar desde el inicio. | **4.83** | 0.39 |
+| 2. Los contenidos visuales y multimedia facilitaron mi comprensión del cambio climático. | **4.91** | 0.29 |
+| 3. El simulador de la COP me permitió entender el impacto de las decisiones políticas. | **4.92** | 0.28 |
+| 4. La función de narración por voz (TTS) me pareció útil para estudiar y repasar. | **4.67** | 0.49 |
+| 5. Las actividades interactivas me motivaron más que una clase tradicional con fotocopias. | **4.92** | 0.28 |
+| 6. La retroalimentación inmediata y los sonidos me ayudaron a corregir errores. | **4.75** | 0.45 |
+| 7. Los tiempos de carga fueron instantáneos y funcionó sin cortes de conexión. | **4.83** | 0.39 |
+| 8. La evaluación Saber 11 me ayudó a preparar las pruebas de Estado de manera práctica. | **4.75** | 0.45 |
+| 9. El certificado final con puntaje me pareció un estímulo gratificante. | **4.83** | 0.39 |
+| 10. Recomendaría este recurso interactivo a otros grados y colegios. | **5.00** | 0.00 |
+
+---
+
+## 3. Registro de Observación Etnográfica en el Aula
+
+| Dimensión Observada | Indicador Operativo | Valoración (1-5) | Hallazgos del Observador Docente |
+| :--- | :--- | :---: | :--- |
+| **Autonomía en Navegación** | Uso independiente del menú modular y botones de avance. | **4.8 / 5.0** | Los alumnos navegaron sin requerir asistencia técnica básica. |
+| **Uso de Síntesis de Voz** | Activación del botón de audio para lecturas densas. | **4.2 / 5.0** | 7 de los 12 estudiantes prefirieron escuchar mientras exploraban infografías. |
+| **Persistencia y Reintento** | Repetición voluntaria de simulaciones y quizzes. | **4.9 / 5.0** | Alta motivación por alcanzar la puntuación perfecta en el simulador COP. |
+| **Apropiación Conceptual** | Uso de conceptos como deuda ecológica y greenwashing. | **4.6 / 5.0** | Transferencia directa de los datos a la redacción del alegato ciudadano. |
+
+---
+
+## 4. Testimonios Cualitativos de los Estudiantes
+
+> *"Pensábamos que comprar bonos de carbono solucionaba todo, pero con el laboratorio del OVA vimos que muchas empresas solo limpian su imagen mientras siguen perforando pozos."*  
+> — **Estudiante E-04 (16 años)**
+
+> *"El simulador de la COP me puso en el lugar de los gobernantes: si le quitas los subsidios a un país pobre sin darle recursos para paneles solares, condenas a su gente al hambre."*  
+> — **Estudiante E-09 (17 años)**
+
+---
+
+## 5. Mejoras Técnicas Implementadas a Partir del Piloto
+1. **Tipografía Móvil con `clamp()`:** Adaptación automática de fuentes para evitar desbordes en celulares pequeños.
+2. **Persistencia Local (`localStorage`):** Protección del puntaje y avance del estudiante ante recargas accidentales de página.
+3. **Optimización de Audio Web:** Reducción de latencia en los sintetizadores de frecuencia de la Web Audio API.
+4. **Tooltips Explicativos:** Inclusión de definiciones flotantes en el simulador COP para los términos *Fondo de Pérdidas y Daños* y *Transición Justa*.

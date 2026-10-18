@@ -1,0 +1,192 @@
+---
+// SaberQuiz.astro: Motor Evaluativo Tipo Saber 11 (Ciencias Sociales y Competencias Ciudadanas)
+---
+
+<div class="not-content my-8 p-6 rounded-2xl border border-sky-500/30 bg-slate-900/90 shadow-2xl saber-quiz">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
+          Evaluación Sumativa Estandarizada
+        </span>
+        <span class="text-xs text-slate-400">Diseño Centrado en Evidencias (ICFES)</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0">Simulacro Saber 11: Competencias Ciudadanas y Pensamiento Social</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Responde las preguntas analíticas y comprueba tu preparación para las pruebas de Estado</p>
+    </div>
+    <div id="quiz-status-badge" class="text-xs text-sky-400 font-bold bg-sky-950/60 px-3 py-1.5 rounded-lg border border-sky-500/30">
+      Aciertos: <span id="quiz-correct">0</span> / 4
+    </div>
+  </div>
+
+  <div class="space-y-6" id="quiz-questions">
+    <!-- Pregunta 1 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 q-item" data-q="1" data-answer="B">
+      <div class="text-xs text-slate-400 font-semibold mb-2">PREGUNTA 1 DE 4 • MULTINIVEL / MULTIPERSPECTIVISMO</div>
+      <p class="text-sm text-slate-200 mb-3 leading-relaxed">
+        Un país en desarrollo posee grandes reservas de carbón que representan el 60% de sus ingresos fiscales y subsidian la educación pública. En la cumbre climática, los países de altos ingresos le exigen detener de inmediato la extracción minera sin ofrecer compensación financiera. Desde la perspectiva de la <strong>justicia ambiental y el desarrollo sostenible</strong>, ¿cuál de las siguientes opciones describe de manera más crítica la tensión presente?
+      </p>
+      <div class="space-y-2">
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q1" value="A" class="mt-0.5 accent-sky-500" />
+          <span>A) El país en desarrollo debe acatar sin objeciones, pues la protección climática global prima siempre sobre cualquier necesidad local.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q1" value="B" class="mt-0.5 accent-sky-500" />
+          <span>B) Existe un dilema entre la urgencia ecológica global y el derecho al bienestar social, evidenciando la necesidad de una transición justa con financiamiento internacional del Norte Global.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q1" value="C" class="mt-0.5 accent-sky-500" />
+          <span>C) La mejor salida es continuar la explotación indefinida de carbón, ya que el cambio climático es un fenómeno natural ajeno a la economía.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q1" value="D" class="mt-0.5 accent-sky-500" />
+          <span>D) La comunidad internacional debe sancionar comercialmente a cualquier país pobre que no cierre sus minas en menos de un año.</span>
+        </label>
+      </div>
+      <div class="q-feedback hidden text-xs mt-3 p-3 rounded-lg"></div>
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 q-item" data-q="2" data-answer="C">
+      <div class="text-xs text-slate-400 font-semibold mb-2">PREGUNTA 2 DE 4 • ANÁLISIS DE ARGUMENTOS Y EVIDENCIAS</div>
+      <p class="text-sm text-slate-200 mb-3 leading-relaxed">
+        Una transnacional petrolera anuncia que ha logrado ser "empresa carbono-cero" porque compró bonos forestales en la Amazonía, a pesar de que sus informes internos muestran un incremento del 15% en la extracción de crudo. ¿Qué falacia o sesgo argumentativo se configura en este caso?
+      </p>
+      <div class="space-y-2">
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q2" value="A" class="mt-0.5 accent-sky-500" />
+          <span>A) Argumento de autoridad científica incontestable.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q2" value="B" class="mt-0.5 accent-sky-500" />
+          <span>B) Cumplimiento riguroso del principio de precaución ambiental.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q2" value="C" class="mt-0.5 accent-sky-500" />
+          <span>C) Estrategia de 'greenwashing' que utiliza compensaciones dudosas para eludir la reducción estructural de emisiones en su fuente principal.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q2" value="D" class="mt-0.5 accent-sky-500" />
+          <span>D) Demostración empírica de neutralidad climática verificada por el IPCC.</span>
+        </label>
+      </div>
+      <div class="q-feedback hidden text-xs mt-3 p-3 rounded-lg"></div>
+    </div>
+
+    <!-- Pregunta 3 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 q-item" data-q="3" data-answer="A">
+      <div class="text-xs text-slate-400 font-semibold mb-2">PREGUNTA 3 DE 4 • PENSAMIENTO SOCIAL Y TERRITORIAL</div>
+      <p class="text-sm text-slate-200 mb-3 leading-relaxed">
+        En el departamento de Nariño, las comunidades campesinas e indígenas del altiplano enfrentan el retroceso de fuentes hídricas glaciares y páramos. Al debatir una propuesta de parque eólico en su territorio, exigen que la administración energética incluya comités comunitarios locales. Esta demanda se fundamenta principalmente en el principio de:
+      </p>
+      <div class="space-y-2">
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q3" value="A" class="mt-0.5 accent-sky-500" />
+          <span>A) Soberanía y democratización energética con participación ciudadana vinculante en las decisiones territoriales.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q3" value="B" class="mt-0.5 accent-sky-500" />
+          <span>B) Rechazo absoluto y permanente a cualquier tipo de tecnología limpia o renovable.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q3" value="C" class="mt-0.5 accent-sky-500" />
+          <span>C) Preferencia por la instalación de refinerías petroleras en los páramos andinos.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q3" value="D" class="mt-0.5 accent-sky-500" />
+          <span>D) Desconocimiento de las leyes nacionales de servicios públicos.</span>
+        </label>
+      </div>
+      <div class="q-feedback hidden text-xs mt-3 p-3 rounded-lg"></div>
+    </div>
+
+    <!-- Pregunta 4 -->
+    <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 q-item" data-q="4" data-answer="B">
+      <div class="text-xs text-slate-400 font-semibold mb-2">PREGUNTA 4 DE 4 • RESPONSABILIDAD HISTÓRICA GEOPOLÍTICA</div>
+      <p class="text-sm text-slate-200 mb-3 leading-relaxed">
+        El concepto de "Responsabilidades Comunes pero Diferenciadas" consagrado en la Convención Marco de la ONU sobre el Cambio Climático (CMNUCC) significa que:
+      </p>
+      <div class="space-y-2">
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q4" value="A" class="mt-0.5 accent-sky-500" />
+          <span>A) Todos los países deben pagar exactamente la misma suma de dinero sin importar su nivel de ingresos ni su historia industrial.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q4" value="B" class="mt-0.5 accent-sky-500" />
+          <span>B) Todos los Estados comparten el deber de proteger el clima, pero los países históricamente industrializados deben liderar la mitigación y financiar a las naciones en desarrollo por su deuda ecológica.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q4" value="C" class="mt-0.5 accent-sky-500" />
+          <span>C) Los países más pobres deben asumir el 100% de la carga de descarbonización por encontrarse en el hemisferio sur.</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:bg-slate-700/50 cursor-pointer text-xs text-slate-200">
+          <input type="radio" name="q4" value="D" class="mt-0.5 accent-sky-500" />
+          <span>D) La ONU no tiene competencia alguna sobre las emisiones de gases de efecto invernadero.</span>
+        </label>
+      </div>
+      <div class="q-feedback hidden text-xs mt-3 p-3 rounded-lg"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupSaberQuiz() {
+    let score = 0;
+    const countEl = document.getElementById('quiz-correct');
+    const items = document.querySelectorAll('.q-item');
+
+    const justifications: Record<string, { ok: string; err: string }> = {
+      '1': {
+        ok: '¡Opción Correcta (B)! Demuestras comprensión multidimensional: el cierre de fuentes energéticas sin transición justa arruina la prestación de servicios públicos en economías vulnerables.',
+        err: 'Respuesta incorrecta. Recuerda analizar cómo las decisiones geopolíticas no pueden ignorar los derechos socioeconómicos de las poblaciones locales.'
+      },
+      '2': {
+        ok: '¡Opción Correcta (C)! Detectas con precisión el greenwashing: aumentar la extracción de hidrocarburos no se cancela mágicamente comprando promesas de árboles.',
+        err: 'Respuesta incorrecta. Analiza la contradicción evidente entre extraer más petróleo y autodenominarse carbono-neutral.'
+      },
+      '3': {
+        ok: '¡Opción Correcta (A)! La soberanía energética comunitaria asegura que la transición beneficie directamente a quienes habitan y protegen el territorio.',
+        err: 'Respuesta incorrecta. Las comunidades no se oponen a las energías limpias, sino al despojo territorial y a la exclusión en la toma de decisiones.'
+      },
+      '4': {
+        ok: '¡Opción Correcta (B)! Es el núcleo ético y jurídico del Derecho Internacional Ambiental: quien más contaminó para enriquecerse debe aportar más para reparar el planeta.',
+        err: 'Respuesta incorrecta. Revisa el principio de equidad intergeneracional y deuda ecológica histórica.'
+      }
+    };
+
+    items.forEach((item) => {
+      const qId = item.getAttribute('data-q') || '';
+      const ans = item.getAttribute('data-answer');
+      const feedback = item.querySelector('.q-feedback') as HTMLElement | null;
+      const radios = item.querySelectorAll('input[type="radio"]');
+
+      radios.forEach((r) => {
+        r.addEventListener('change', () => {
+          const val = (r as HTMLInputElement).value;
+          if (feedback) feedback.classList.remove('hidden');
+
+          if (val === ans) {
+            if (feedback) {
+              feedback.className = 'q-feedback text-xs mt-3 p-3 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 block';
+              feedback.innerHTML = `<strong>¡CORRECTO!</strong> ${justifications[qId].ok}`;
+            }
+            score = Math.min(4, score + 1);
+            if (countEl) countEl.textContent = score.toString();
+
+            const currentScore = parseInt(localStorage.getItem('ova_clima_score') || '0', 10);
+            localStorage.setItem('ova_clima_score', (currentScore + 25).toString());
+          } else {
+            if (feedback) {
+              feedback.className = 'q-feedback text-xs mt-3 p-3 rounded-lg bg-rose-950/60 border border-rose-500/40 text-rose-200 block';
+              feedback.innerHTML = `<strong>OPCIÓN INCORRECTA.</strong> ${justifications[qId].err}`;
+            }
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupSaberQuiz);
+  setupSaberQuiz();
+</script>

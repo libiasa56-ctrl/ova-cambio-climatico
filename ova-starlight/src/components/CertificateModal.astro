@@ -1,0 +1,163 @@
+---
+// CertificateModal.astro: Pasaporte Climático Oficial y Generador de Certificado en PDF
+---
+
+<div class="not-content my-8 p-6 rounded-2xl border border-amber-500/40 bg-slate-900 shadow-2xl certificate-generator">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+          Certificación de Aprendizaje Validada
+        </span>
+        <span class="text-xs text-slate-400">Mestría TIC UTB & INEDCI 2026</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0">Pasaporte Climático Oficial y Diploma de Competencias</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Genera tu credencial oficial con los puntos de aprendizaje acumulados y guárdala en PDF</p>
+    </div>
+    <button type="button" id="btn-refresh-score" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer">
+      🔄 Actualizar Puntaje
+    </button>
+  </div>
+
+  <!-- Formulario de emisión -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+    <div>
+      <label for="cert-name" class="block text-xs font-bold text-slate-300 uppercase mb-1">Nombre Completo del Estudiante:</label>
+      <input type="text" id="cert-name" placeholder="Escribe tu nombre y apellidos" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500" />
+    </div>
+    <div>
+      <label for="cert-grade" class="block text-xs font-bold text-slate-300 uppercase mb-1">Grado y Grupo:</label>
+      <input type="text" id="cert-grade" value="Grado Undécimo (11-2) — INEDCI" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500" />
+    </div>
+  </div>
+
+  <div class="flex gap-2 mb-6">
+    <button type="button" id="btn-generate-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-amber-600 hover:bg-amber-500 text-white flex items-center gap-1.5 transition-all cursor-pointer">
+      🎓 Generar Diploma Oficial
+    </button>
+    <button type="button" id="btn-print-cert" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center gap-1.5 transition-all cursor-pointer">
+      🖨️ Imprimir / Guardar en PDF
+    </button>
+  </div>
+
+  <!-- Contenedor del Diploma para Pantalla e Impresión -->
+  <div id="diploma-view" class="p-8 rounded-2xl bg-gradient-to-br from-amber-50 via-white to-orange-50 border-8 border-amber-600/30 text-slate-900 shadow-xl print-container">
+    <div class="text-center pb-4 border-b-2 border-amber-800/20">
+      <div class="flex items-center justify-center gap-4 mb-2">
+        <span class="text-3xl">🏛️</span>
+        <div>
+          <h2 class="text-xl font-serif font-black tracking-wider text-slate-900 m-0 uppercase">Universidad Tecnológica de Bolívar</h2>
+          <h4 class="text-xs font-sans font-bold text-amber-900 m-0 tracking-widest uppercase">Facultad de Educación • Maestría en Educación Mediada por las TIC</h4>
+        </div>
+        <span class="text-3xl">🌍</span>
+      </div>
+      <p class="text-[11px] text-slate-600 font-sans mb-0">Institución Educativa Ciudad de Ipiales (INEDCI) • Departamento de Nariño</p>
+    </div>
+
+    <div class="my-6 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-amber-700 block mb-1">Certificado Oficial de Logro Formativo</span>
+      <h3 class="text-2xl font-serif font-bold text-slate-900 mb-2">DIPLOMA DE COMPETENCIA EN JUSTICIA CLIMÁTICA Y PENSAMIENTO SOCIAL</h3>
+      <p class="text-xs text-slate-700 italic">Se hace constar que el (la) estudiante:</p>
+      
+      <div id="display-student-name" class="text-2xl font-serif font-extrabold text-blue-950 underline decoration-amber-500 my-2">
+        [Nombre del Estudiante]
+      </div>
+      
+      <p class="text-xs text-slate-700 max-w-xl mx-auto leading-relaxed">
+        Ha culminado exitosamente los 6 módulos de aprendizaje del Objeto Virtual de Aprendizaje (OVA) <strong>«Clima, Poder y Futuro»</strong>, evidenciando dominio crítico del DBA de Ciencias Sociales de Grado 11.°, análisis fáctico frente al greenwashing y formulación de alternativas viables de transición energética justa.
+      </p>
+    </div>
+
+    <!-- Puntuación y Desempeño -->
+    <div class="grid grid-cols-3 gap-3 my-4 p-3 bg-amber-100/60 rounded-xl border border-amber-300/60 text-center font-sans">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-600 block">Puntos Acumulados</span>
+        <span id="display-cert-score" class="text-lg font-black text-amber-900">180 pts</span>
+      </div>
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-600 block">Nivel de Desempeño</span>
+        <span class="text-lg font-black text-emerald-800">Superior (A+)</span>
+      </div>
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-600 block">Código Único de Validación</span>
+        <span id="display-cert-hash" class="text-xs font-mono font-bold text-slate-800 mt-1 block">UTB-2026-CS11</span>
+      </div>
+    </div>
+
+    <!-- Firmas Docentes -->
+    <div class="grid grid-cols-3 gap-4 pt-6 mt-6 border-t border-slate-300 text-center text-[10px] text-slate-700 font-sans">
+      <div>
+        <div class="font-serif italic font-bold text-slate-900 text-xs mb-1">Libia Ester Meza Bertel</div>
+        <p class="border-t border-slate-400 pt-1 mb-0 font-medium">Líder Tecno-Pedagógica<br>Maestría TIC UTB</p>
+      </div>
+      <div>
+        <div class="font-serif italic font-bold text-slate-900 text-xs mb-1">Rafael Martínez Rodríguez</div>
+        <p class="border-t border-slate-400 pt-1 mb-0 font-medium">Diseñador Instruccional<br>Maestría TIC UTB</p>
+      </div>
+      <div>
+        <div class="font-serif italic font-bold text-slate-900 text-xs mb-1">David Antonio Lucero Figueroa</div>
+        <p class="border-t border-slate-400 pt-1 mb-0 font-medium">Especialista en Evaluación<br>Docente INEDCI • Ipiales</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .print-container, .print-container * {
+      visibility: visible;
+    }
+    .print-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      border: 4px solid #b45309 !important;
+      background: white !important;
+      color: black !important;
+    }
+  }
+</style>
+
+<script>
+  function setupCertificateGenerator() {
+    const btnGen = document.getElementById('btn-generate-cert');
+    const btnPrint = document.getElementById('btn-print-cert');
+    const btnRefresh = document.getElementById('btn-refresh-score');
+
+    const inName = document.getElementById('cert-name') as HTMLInputElement | null;
+    const outName = document.getElementById('display-student-name');
+    const outScore = document.getElementById('display-cert-score');
+    const outHash = document.getElementById('display-cert-hash');
+
+    function updateScore() {
+      const score = localStorage.getItem('ova_clima_score') || '120';
+      if (outScore) outScore.textContent = `${score} pts`;
+      if (outHash) {
+        const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
+        outHash.textContent = `UTB-INEDCI-${score}-${randomId}`;
+      }
+    }
+
+    btnGen?.addEventListener('click', () => {
+      const name = inName?.value.trim() || 'Estudiante Destacado de Grado 11°';
+      if (outName) outName.textContent = name;
+      updateScore();
+      alert('¡Diploma personalizado generado con éxito! Puedes imprimirlo o guardarlo como PDF.');
+    });
+
+    btnPrint?.addEventListener('click', () => {
+      window.print();
+    });
+
+    btnRefresh?.addEventListener('click', updateScore);
+
+    updateScore();
+  }
+
+  document.addEventListener('DOMContentLoaded', setupCertificateGenerator);
+  setupCertificateGenerator();
+</script>
