@@ -8,102 +8,177 @@ interface Props {
 const { targetId = 'main-content', title = 'esta lección' } = Astro.props;
 ---
 
-<div class="speech-narrator-box not-content my-4 p-3 rounded-xl border border-sky-600/30 bg-sky-950/20 flex flex-wrap items-center justify-between gap-3">
-  <div class="flex items-center gap-2">
-    <span class="text-xl">👩‍🏫</span>
+<div class="speech-narrator-box not-content my-4 p-3.5 rounded-xl border flex flex-wrap items-center justify-between gap-3 shadow-xs">
+  <div class="flex items-center gap-3">
+    <span class="text-2xl" aria-hidden="true">👩‍🏫</span>
     <div>
-      <p class="text-xs font-bold text-sky-400 m-0 uppercase tracking-wider">Lectura Asistida DUA (Web Speech)</p>
-      <p class="text-xs text-slate-300 m-0">Escucha la narración pedagógica de {title}</p>
+      <p class="tts-box-title text-xs font-bold uppercase tracking-wider m-0">Lectura Asistida DUA (Web Speech)</p>
+      <p class="tts-box-desc text-xs font-medium m-0">Escucha la narración pedagógica de {title}</p>
     </div>
   </div>
   <div class="flex items-center gap-2">
-    <button type="button" class="btn-tts-play px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white flex items-center gap-1.5 transition-colors cursor-pointer">
+    <button type="button" class="btn-tts-play px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs">
       <span class="tts-icon">▶</span> <span class="tts-label">Escuchar</span>
     </button>
-    <button type="button" class="btn-tts-stop px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-700 hover:bg-slate-600 text-slate-200 flex items-center gap-1 transition-colors cursor-pointer" style="display:none;">
+    <button type="button" class="btn-tts-stop px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-xs" style="display:none;">
       ⏹ Detener
     </button>
   </div>
 </div>
 
+<style>
+  /* ====== Modo Claro (Por Defecto y [data-theme='light']) ====== */
+  .speech-narrator-box {
+    background-color: #f0f9ff;
+    border: 1px solid #7dd3fc;
+  }
+  .tts-box-title {
+    color: #0369a1;
+  }
+  .tts-box-desc {
+    color: #0f172a;
+  }
+  .btn-tts-play {
+    background-color: #0284c7;
+    color: #ffffff;
+  }
+  .btn-tts-play:hover {
+    background-color: #0369a1;
+  }
+  .btn-tts-stop {
+    background-color: #e2e8f0;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+  }
+  .btn-tts-stop:hover {
+    background-color: #cbd5e1;
+  }
+
+  /* ====== Modo Oscuro ([data-theme='dark']) ====== */
+  :global([data-theme='dark']) .speech-narrator-box {
+    background-color: #0c1e33;
+    border: 1px solid #0369a1;
+  }
+  :global([data-theme='dark']) .tts-box-title {
+    color: #38bdf8;
+  }
+  :global([data-theme='dark']) .tts-box-desc {
+    color: #f1f5f9;
+  }
+  :global([data-theme='dark']) .btn-tts-play {
+    background-color: #0284c7;
+    color: #ffffff;
+  }
+  :global([data-theme='dark']) .btn-tts-play:hover {
+    background-color: #38bdf8;
+    color: #082f49;
+  }
+  :global([data-theme='dark']) .btn-tts-stop {
+    background-color: #334155;
+    color: #f8fafc;
+    border: 1px solid #475569;
+  }
+  :global([data-theme='dark']) .btn-tts-stop:hover {
+    background-color: #475569;
+  }
+
+  /* ====== Respaldo por si el sistema está en Dark y no hay data-theme explícito ====== */
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .speech-narrator-box {
+      background-color: #0c1e33;
+      border: 1px solid #0369a1;
+    }
+    :global(:root:not([data-theme='light'])) .tts-box-title {
+      color: #38bdf8;
+    }
+    :global(:root:not([data-theme='light'])) .tts-box-desc {
+      color: #f1f5f9;
+    }
+    :global(:root:not([data-theme='light'])) .btn-tts-stop {
+      background-color: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+    }
+  }
+</style>
+
 <script>
-  document.querySelectorAll('.speech-narrator-box').forEach((box) => {
-    const playBtn = box.querySelector('.btn-tts-play');
-    const stopBtn = box.querySelector('.btn-tts-stop');
-    const icon = box.querySelector('.tts-icon');
-    const label = box.querySelector('.tts-label');
+  function setupSpeechNarrators() {
+    document.querySelectorAll('.speech-narrator-box:not([data-tts-ready="true"])').forEach((box) => {
+      box.setAttribute('data-tts-ready', 'true');
+      const playBtn = box.querySelector('.btn-tts-play');
+      const stopBtn = box.querySelector('.btn-tts-stop');
+      const icon = box.querySelector('.tts-icon');
+      const label = box.querySelector('.tts-label');
 
-    if (!('speechSynthesis' in window)) {
-      if (box instanceof HTMLElement) box.style.display = 'none';
-      return;
-    }
-
-    let isSpeaking = false;
-
-    function getTextToRead() {
-      // Find main document content, excluding interactive elements and code
-      const article = document.querySelector('.sl-markdown-content') || document.querySelector('article') || document.body;
-      const clone = article.cloneNode(true) as HTMLElement;
-      clone.querySelectorAll('.not-content, script, style, .speech-narrator-box').forEach(el => el.remove());
-      return clone.innerText.slice(0, 5000);
-    }
-
-    playBtn?.addEventListener('click', () => {
-      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-        window.speechSynthesis.pause();
-        if (label) label.textContent = 'Reanudar';
-        if (icon) icon.textContent = '▶';
+      if (!('speechSynthesis' in window)) {
+        if (box instanceof HTMLElement) box.style.display = 'none';
         return;
       }
 
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-        if (label) label.textContent = 'Pausar';
-        if (icon) icon.textContent = '⏸';
-        return;
+      function getTextToRead() {
+        const article = document.querySelector('.sl-markdown-content') || document.querySelector('article') || document.body;
+        const clone = article.cloneNode(true) as HTMLElement;
+        clone.querySelectorAll('.not-content, script, style, .speech-narrator-box').forEach(el => el.remove());
+        return clone.innerText.slice(0, 5000);
       }
 
-      window.speechSynthesis.cancel();
-      const text = getTextToRead();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'es-CO';
-      utterance.rate = 1.0;
+      playBtn?.addEventListener('click', () => {
+        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+          window.speechSynthesis.pause();
+          if (label) label.textContent = 'Reanudar';
+          if (icon) icon.textContent = '▶';
+          return;
+        }
 
-      // Select natural Spanish voice if available
-      const voices = window.speechSynthesis.getVoices();
-      const spanishVoice = voices.find(v => v.lang.startsWith('es'));
-      if (spanishVoice) utterance.voice = spanishVoice;
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+          if (label) label.textContent = 'Pausar';
+          if (icon) icon.textContent = '⏸';
+          return;
+        }
 
-      utterance.onstart = () => {
-        isSpeaking = true;
-        if (label) label.textContent = 'Pausar';
-        if (icon) icon.textContent = '⏸';
-        if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'inline-flex';
-      };
+        window.speechSynthesis.cancel();
+        const text = getTextToRead();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-CO';
+        utterance.rate = 1.0;
 
-      utterance.onend = () => {
-        isSpeaking = false;
+        const voices = window.speechSynthesis.getVoices();
+        const spanishVoice = voices.find(v => v.lang.startsWith('es'));
+        if (spanishVoice) utterance.voice = spanishVoice;
+
+        utterance.onstart = () => {
+          if (label) label.textContent = 'Pausar';
+          if (icon) icon.textContent = '⏸';
+          if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'inline-flex';
+        };
+
+        utterance.onend = () => {
+          if (label) label.textContent = 'Escuchar';
+          if (icon) icon.textContent = '▶';
+          if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
+        };
+
+        utterance.onerror = () => {
+          if (label) label.textContent = 'Escuchar';
+          if (icon) icon.textContent = '▶';
+          if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
+        };
+
+        window.speechSynthesis.speak(utterance);
+      });
+
+      stopBtn?.addEventListener('click', () => {
+        window.speechSynthesis.cancel();
         if (label) label.textContent = 'Escuchar';
         if (icon) icon.textContent = '▶';
         if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
-      };
-
-      utterance.onerror = () => {
-        isSpeaking = false;
-        if (label) label.textContent = 'Escuchar';
-        if (icon) icon.textContent = '▶';
-        if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
-      };
-
-      window.speechSynthesis.speak(utterance);
+      });
     });
+  }
 
-    stopBtn?.addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      isSpeaking = false;
-      if (label) label.textContent = 'Escuchar';
-      if (icon) icon.textContent = '▶';
-      if (stopBtn instanceof HTMLElement) stopBtn.style.display = 'none';
-    });
-  });
+  document.addEventListener('DOMContentLoaded', setupSpeechNarrators);
+  document.addEventListener('astro:page-load', setupSpeechNarrators);
+  setupSpeechNarrators();
 </script>

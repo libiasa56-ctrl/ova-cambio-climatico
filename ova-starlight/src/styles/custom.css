@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 /* Custom theme variables for UTB / INEDCI LMS */
-:root {
-  --sl-color-accent-low: #0f2c3d;
+:root,
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e0f2fe;
   --sl-color-accent: #0284c7;
-  --sl-color-accent-high: #7dd3fc;
+  --sl-color-accent-high: #0369a1;
   --sl-color-white: #0f172a;
   --sl-color-gray-1: #1e293b;
   --sl-color-gray-2: #334155;
   --sl-color-gray-3: #475569;
   --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #94a3b8;
-  --sl-color-gray-6: #cbd5e1;
-  --sl-color-gray-7: #f1f5f9;
+  --sl-color-gray-5: #cbd5e1;
+  --sl-color-gray-6: #f1f5f9;
+  --sl-color-gray-7: #f8fafc;
   --sl-color-black: #ffffff;
 }
 
