@@ -1,0 +1,207 @@
+---
+// WordSearch.astro: Sopa de Letras Interactiva de Ciencias Sociales y Geopolítica Climática
+---
+
+<div class="not-content my-8 p-6 rounded-3xl border border-amber-500/40 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 shadow-2xl word-search-game">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-black rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase tracking-widest">
+          Actividad Lúdica Interactiva
+        </span>
+        <span class="text-xs text-slate-400">Glosario Geopolítico</span>
+      </div>
+      <h3 class="text-xl font-black text-white m-0">Sopa de Letras: Términos Fundamentales del Territorio</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Encuentra los 6 conceptos clave haciendo clic en la primera y última letra de cada palabra</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800 text-amber-400 border border-slate-700">
+        Encontradas: <span id="ws-found-count" class="font-mono text-white">0</span> / 6
+      </div>
+      <button type="button" id="btn-reset-ws" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all cursor-pointer">
+        🔄 Reiniciar
+      </button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+    <!-- Cuadrícula 10x10 de Letras -->
+    <div class="lg:col-span-3 flex justify-center">
+      <div id="wordsearch-grid" class="grid grid-cols-10 gap-1.5 p-3 rounded-2xl bg-slate-950 border border-slate-800 shadow-inner select-none max-w-md w-full">
+        <!-- Generado por JavaScript -->
+      </div>
+    </div>
+
+    <!-- Lista de Palabras -->
+    <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Conceptos a Buscar:</h4>
+      <div class="space-y-2 text-xs" id="word-list">
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="PARAMO">
+          <span>⛰️ PÁRAMO</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="IPIALES">
+          <span>🏫 IPIALES</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="JUSTICIA">
+          <span>⚖️ JUSTICIA</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="SOLAR">
+          <span>☀️ SOLAR</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="IPCC">
+          <span>🔬 IPCC</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+        <div class="ws-word flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300" data-word="DEUDA">
+          <span>📜 DEUDA</span> <span class="ws-status text-[10px] text-slate-500 font-bold">Pendiente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner de Éxito -->
+  <div id="ws-win-box" class="hidden mt-6 p-4 rounded-2xl bg-gradient-to-r from-amber-950 to-slate-900 border border-amber-500/60 text-center animate-fade-in">
+    <span class="text-3xl block mb-1">🌟</span>
+    <h4 class="text-sm font-extrabold text-amber-300 m-0">¡SOPA DE LETRAS COMPLETADA!</h4>
+    <p class="text-xs text-slate-300 mt-1 mb-2">Dominas la terminología clave del DBA de Ciencias Sociales y del territorio.</p>
+    <div class="inline-block px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-200 text-xs font-bold">
+      ⭐ +25 Puntos acreditados
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupWordSearch() {
+    // Matriz 10x10 pre-diseñada con las 6 palabras
+    // PARAMO (fila 0: 0,0 a 0,5)
+    // IPIALES (fila 2: 2,1 a 2,7)
+    // JUSTICIA (fila 4: 4,1 a 4,8)
+    // SOLAR (vertical: col 8, filas 0 a 4)
+    // IPCC (vertical: col 0, filas 4 a 7)
+    // DEUDA (fila 8: 8,2 a 8,6)
+    const gridMatrix = [
+      ['P','A','R','A','M','O','E','T','S','Z'],
+      ['B','X','C','V','N','M','Q','W','O','R'],
+      ['K','I','P','I','A','L','E','S','L','Y'],
+      ['T','H','F','D','S','A','L','K','A','P'],
+      ['I','J','U','S','T','I','C','I','A','Q'],
+      ['P','R','E','W','Q','N','V','C','X','Z'],
+      ['C','O','L','O','M','B','I','A','N','D'],
+      ['C','A','U','S','A','S','G','E','I','O'],
+      ['M','N','D','E','U','D','A','F','G','H'],
+      ['L','I','M','P','I','A','S','T','I','C']
+    ];
+
+    const words = [
+      { name: 'PARAMO', cells: ['0-0','0-1','0-2','0-3','0-4','0-5'] },
+      { name: 'IPIALES', cells: ['2-1','2-2','2-3','2-4','2-5','2-6','2-7'] },
+      { name: 'JUSTICIA', cells: ['4-1','4-2','4-3','4-4','4-5','4-6','4-7','4-8'] },
+      { name: 'SOLAR', cells: ['0-8','1-8','2-8','3-8','4-8'] },
+      { name: 'IPCC', cells: ['4-0','5-0','6-0','7-0'] },
+      { name: 'DEUDA', cells: ['8-2','8-3','8-4','8-5','8-6'] }
+    ];
+
+    const gridEl = document.getElementById('wordsearch-grid');
+    const countEl = document.getElementById('ws-found-count');
+    const winBox = document.getElementById('ws-win-box');
+    const btnReset = document.getElementById('btn-reset-ws');
+
+    if (!gridEl) return;
+
+    let selectedCells: string[] = [];
+    let foundWords: string[] = [];
+
+    function renderGrid() {
+      gridEl!.innerHTML = '';
+      selectedCells = [];
+      foundWords = [];
+      if (countEl) countEl.textContent = '0';
+      if (winBox) winBox.classList.add('hidden');
+
+      document.querySelectorAll('.ws-word').forEach((w) => {
+        w.classList.remove('bg-emerald-950', 'border-emerald-500/60', 'line-through', 'opacity-70');
+        const st = w.querySelector('.ws-status');
+        if (st) {
+          st.textContent = 'Pendiente';
+          st.className = 'ws-status text-[10px] text-slate-500 font-bold';
+        }
+      });
+
+      for (let r = 0; r < 10; r++) {
+        for (let c = 0; c < 10; c++) {
+          const letter = gridMatrix[r][c];
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-sm font-extrabold rounded-xl bg-slate-900 border border-slate-700/80 text-slate-200 hover:bg-slate-800 transition-all cursor-pointer flex items-center justify-center';
+          btn.setAttribute('data-pos', `${r}-${c}`);
+          btn.textContent = letter;
+
+          btn.addEventListener('click', () => {
+            const pos = `${r}-${c}`;
+            if (btn.classList.contains('bg-emerald-600')) return; // Ya resuelta
+
+            if (selectedCells.includes(pos)) {
+              selectedCells = selectedCells.filter(p => p !== pos);
+              btn.classList.remove('bg-amber-500', 'text-slate-950', 'border-amber-300');
+            } else {
+              selectedCells.push(pos);
+              btn.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-300');
+            }
+
+            checkSelection();
+          });
+
+          gridEl!.appendChild(btn);
+        }
+      }
+    }
+
+    function checkSelection() {
+      words.forEach((w) => {
+        if (foundWords.includes(w.name)) return;
+
+        // Comprobar si todas las celdas de la palabra están seleccionadas
+        const allMatch = w.cells.every(pos => selectedCells.includes(pos));
+        if (allMatch) {
+          foundWords.push(w.name);
+
+          // Colorear permanentemente las celdas
+          w.cells.forEach((pos) => {
+            const btn = gridEl?.querySelector(`[data-pos="${pos}"]`);
+            if (btn) {
+              btn.className = 'w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-sm font-extrabold rounded-xl bg-emerald-600 text-white border-2 border-emerald-400 flex items-center justify-center transition-all';
+            }
+          });
+
+          // Actualizar lista
+          const wordRow = document.querySelector(`.ws-word[data-word="${w.name}"]`);
+          if (wordRow) {
+            wordRow.classList.add('bg-emerald-950', 'border-emerald-500/60', 'line-through', 'opacity-70');
+            const st = wordRow.querySelector('.ws-status');
+            if (st) {
+              st.textContent = '¡Encontrada!';
+              st.className = 'ws-status text-[10px] text-emerald-400 font-bold';
+            }
+          }
+
+          if (countEl) countEl.textContent = foundWords.length.toString();
+
+          // Remover celdas de la selección activa
+          selectedCells = selectedCells.filter(pos => !w.cells.includes(pos));
+
+          if (foundWords.length === words.length) {
+            if (winBox) winBox.classList.remove('hidden');
+            const currentScore = parseInt(localStorage.getItem('ova_clima_score') || '0', 10);
+            localStorage.setItem('ova_clima_score', (currentScore + 25).toString());
+          }
+        }
+      });
+    }
+
+    btnReset?.addEventListener('click', renderGrid);
+    renderGrid();
+  }
+
+  document.addEventListener('DOMContentLoaded', setupWordSearch);
+  document.addEventListener('astro:page-load', setupWordSearch);
+  setupWordSearch();
+</script>

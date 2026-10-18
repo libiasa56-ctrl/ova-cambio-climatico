@@ -1,0 +1,220 @@
+---
+// ActorMatrix.astro: Matriz Visual Interactiva de Actores Geopolíticos y Corporativos
+---
+
+<div class="not-content my-8 p-6 rounded-3xl border border-sky-500/40 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 shadow-2xl actor-matrix">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="px-2.5 py-0.5 text-xs font-black rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 uppercase tracking-widest">
+          Explorador de Actores
+        </span>
+        <span class="text-xs text-slate-400">¿Quién tiene el poder?</span>
+      </div>
+      <h3 class="text-xl font-black text-white m-0">Matriz de Actores Globales: Intereses vs. Responsabilidad</h3>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Haz clic en cada actor para contrastar su discurso oficial con sus emisiones empíricas</p>
+    </div>
+    <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800 text-sky-400 border border-slate-700">
+      5 Actores Clave Mapeados
+    </div>
+  </div>
+
+  <!-- Cuadrícula de Actores -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+    <!-- Actor 1: EE.UU. & Bloque Occidental -->
+    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-sky-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="usa">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-2xl shadow-inner">
+          🏭
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white m-0">Estados Unidos</h4>
+          <span class="text-[11px] text-blue-400 font-semibold">Mayor Emisor Histórico Acumulado</span>
+        </div>
+      </div>
+      <div class="space-y-1.5 text-xs text-slate-300">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Emisiones Históricas:</span>
+          <strong class="text-rose-400 font-mono">24.5% Global</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Emisión Per Cápita:</span>
+          <strong class="text-amber-300 font-mono">14.9 t CO2/año</strong>
+        </div>
+      </div>
+      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-sky-300 font-semibold flex items-center justify-between">
+        <span>Ver Interés Oculto</span> <span>➔</span>
+      </div>
+    </div>
+
+    <!-- Actor 2: China & Emergentes -->
+    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-amber-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="china">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-2xl shadow-inner">
+          🏗️
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white m-0">China e India</h4>
+          <span class="text-[11px] text-amber-400 font-semibold">Fábrica Manufacturera Mundial</span>
+        </div>
+      </div>
+      <div class="space-y-1.5 text-xs text-slate-300">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Emisiones Anuales:</span>
+          <strong class="text-rose-400 font-mono">~30% Actual</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Emisión Per Cápita:</span>
+          <strong class="text-emerald-300 font-mono">8.0 t CO2/año</strong>
+        </div>
+      </div>
+      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-amber-300 font-semibold flex items-center justify-between">
+        <span>Ver Interés Oculto</span> <span>➔</span>
+      </div>
+    </div>
+
+    <!-- Actor 3: Países Andinos / Colombia / Nariño -->
+    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-emerald-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="narino">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-2xl shadow-inner">
+          🏔️
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white m-0">Colombia y Nariño</h4>
+          <span class="text-[11px] text-emerald-400 font-semibold">Custodios de Páramos y Agua</span>
+        </div>
+      </div>
+      <div class="space-y-1.5 text-xs text-slate-300">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Emisiones Globales:</span>
+          <strong class="text-emerald-400 font-mono">&lt; 0.6% Anual</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Vulnerabilidad:</span>
+          <strong class="text-rose-400 font-mono">Crítica (Glaciares)</strong>
+        </div>
+      </div>
+      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-emerald-300 font-semibold flex items-center justify-between">
+        <span>Ver Reclamo Territorial</span> <span>➔</span>
+      </div>
+    </div>
+
+    <!-- Actor 4: Multinacionales Petroleras -->
+    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-purple-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="oil">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-2xl shadow-inner">
+          🛢️
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white m-0">Grandes Petroleras</h4>
+          <span class="text-[11px] text-purple-400 font-semibold">Las 'Carbon Majors'</span>
+        </div>
+      </div>
+      <div class="space-y-1.5 text-xs text-slate-300">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Responsabilidad:</span>
+          <strong class="text-rose-400 font-mono">71% de Emisiones</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Estrategia:</span>
+          <strong class="text-amber-300 font-mono">Greenwashing</strong>
+        </div>
+      </div>
+      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-purple-300 font-semibold flex items-center justify-between">
+        <span>Ver Interés Oculto</span> <span>➔</span>
+      </div>
+    </div>
+
+    <!-- Actor 5: Comunidades Indígenas y Juventud -->
+    <div class="actor-card p-4 rounded-2xl border border-slate-700 bg-slate-800/80 hover:border-teal-400 hover:bg-slate-800 transition-all cursor-pointer shadow-lg" data-actor="community">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-2xl shadow-inner">
+          🌿
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white m-0">Comunidades & Jóvenes</h4>
+          <span class="text-[11px] text-teal-400 font-semibold">Defensa Intergeneracional</span>
+        </div>
+      </div>
+      <div class="space-y-1.5 text-xs text-slate-300">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Territorios Protegidos:</span>
+          <strong class="text-emerald-400 font-mono">80% Biodiversidad</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Exigencia:</span>
+          <strong class="text-sky-300 font-mono">Justicia Climática</strong>
+        </div>
+      </div>
+      <div class="mt-3 pt-2.5 border-t border-slate-700/60 text-[11px] text-teal-300 font-semibold flex items-center justify-between">
+        <span>Ver Propuesta</span> <span>➔</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel Desplegable de Detalles del Actor Seleccionado -->
+  <div id="actor-detail-box" class="p-5 rounded-2xl bg-slate-950 border border-slate-700 text-slate-200">
+    <div class="flex items-center justify-between mb-3">
+      <h4 id="actor-detail-title" class="text-base font-bold text-sky-400 m-0">Selecciona un actor arriba para ver su expediente</h4>
+      <span id="actor-detail-tag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 uppercase">Expediente</span>
+    </div>
+    <p id="actor-detail-text" class="text-xs leading-relaxed text-slate-300 m-0">
+      Cada actor desempeña un rol desigual en la economía del carbono. Al hacer clic en las tarjetas podrás contrastar sus discursos de relaciones públicas frente a sus datos reales de extracción e impacto territorial.
+    </p>
+  </div>
+</div>
+
+<script>
+  function setupActorMatrix() {
+    const details: Record<string, { title: string; tag: string; text: string }> = {
+      usa: {
+        title: 'Estados Unidos y Bloque Industrializado Histórico',
+        tag: 'Deuda Ecológica del Norte',
+        text: 'Aunque solo representan el 4% de la población mundial, consumen desproporcionadamente recursos y han emitido casi un cuarto de todo el CO2 histórico. Su estrategia en la COP es defender patentes privadas de tecnologías limpias y condicionar el financiamiento a préstamos bancarios en vez de transferencias directas no reembolsables.'
+      },
+      china: {
+        title: 'China e India: Dilema del Desarrollo Contemporáneo',
+        tag: 'Fábrica del Planeta',
+        text: 'Son los mayores emisores anuales hoy porque fabrican los bienes y tecnologías que consume el mundo occidental. Argumentan con legitimidad histórica que su emisión acumulada por habitante es muy inferior a la de EE.UU. o Europa, y exigen plazos más amplios para desmantelar sus centrales de carbón.'
+      },
+      narino: {
+        title: 'Colombia, Cuenca del Guáitara y Páramos de Ipiales',
+        tag: 'Víctima y Protector del Territorio',
+        text: 'Con una huella de carbono inferior al 0.6%, Colombia soporta desastres extremos: sequías en los páramos de Nariño que abastecen de agua potable a Ipiales y Túquerres. La exigencia ciudadana es la no explotación de hidrocarburos en zonas de reserva hídrica y la financiación internacional para la preservación de los bosques andinos.'
+      },
+      oil: {
+        title: 'Grandes Corporaciones de Hidrocarburos (Carbon Majors)',
+        tag: 'Interés Extractivista',
+        text: 'Solo 100 empresas petroleras y carboníferas son responsables del 71% de las emisiones industriales mundiales desde 1988. Gastan millones de dólares en publicidad engañosa (greenwashing) promoviendo compensaciones forestales para no cesar la extracción ni desmantelar sus refinerías.'
+      },
+      community: {
+        title: 'Pueblos Originarios, Campesinos y Juventud',
+        tag: 'Soberanía y Resistencia',
+        text: 'Los pueblos indígenas y comunidades rurales protegen el 80% de la biodiversidad remanente en el planeta. Demandan que la transición energética no sea un negocio corporativo de despojo territorial, sino un proceso de soberanía energética comunitaria donde la energía sea un bien común y no una mercancía especulativa.'
+      }
+    };
+
+    const cards = document.querySelectorAll('.actor-card');
+    const titleEl = document.getElementById('actor-detail-title');
+    const tagEl = document.getElementById('actor-detail-tag');
+    const textEl = document.getElementById('actor-detail-text');
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const actor = card.getAttribute('data-actor') || '';
+        cards.forEach(c => (c as HTMLElement).classList.remove('ring-2', 'ring-sky-400', 'bg-slate-750'));
+        card.classList.add('ring-2', 'ring-sky-400');
+
+        if (details[actor]) {
+          if (titleEl) titleEl.textContent = details[actor].title;
+          if (tagEl) tagEl.textContent = details[actor].tag;
+          if (textEl) textEl.textContent = details[actor].text;
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupActorMatrix);
+  document.addEventListener('astro:page-load', setupActorMatrix);
+  setupActorMatrix();
+</script>
