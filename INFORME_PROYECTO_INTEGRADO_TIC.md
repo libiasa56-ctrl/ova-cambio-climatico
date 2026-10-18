@@ -201,8 +201,16 @@ A partir de la retroalimentación obtenida, el Grupo 3 ejecutó **4 modificacion
 
 ## 6. PASO 6: ELABORACIÓN DE LA PRESENTACIÓN INTERACTIVA (Criterio 4: 0.625 / 0.625 pts)
 
-Para la sustentación del proyecto, se programó una **Presentación Interactiva Web de Última Generación** alojada en [`presentacion.html`](file:///c:/Users/dell/ova-cambio-climatico/presentacion.html). Dicha presentación incluye **10 elementos multimedia y recursos visuales interactivos** (superando la exigencia de 8 elementos):
+Para la sustentación y socialización del proyecto se elaboraron dos canales interactivos de máxima calidad:
 
+### 6.1. Presentación Nativa Oficial en Canva
+Creada e integrada de forma 100% nativa con herramientas visuales y pedagógicas avanzadas de Canva:
+- 🎨 **Enlace de Edición y Colaboración en Canva:** [Editar en Canva](https://www.canva.com/d/md1HzmgUiy1fpRU) *(Enlace corto: https://canva.link/2bh199qhpdrpbwl)*
+- 👁️ **Enlace de Visualización Interactiva Pública en Canva:** [Ver Presentación en Canva](https://www.canva.com/d/-QKBJ7vGDylsgV2)
+- 📊 **Estructura Didáctica:** 11 diapositivas en alta resolución (1920x1080) que resumen la matriz RACI, los 7 pasos de integración TIC, objetivos Bloom, marco UTB 2024, resultados de la prueba piloto (Escalas TAM/SUS) y matriz de mejora continua.
+
+### 6.2. Presentación Web Interactiva de Última Generación
+Alojada en [`presentacion.html`](file:///c:/Users/dell/ova-cambio-climatico/presentacion.html), la cual incluye **10 elementos multimedia y recursos interactivos**:
 1. 🔊 **Narrador por Voz Inteligente (TTS - Web Speech API):** Botón accesible en la cabecera que lee sintéticamente el contenido de cada diapositiva con cadencia pedagógica.
 2. 📊 **Gráfico de Barras Interactivo (Chart.js):** Visualización interactiva de las dimensiones de usabilidad de la prueba piloto (Escala SUS/TAM).
 3. 📈 **Gráfico de Radar Comparativo (Chart.js):** Demostración empírica de la ganancia de aprendizaje (Pre-Test vs. Post-Test) en 5 competencias ciudadanas y analíticas.
@@ -218,11 +226,12 @@ Para la sustentación del proyecto, se programó una **Presentación Interactiva
 
 ## 7. PASO 7: FORMATO DE ENTREGA Y ACCESIBILIDAD (Criterio 5: 0.625 / 0.625 pts)
 
-El producto de aprendizaje fue preparado bajo los más rigurosos estándares de interoperabilidad y compatibilidad técnica:
-- **Tecnología Estándar Universal:** HTML5 semántico, CSS3 moderno con variables y CSS Grid/Flexbox, JavaScript ES6 nativo.
-- **Sin Dependencias de Servidor:** Funciona al 100% tanto en servidores web (*online*) como en disco local (*offline*) haciendo doble clic sobre los archivos `index.html` y `presentacion.html`.
-- **Accesibilidad y Compatibilidad Móvil:** Cumplimiento de pautas WCAG 2.1 nivel AA (contraste superior a 4.5:1, etiquetas ARIA, navegación por teclado completa con flechas, espacio y tecla F para pantalla completa).
-- **Exportación a PDF:** Hoja de estilos de impresión `@media print` optimizada para exportar la presentación y el informe a documento PDF con un solo clic (`Ctrl + P` o botón "PDF").
+El producto de aprendizaje fue preparado bajo los más rigurosos estándares de interoperabilidad y compatibilidad técnica en múltiples formatos accesibles:
+- **Plataforma Canva Oficial:** Enlaces públicos directos de visualización y edición en la nube de Canva.
+- **Formato Descargable PDF Alta Calidad:** [Presentacion_Proyecto_TIC_UTB.pdf](file:///c:/Users/dell/ova-cambio-climatico/Presentacion_Proyecto_TIC_UTB.pdf) exportado nativamente desde Canva.
+- **Formato Presentación Editable PowerPoint (PPTX):** [Presentacion_Proyecto_TIC_UTB.pptx](file:///c:/Users/dell/ova-cambio-climatico/Presentacion_Proyecto_TIC_UTB.pptx) exportado nativamente desde Canva.
+- **Repositorio Git y Código Abierto:** Versión web universal en HTML5/CSS3/JS publicada en [GitHub Repository](https://github.com/libiasa56-ctrl/ova-cambio-climatico.git).
+- **Accesibilidad y Compatibilidad Móvil:** Cumplimiento de pautas WCAG 2.1 nivel AA (contraste superior a 4.5:1, etiquetas ARIA, navegación por teclado completa).
 
 ---
 
