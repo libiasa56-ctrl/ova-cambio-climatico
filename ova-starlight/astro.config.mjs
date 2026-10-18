@@ -31,6 +31,7 @@ export default defineConfig({
           label: '01. Fundamentos Curriculares',
           items: [
             { label: 'Contexto Escolar & DBA 11.°', slug: 'fundamentos/contexto-dba' },
+            { label: 'Unidades de Maestría UTB', slug: 'fundamentos/unidades-utb' },
             { label: 'Rúbricas Analíticas de Desempeño', slug: 'fundamentos/rubrica-formativa' },
           ],
         },

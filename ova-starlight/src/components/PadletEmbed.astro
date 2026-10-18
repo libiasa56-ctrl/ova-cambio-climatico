@@ -11,39 +11,39 @@ const {
 } = Astro.props;
 ---
 
-<div class="not-content my-6 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[#2e2e32]">
+<div class="not-content my-6 p-5 rounded-2xl border border-sky-500/30 bg-slate-900/60 shadow-xl">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-700/60">
     <div>
-      <span class="inline-block px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider mb-1">
+      <span class="inline-block px-2.5 py-0.5 text-xs font-bold rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-1">
         Actividad Colaborativa en Vivo
       </span>
       <h3 class="text-lg font-bold text-white m-0">Mural de Expedientes: ¿Quién está detrás del calentamiento global?</h3>
-      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Prof. David Antonio Lucero Figueroa • Grado 11-2 • INEDCI</p>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Prof. David Antonio Lucero Figueroa • Grado 11-2 • INEDCI</p>
     </div>
     <div class="flex items-center gap-2">
-      <a href={earthUrl} target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 text-xs font-bold rounded-xl bg-[#252529] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] flex items-center gap-1.5 transition-all">
+      <a href={earthUrl} target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 shadow transition-all">
         <span>🌍</span> Abrir Google Earth
       </a>
-      <a href={padletUrl} target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 text-xs font-bold rounded-xl bg-[#646cff] hover:bg-[#747bff] text-white flex items-center gap-1.5 shadow-sm transition-all">
+      <a href={padletUrl} target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 text-xs font-bold rounded-xl bg-sky-600 hover:bg-sky-500 text-white flex items-center gap-1.5 shadow transition-all">
         <span>📌</span> Abrir Padlet Completo
       </a>
     </div>
   </div>
 
   <!-- Pasos didácticos -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 text-xs text-[#ebebf5]">
-    <div class="p-3 rounded-xl bg-[#252529] border border-[#2e2e32]">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 text-xs text-slate-200">
+    <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
       <strong class="text-emerald-400 block mb-1">Paso 1: Exploración Territorial (Google Earth)</strong>
       Abre el mapa 3D y localiza la región o país del actor asignado (EE.UU., China, Unión Europea, OPEP o Corporaciones). Observa la infraestructura extractiva y de transporte.
     </div>
-    <div class="p-3 rounded-xl bg-[#252529] border border-[#2e2e32]">
-      <strong class="text-indigo-400 block mb-1">Paso 2: Publicación del Expediente (Padlet)</strong>
+    <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+      <strong class="text-sky-400 block mb-1">Paso 2: Publicación del Expediente (Padlet)</strong>
       En la columna correspondiente, crea tu nota con: (a) Fuentes verificables, (b) Emisiones acumuladas vs actuales, y (c) Relación con decisiones políticas.
     </div>
   </div>
 
   <!-- Contenedor embebido interactivo -->
-  <div class="relative w-full rounded-xl overflow-hidden border border-[#2e2e32] bg-[#252529] aspect-[16/10] min-h-[500px]">
+  <div class="relative w-full rounded-xl overflow-hidden border border-slate-700 bg-slate-950 aspect-[16/10] min-h-[500px]">
     <iframe
       src={padletUrl}
       class="w-full h-full border-0"
@@ -53,7 +53,7 @@ const {
     ></iframe>
   </div>
   
-  <p class="text-center text-[11px] text-[#a1a1aa] mt-3 mb-0">
-    Si el tablero tarda en cargar en tu dispositivo, puedes interactuar directamente haciendo clic en el botón <strong class="text-white">«Abrir Padlet Completo»</strong>.
+  <p class="text-center text-[11px] text-slate-400 mt-3 mb-0">
+    Si el tablero tarda en cargar en tu dispositivo, puedes interactuar directamente haciendo clic en el botón <strong>«Abrir Padlet Completo»</strong>.
   </p>
 </div>

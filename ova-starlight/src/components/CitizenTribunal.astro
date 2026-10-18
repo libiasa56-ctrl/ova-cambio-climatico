@@ -2,19 +2,19 @@
 // CitizenTribunal.astro: Generador y Constructor Guiado de Alegatos Ciudadanos (Estrategia 6)
 ---
 
-<div class="not-content my-8 p-6 rounded-xl border border-[#2e2e32] bg-[#202127] shadow-sm citizen-tribunal">
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#2e2e32]">
+<div class="not-content my-8 p-6 rounded-2xl border border-purple-500/30 bg-slate-900/90 shadow-2xl citizen-tribunal">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-700/80">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
+        <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
           Evaluación Auténtica y Deliberación
         </span>
-        <span class="text-xs text-[#a1a1aa]">Ciencias Sociales y Competencias Ciudadanas 11°</span>
+        <span class="text-xs text-slate-400">Ciencias Sociales y Competencias Ciudadanas 11°</span>
       </div>
       <h3 class="text-xl font-bold text-white m-0">Constructor de Alegatos: Tribunal Ciudadano del Clima</h3>
-      <p class="text-xs text-[#ebebf5] mt-1 mb-0">Estructura un alegato argumentado con base en evidencias fácticas para sustentar ante el Tribunal</p>
+      <p class="text-xs text-slate-300 mt-1 mb-0">Estructura un alegato argumentado con base en evidencias fácticas para sustentar ante el Tribunal</p>
     </div>
-    <div class="text-xs text-indigo-400 font-bold bg-[#252529] px-3 py-1.5 rounded-xl border border-[#2e2e32]">
+    <div class="text-xs text-purple-400 font-bold bg-purple-950/60 px-3 py-1.5 rounded-lg border border-purple-500/30">
       ⚖️ Sala de Deliberación INEDCI
     </div>
   </div>
@@ -23,12 +23,12 @@
     <!-- Rol y Estudiante -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label for="student-name" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Nombre del Estudiante / Equipo:</label>
-        <input type="text" id="student-name" placeholder="Ej. Equipo 3 - Grado 11-2" class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]" required />
+        <label for="student-name" class="block text-xs font-bold text-slate-300 uppercase mb-1">Nombre del Estudiante / Equipo:</label>
+        <input type="text" id="student-name" placeholder="Ej. Equipo 3 - Grado 11-2" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" required />
       </div>
       <div>
-        <label for="actor-role" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Delegación o Actor Representado:</label>
-        <select id="actor-role" class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]">
+        <label for="actor-role" class="block text-xs font-bold text-slate-300 uppercase mb-1">Delegación o Actor Representado:</label>
+        <select id="actor-role" class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
           <option value="Comunidades Afectadas de Nariño">Comunidades y Jóvenes de Nariño (Defensa del Territorio)</option>
           <option value="Sur Global y Países Vulnerables">Delegación del Sur Global (Justicia Climática)</option>
           <option value="Comunidad Científica Independiente">Científicos del Clima (Evidencia IPCC)</option>
@@ -39,51 +39,51 @@
 
     <!-- Tesis -->
     <div>
-      <label for="thesis-input" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Tesis Principal (Postura Central):</label>
-      <input type="text" id="thesis-input" placeholder="Ej. La transición energética debe ser justa, descentralizada y financiada por quienes acumularon la mayor deuda ecológica histórica..." class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]" required />
+      <label for="thesis-input" class="block text-xs font-bold text-slate-300 uppercase mb-1">Tesis Principal (Postura Central):</label>
+      <input type="text" id="thesis-input" placeholder="Ej. La transición energética debe ser justa, descentralizada y financiada por quienes acumularon la mayor deuda ecológica histórica..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" required />
     </div>
 
     <!-- 3 Argumentos -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
       <div>
-        <label for="arg-1" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Argumento 1 (Causal/Histórico):</label>
-        <textarea id="arg-1" rows="3" placeholder="Evidencia de emisiones acumuladas y responsabilidades históricas diferenciadas..." class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]"></textarea>
+        <label for="arg-1" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 1 (Causal/Histórico):</label>
+        <textarea id="arg-1" rows="3" placeholder="Evidencia de emisiones acumuladas y responsabilidades históricas diferenciadas..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
       </div>
       <div>
-        <label for="arg-2" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Argumento 2 (Crítica al Greenwashing):</label>
-        <textarea id="arg-2" rows="3" placeholder="Por qué las falsas soluciones y compensaciones voluntarias no detienen la crisis..." class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]"></textarea>
+        <label for="arg-2" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 2 (Crítica al Greenwashing):</label>
+        <textarea id="arg-2" rows="3" placeholder="Por qué las falsas soluciones y compensaciones voluntarias no detienen la crisis..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
       </div>
       <div>
-        <label for="arg-3" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Argumento 3 (Viabilidad Territorial):</label>
-        <textarea id="arg-3" rows="3" placeholder="Propuesta concreta de energía limpia protegiendo el empleo local en Ipiales/Nariño..." class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]"></textarea>
+        <label for="arg-3" class="block text-xs font-bold text-slate-300 uppercase mb-1">Argumento 3 (Viabilidad Territorial):</label>
+        <textarea id="arg-3" rows="3" placeholder="Propuesta concreta de energía limpia protegiendo el empleo local en Ipiales/Nariño..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
       </div>
     </div>
 
     <!-- Contraargumento -->
     <div>
-      <label for="counter-input" class="block text-xs font-bold text-[#a1a1aa] uppercase mb-1">Contraargumento Refutado:</label>
-      <input type="text" id="counter-input" placeholder="Aunque algunos actores sostienen que la transición generará desempleo masivo, la evidencia muestra que las renovables generan 3 veces más empleos locales..." class="w-full px-3 py-2 text-xs rounded-xl bg-[#252529] border border-[#2e2e32] text-white focus:outline-none focus:border-[#646cff]" />
+      <label for="counter-input" class="block text-xs font-bold text-slate-300 uppercase mb-1">Contraargumento Refutado:</label>
+      <input type="text" id="counter-input" placeholder="Aunque algunos actores sostienen que la transición generará desempleo masivo, la evidencia muestra que las renovables generan 3 veces más empleos locales..." class="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-purple-500" />
     </div>
 
     <div class="flex gap-2">
-      <button type="button" id="btn-generate-plea" class="px-4 py-2 text-xs font-bold rounded-xl bg-[#646cff] hover:bg-[#747bff] text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm">
+      <button type="button" id="btn-generate-plea" class="px-4 py-2 text-xs font-bold rounded-xl bg-purple-600 hover:bg-purple-500 text-white flex items-center gap-1.5 transition-all cursor-pointer">
         📜 Generar Documento del Alegato
       </button>
-      <button type="button" id="btn-fill-sample" class="px-3 py-2 text-xs font-semibold rounded-xl bg-[#252529] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
+      <button type="button" id="btn-fill-sample" class="px-3 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all cursor-pointer">
         ⚡ Cargar Ejemplo Modelo
       </button>
     </div>
   </form>
 
   <!-- Vista previa generada -->
-  <div id="plea-output-box" class="hidden p-5 rounded-xl bg-[#252529] border border-[#2e2e32] text-[#ebebf5]">
-    <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#2e2e32]">
-      <strong class="text-[#646cff] text-sm">MEMORIAL DE ALEGATO FORMAL ANTE EL TRIBUNAL CLIMÁTICO</strong>
-      <button type="button" id="btn-copy-plea" class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#202127] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-white flex items-center gap-1 transition-all cursor-pointer">
+  <div id="plea-output-box" class="hidden p-5 rounded-xl bg-slate-950 border border-purple-500/40 text-slate-200">
+    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+      <strong class="text-purple-400 text-sm">MEMORIAL DE ALEGATO FORMAL ANTE EL TRIBUNAL CLIMÁTICO</strong>
+      <button type="button" id="btn-copy-plea" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white flex items-center gap-1 transition-all cursor-pointer">
         📋 Copiar Alegato
       </button>
     </div>
-    <div id="plea-text" class="text-xs leading-relaxed space-y-2 whitespace-pre-line font-serif text-[#ebebf5]"></div>
+    <div id="plea-text" class="text-xs leading-relaxed space-y-2 whitespace-pre-line font-serif text-slate-300"></div>
   </div>
 </div>
 
