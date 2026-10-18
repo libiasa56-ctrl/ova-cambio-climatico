@@ -23,13 +23,13 @@
   --sl-color-gray-5: #3f3f46;
   --sl-color-gray-6: #27272a;
   --sl-color-gray-7: #202127;
-  --sl-color-black: #161618;
+  --sl-color-black: #1b1b1f;
 
   /* Global Theme Backgrounds */
   --sl-color-bg: #1b1b1f;
   --sl-color-bg-nav: rgba(27, 27, 31, 0.85);
   --sl-color-bg-sidebar: #1b1b1f;
-  --sl-color-bg-inline-code: #242429;
+  --sl-color-bg-inline-code: #252529;
   --sl-color-hairline: #2e2e32;
   --sl-color-text: #ebebf5;
   --sl-color-text-accent: #646cff;
@@ -40,7 +40,7 @@
   --vp-c-brand-active: #535bf2;
   --vp-c-bg: #1b1b1f;
   --vp-c-bg-soft: #202127;
-  --vp-c-bg-mute: #242429;
+  --vp-c-bg-mute: #252529;
   --vp-c-border: #2e2e32;
   --vp-c-border-hover: #747bff;
   --vp-c-text-1: #ffffff;
@@ -129,33 +129,33 @@ header.header {
 }
 
 /* ==========================================================================
-   VitePress Hero Section
+   VitePress Hero Section (Fondo natural de la plantilla sin cajas oscuras)
    ========================================================================== */
 .hero {
   position: relative;
-  border-radius: 16px;
-  padding: 3.5rem 2rem !important;
-  background: radial-gradient(circle at 50% 0%, rgba(100, 108, 255, 0.18) 0%, rgba(27, 27, 31, 0) 70%),
-              linear-gradient(180deg, #202127 0%, #1b1b1f 100%) !important;
-  border: 1px solid var(--vp-c-border) !important;
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5) !important;
-  margin-bottom: 2.5rem !important;
+  border-radius: 0 !important;
+  padding: 2.5rem 0 1.5rem 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .hero h1,
 .hero [data-page-title] {
-  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
   font-weight: 800 !important;
   line-height: 1.15 !important;
-  background: linear-gradient(135deg, #ffffff 40%, #9499ff 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: initial !important;
   margin-bottom: 1rem !important;
 }
 
 .hero .tagline {
   color: var(--vp-c-text-2) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.15rem !important;
   line-height: 1.6 !important;
   max-width: 65ch !important;
 }
@@ -181,7 +181,7 @@ header.header {
 }
 
 .sl-link-button.secondary {
-  background: var(--vp-c-bg-mute) !important;
+  background: var(--vp-c-bg-soft) !important;
   color: var(--vp-c-text-1) !important;
   font-weight: 600 !important;
   border-radius: 24px !important;
@@ -191,9 +191,9 @@ header.header {
 }
 
 .sl-link-button.secondary:hover {
-  background: var(--vp-c-bg-soft) !important;
+  background: #252529 !important;
   border-color: var(--vp-c-brand-hover) !important;
-  color: var(--vp-c-brand-hover) !important;
+  color: #ffffff !important;
   transform: translateY(-2px) !important;
 }
 

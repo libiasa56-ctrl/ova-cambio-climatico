@@ -15,10 +15,10 @@
       <p class="text-xs text-[#ebebf5] mt-1 mb-0">Encuentra las 4 parejas conceptuales volteando las cartas interactivas</p>
     </div>
     <div class="flex items-center gap-3">
-      <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-[#161618] text-indigo-400 border border-[#2e2e32]">
+      <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-[#252529] text-indigo-400 border border-[#2e2e32]">
         Intentos: <span id="mem-moves" class="font-mono text-white">0</span>
       </div>
-      <button type="button" id="btn-reset-memory" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-[#161618] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
+      <button type="button" id="btn-reset-memory" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-[#252529] hover:bg-[#252529] hover:border-[#646cff] border border-[#2e2e32] text-[#ebebf5] transition-all cursor-pointer">
         🔄 Reiniciar
       </button>
     </div>
@@ -30,7 +30,7 @@
   </div>
 
   <!-- Notificación de Victoria -->
-  <div id="memory-win-box" class="hidden p-5 rounded-xl bg-[#161618] border border-emerald-500/50 text-center animate-fade-in">
+  <div id="memory-win-box" class="hidden p-5 rounded-xl bg-[#252529] border border-emerald-500/50 text-center animate-fade-in">
     <span class="text-4xl block mb-2">🎉</span>
     <h4 class="text-base font-bold text-emerald-300 m-0">¡EXCELENTE MEMORIA CONCEPTUAL!</h4>
     <p class="text-xs text-[#ebebf5] mt-1 mb-3">
@@ -114,9 +114,9 @@
         cardWrapper.className = 'perspective-1000 h-28 cursor-pointer select-none';
 
         cardWrapper.innerHTML = `
-          <div class="card-inner relative w-full h-full transform-style-3d transition-transform duration-500 rounded-xl shadow-sm border border-[#2e2e32] bg-[#161618]" data-pair="${item.pair}">
+          <div class="card-inner relative w-full h-full transform-style-3d transition-transform duration-500 rounded-xl shadow-sm border border-[#2e2e32] bg-[#252529]" data-pair="${item.pair}">
             <!-- Frente (Oculto al inicio) -->
-            <div class="card-front absolute w-full h-full backface-hidden rounded-xl bg-[#161618] border border-[#2e2e32] flex flex-col items-center justify-center p-2 text-center">
+            <div class="card-front absolute w-full h-full backface-hidden rounded-xl bg-[#252529] border border-[#2e2e32] flex flex-col items-center justify-center p-2 text-center">
               <span class="text-2xl mb-1">🌍</span>
               <span class="text-[10px] font-bold text-[#a1a1aa] uppercase tracking-wider">¿Par?</span>
             </div>
